@@ -782,7 +782,7 @@ class SFXPlacer:
             return {"success": True, "removed": 0, "message": "No items to remove"}
 
         try:
-            result = self.timeline.DeleteTimelineItems(list(items))
+            result = self.timeline.DeleteClips(list(items))
             count = len(items)
             logger.info("Removed %d SFX items from track %d", count, track_idx)
             return {"success": bool(result), "removed": count}
