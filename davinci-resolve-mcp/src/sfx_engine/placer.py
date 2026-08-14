@@ -534,11 +534,12 @@ class SFXPlacer:
                 error=f"Failed to find imported clip: {actual_filename}",
             )
 
-        # Build clip info for AppendToTimeline
+        # Calculate endFrame (30 frames default for 0.5s sting at 60fps)
+        dur_frames = int(round((duration_seconds or DEFAULT_STING_DURATION_SECONDS) * self.fps))
         clip_info = {
             "mediaPoolItem": clip,
             "startFrame": 0,
-            "endFrame": 0,  # Use full length (pre-trimmed)
+            "endFrame": max(1, dur_frames),
             "recordFrame": target_frame,
             "trackIndex": tidx,
             "mediaType": MEDIA_TYPE_AUDIO,
