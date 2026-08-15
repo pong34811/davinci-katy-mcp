@@ -131,5 +131,46 @@ class TestBuildPlacements(unittest.TestCase):
         self.assertEqual(placements[0]["reason"], "punchline")
 
 
+class TestDryRunOutput(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.raw = os.path.join(self.tmp, "raw")
+        self.proc = os.path.join(self.tmp, "proc")
+        os.makedirs(self.raw)
+        os.makedirs(self.proc)
+        open(os.path.join(self.proc, "pop-14.wav"), "w").close()
+
+    def test_dry_run_exits_zero_and_prints(self):
+        plan_path = os.path.join(self.tmp, "plan.json")
+        with open(plan_path, "w", encoding="utf-8") as f:
+            json.dump({"sfx": [
+                {"sfx_file": "pop-14.wav", "timestamp_seconds": 5.0,
+                 "duration": 0.5, "reason": "punchline"}
+            ]}, f)
+        import io
+        from contextlib import redirect_stdout
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            code = sfx_place.main([
+                "--plan", plan_path, "--dry-run",
+                "--raw-dir", self.raw, "--processed-dir", self.proc,
+            ])
+        self.assertEqual(code, 0)
+        self.assertIn("pop-14.wav", buf.getvalue())
+
+    def test_invalid_plan_exits_two(self):
+        plan_path = os.path.join(self.tmp, "plan.json")
+        with open(plan_path, "w", encoding="utf-8") as f:
+            json.dump({"sfx": [
+                {"sfx_file": "missing.wav", "timestamp_seconds": 5.0,
+                 "duration": 0.5, "reason": "x"}
+            ]}, f)
+        code = sfx_place.main([
+            "--plan", plan_path, "--dry-run",
+            "--raw-dir", self.raw, "--processed-dir", self.proc,
+        ])
+        self.assertEqual(code, 2)
+
+
 if __name__ == "__main__":
     unittest.main()
