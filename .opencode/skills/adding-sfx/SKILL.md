@@ -5,6 +5,14 @@ description: ใช้เมื่อเพิ่ม Sound Effects (SFX) ลง�
 
 # Adding SFX ลง Timeline ของ DaVinci Resolve
 
+## บทบาท: Agent วางแผน, CLI ลงมือ
+
+แบ่งงานเป็นสองฝ่าย — **Agent ตัดสินใจคุณภาพ, CLI วางอัตโนมัติ**:
+- **Agent** (คุณ): ระบุ format, วิเคราะห์จังหวะ, เลือกเสียง, เขียนเหตุผล, สร้าง **plan JSON**
+- **CLI** (`python scripts/sfx_place.py`): สร้าง SFX track, import ลง Media Pool, trim sting, วางทุกตัวในครั้งเดียว, verify readback
+
+**ห้ามสลับบทบาท:** อย่าวาง SFX ทีละตัวผ่าน MCP tools อีกต่อไป (ช้าและผิดพลาดง่าย) — เขียน plan แล้วให้ CLI วางทั้งชุด แก้/เพิ่มทีหลังก็ผ่าน plan ใหม่
+
 ## หลักการ
 
 SFX คือเครื่องปรุง ไม่ใช่ตัวอาหาร จุดประสงค์คือคลิปที่**มีชีวิตชีวาและตั้งใจ** ไม่ใช่คลิปที่ทุกช่วงมีเสียง SFX ทุกตัวต้อง**มีเหตุผล**ว่ามันช่วยจังหวะ/อารมณ์ตอนไหน (มุก, reaction, ตกใจ, เน้นคำ, transition, dramatic, fail, สำเร็จ) ห้ามสุ่มใส่ ห้ามทับเสียงพูด
@@ -25,9 +33,9 @@ SFX คือเครื่องปรุง ไม่ใช่ตัวอา
 
 ## ตรวจ Library ก่อนเสมอ
 
-มี 2 โฟลเดอร์ — **ใช้ shell tool เปิด list จริงทุกครั้งก่อนเริ่ม** แล้วอ้างถึงเฉพาะไฟล์ที่อยู่ใน list เท่านั้น:
+มี 2 โฟลเดอร์ — **เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list จริงทุกครั้งก่อนเริ่ม** แล้วอ้างถึงเฉพาะไฟล์ที่อยู่ใน list เท่านั้น:
 
-- `Z:\SFX` — ไฟล์ต้นฉบับ (~71 ไฟล์, mp3/wav)
+- `Z:\SFX` — ไฟล์ต้นฉบับ (71 ไฟล์, mp3/wav)
 - `Z:\SFX_processed` — **ควรใช้เป็นหลัก** ไฟล์ wav ที่ normalize ระดับเสียงไว้แล้ว โดยชื่อไฟล์บอกระดับเสียง: `<shortname>-<dB>.wav` เช่น `pop-14.wav` = Pop ที่ −14 dB
 
 **ห้ามเดา/สร้างชื่อไฟล์เอง** ถ้าไม่อยู่ใน list = ห้ามใช้
@@ -82,44 +90,53 @@ SFX คือเครื่องปรุง ไม่ใช่ตัวอา
 - **ทุกตำแหน่งต้องบอกเหตุผล 1 บรรทัด** ถ้าบอกไม่ได้ว่ามันช่วยจังหวะไหน → ตัดทิ้ง
 - ให้ความสำคัญกับจุด Impact ต่อผู้ชมมากที่สุด อย่าใส่ทุกประโยค ทุกการตัดต่อ
 
-## Workflow
+## Workflow ใหม่
 
 0. **ระบุรูปแบบคลิป** (ดู Format Table) — เลือกค่า density/ระดับเสียง/แหล่งหา beat ให้ตรงรูปแบบ
-1. **Inspect:** list `Z:\SFX` และ `Z:\SFX_processed`, ดู timeline ปัจจุบัน (`timeline.list` / `timeline.get_current`), audio track (`timeline.probe_audio_track`), อ่าน transcript ถ้ามี (`timeline.get_transcript`) เพื่อหาจังหวะและช่องว่างของบทพูด
-2. **หาจุด:** จาก transcript/beats — หา punchline, reaction, ช่วงตกใจ, "ดูสิเกิดอะไรขึ้น" moment, transition คิดแบบเล็กและตั้งใจ **ถ้าไม่มี transcript (game/meme/livestream):** หา beat จาก visual cuts, จังหวะ action/การกระทำบนจอ, kill/death/respawn, UI popup, alert event, จุดเปลี่ยน segment
+1. **Inspect:** เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list library จริง, ดู timeline ปัจจุบัน (`timeline.get_current`), audio track (`timeline.probe_audio_track`), อ่าน transcript ถ้ามี (`timeline.get_transcript`)
+2. **หาจุด:** จาก transcript/beats — หา punchline, reaction, ช่วงตกใจ, transition, คำเน้น คิดแบบเล็กและตั้งใจ **ถ้าไม่มี transcript (game/meme/livestream):** หา beat จาก visual cuts, จังหวะ action, kill/death/respawn, UI popup, alert event, จุดเปลี่ยน segment ใช้ `sfx` tool (`action="analyze"` / `action="plan"`) เป็นตัวช่วยหา candidate beats ได้ แต่**ต้องคัดเองเสมอ** — อย่าเชื่อ engine 100%
 3. **เลือกเสียง:** จับคู่เหตุการณ์+โทน จาก Beat Taxonomy กับ list จริง ควรใช้ `Z:\SFX_processed` ตามกฎข้อจำกัด
-4. **ลงมือวาง** (ดูด้านล่าง)
-5. **ตรวจสอบ** (ดู checklist)
+4. **เขียน plan JSON** (schema ด้านล่าง) — ทุกตัวต้องมี `reason` 1 บรรทัด
+5. **รัน CLI** (ด้านล่าง) — รัน `--dry-run` ก่อนเสมอ แล้ววางจริง
+6. **ตรวจสอบ** (Verification Checklist ด้านล่าง)
 
-## วางจริง (MCP sequence ที่ทดสอบแล้ว)
+## plan JSON Schema
 
-SFX วางบน **audio track เฉพาะ SFX** — **track index ไม่ตายตัว** ต้อง probe ก่อนเสมอ: ถ้ายังไม่มี track SFX ต้องสร้างด้วย `AddTrack("audio")` ก่อน (ได้ index สุดท้ายของ audio track ใน timeline นั้น) แล้วใช้ `record_frame = seconds × fps` เสมอ อ่าน `timeline.get_setting(timelineFrameRate)` ก่อนแปลงวินาทีเป็น frame ทุกครั้ง (โปรเจคนี้ 60fps)
+```json
+{
+  "timeline_name": "ชื่อ timeline (optional)",
+  "sfx": [
+    {
+      "sfx_file": "pop-14.wav",
+      "timestamp_seconds": 11.95,
+      "duration": 0.5,
+      "reason": "เย้ — punchline"
+    }
+  ]
+}
+```
 
-1. **Import** ไฟล์ที่เลือกเข้ารวม Media Pool bin SFX (ถ้าใส่ `target_folder` ได้ ใช้เสมอ):
-   ```
-   media_pool.safe_import_media
-     paths: ["Z:\\SFX_processed\\pop-14.wav"]
-     target_folder: "Master/SFX"
-   ```
-   → ได้ `id` ของคลิปกลับมา ถ้า SFX bin มีคลิปชื่อเดียวกันอยู่แล้ว ให้ใช้ของเดิม **ห้าม import ซ้ำ**
+- `sfx_file`: ชื่อไฟล์ใน `Z:\SFX_processed` หรือ `Z:\SFX` เท่านั้น (ห้าม path สมบูรณ์, ห้ามเดาชื่อ — list ก่อนด้วย `sfx` scan)
+- `timestamp_seconds`: วินาทีบน timeline
+- `duration`: ความยาว sting (default 0.5s) — ไฟล์ยาวกว่าจะถูก pre-trim ให้โดยอัตโนมัติ
+- `reason`: บังคับ 1 บรรทัด (Hard Limit เดิม)
 
-2. **Append วางตำแหน่ง** ลง timeline (audio clip ยาว ~1–2s ให้ตัดเหลือ ~0.5s sting = 30 frames ที่ 60fps):
-   ```
-   media_pool.append_to_timeline
-     clip_infos: [{
-       clip_id: "<id>",
-       start_frame: 0, end_frame: 30,
-       record_frame: <seconds*fps>,
-       track_index: <sfx_track_index>, media_type: 2
-     }]
-   ```
-   `<sfx_track_index>` = index ที่ probe/AddTrack ได้ (โปรเจคทดสอบจริง = 2) ห้ามใช้ค่าแบบตายตัว ต้อง readback ตรวจว่า item ลง track ถูก frame ถูก
+## วางจริง (CLI)
 
-3. **Volume:** ใช้ `Z:\SFX_processed` เป็นหลัก (ระดับเสียง bake ไว้แล้ว −10 ถึง −18 dB) ถ้าต้องใช้ไฟล์ raw ให้ set ผ่าน `timeline.safe_set_audio_properties` (`Volume` 0–1 เช่น 0.2 ≈ −14 dB) — ระวังว่า writeback บน audio item ของ Resolve 21 ไม่ค่อย reliable ให้เชื่อไฟล์ pre-normalized มากกว่า post-hoc gain
+```powershell
+davinci-resolve-mcp\venv\Scripts\python.exe scripts\sfx_place.py --plan plan.json --verify
+```
 
-### ถ้าแก้ timeline โดยตรงไม่ได้ (Fallback)
+- `--dry-run`: ตรวจ plan (ไฟล์มีจริง, timestamp, ไม่ซ้อน) โดยไม่แตะ Resolve — **รันก่อนวางเสมอ**
+- `--verify`: อ่าน readback หลังวาง แล้วรายงาน items/issues
+- `--raw-dir` / `--processed-dir`: override ถ้า library อยู่ที่อื่น (default `Z:\SFX` / `Z:\SFX_processed`)
+- exit code: 0 = วางครบ, 1 = มีตัวล้ม, 2 = plan ผิด, 3 = ต่อ Resolve ไม่ได้
 
-ถ้า MCP ไม่สามารถแก้โปรเจคจริงได้ ให้ส่ง**ตารางแนะนำ SFX** แทน โดยระบุต่อตัว:
+CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (ชื่อ "SFX 1"), ensure `Master/SFX` bin, import dedup, pre-trim sting (workaround `AppendToTimeline` ignore endFrame), วาง, verify
+
+### ถ้าไม่มี Resolve / CLI ใช้ไม่ได้ (Fallback)
+
+ถ้า MCP/CLI ไม่สามารถแก้โปรเจคจริงได้ ให้ส่ง**ตารางแนะนำ SFX** แทน โดยระบุต่อตัว:
 - Timestamp (วินาที)
 - SFX File (จาก list จริงเท่านั้น)
 - เหตุผลที่เลือก (ตรง Beat ไหน)
@@ -147,15 +164,15 @@ SFX วางบน **audio track เฉพาะ SFX** — **track index ไม
 
 ## Lessons Learned
 
-- **[talking-head] Track index อย่าคิดว่าเป็น 4 เสมอ:** timeline จริงอาจมีแค่ 1 audio track (Dialogue) → ต้อง `AddTrack("audio")` ได้ index 2 และตั้งชื่อ "SFX 1" เอง ตรวจ track ก่อนวางทุกครั้ง
+- **[talking-head] Track index อย่าคิดว่าเป็น 4 เสมอ:** timeline จริงอาจมีแค่ 1 audio track (Dialogue) → CLI จะ `AddTrack("audio")` ให้อัตโนมัติ ได้ index 2 และตั้งชื่อ "SFX 1" เอง ตรวจ track ก่อนวางทุกครั้ง
 - **[talking-head] คลิป v2 (127s, 60fps) บทพูดต่อเนื่อง ~90%:** sting สั้นบนคำเน้น (ตัวเลข, ช็อก, จังหวะเปิด-ปิด) 7 จุดใช้ได้จริง ไม่กลบ speech หากเป็น −10 ถึง −16dB ใช้ processed files
-- **[talking-head] `AppendToTimeline` บางครั้ง ignore `endFrame` (วางทั้งไฟล์ยาว):** แก้ด้วยการ pre-trim ไฟล์วาw เป็น sting (0.4–0.6s, stdlib `wave`) ไว้ก่อน แล้ววาง full-length ของ sting นั้น (endFrame = ความยาว sting) ได้ผลทุกครั้ง
+- **[talking-head] `AppendToTimeline` บางครั้ง ignore `endFrame` (วางทั้งไฟล์ยาว):** แก้ด้วยการ pre-trim ไฟล์ wav เป็น sting (0.4–0.6s, stdlib `wave`) ไว้ก่อน แล้ววาง full-length ของ sting นั้น (endFrame = ความยาว sting) ได้ผลทุกครั้ง — CLI/`SFXPlacer` ทำ pre-trim ให้อัตโนมัติ ไม่ต้อง pre-trim มือ
 - **[meme] คลิปสั้น 34s (วันเกิดหมาใน):** sting ที่ 0.12s ตอนเปิดเลยได้ผลดี (meme ไม่มี intro ยาว), 5 sting ต่อ 34s (sparkle/ding/pop/collect/pop) จับจังหวะพีคตรง subtitle เปิดตัว→เผย→ดีใจ→สำคัญ→ปิด ได้จังหวะสนุกโดยไม่รก
 
 ## Verification Checklist
 
 ก่อนสรุปว่าเสร็จ ให้ยืนยัน:
-1. ทุก SFX อยู่บน SFX track ที่ frame ที่ตั้งใจ (จาก readback ของ append)
+1. ทุก SFX อยู่บน SFX track ที่ frame ที่ตั้งใจ (จาก readback ของ CLI `--verify`)
 2. ไม่มี SFX ตัวไหนทับเสียงหลัก/bed จนกลบ (talking-head/podcast = ไม่กลบพูด; game = ไม่กลบ game audio; livestream = ไม่กลบ alert/พูด)
 3. ไม่มี 2 SFX ซ้อนกันในระยะ ~1 วินาที (ยกเว้น game action คู่)
 4. ไม่มีตระกูลเสียงไหนถูกใช้ซ้ำเกินไป (ยกเว้น meme ที่ตั้งใจซ้ำเพื่อมุก)
@@ -163,16 +180,19 @@ SFX วางบน **audio track เฉพาะ SFX** — **track index ไม
 6. ระดับเสียงสม่ำเสมอ (ไม่มีตัวดัง/เบาหวิวเทียบกับตัวข้างเคียง)
 7. ใช้ค่า density/ระดับเสียงตรงตาม Format Table ของรูปแบบคลิป
 8. จังหวะรวมของคลิปสนุกและเป็นธรรมชาติขึ้นจริง
+9. ผลจาก CLI readback ตรงกับ plan (จำนวนตัว, frame, track) ก่อนสรุปเสร็จ
 
 ## Common Mistakes
 
 | ผิดพลาด | วิธีแก้ |
 |---|---|
-| สร้างชื่อไฟล์ขึ้นเอง | ใช้เฉพาะชื่อจาก list จริงของ `Z:\SFX` / `Z:\SFX_processed` |
+| สร้างชื่อไฟล์ขึ้นเอง | ใช้เฉพาะชื่อจาก list จริงของ `Z:\SFX` / `Z:\SFX_processed` (scan ก่อน) |
 | ใส่ SFX ทุกประโยค | Density ตาม Format Table; ใส่เฉพาะจังหวะที่ impact สูง |
 | วางเสียงดัง 2 ตัวซ้อนกัน (ระเบิด+กรี๊ด) | เลือกเสียงที่แรงที่สุดตัวเดียว (ยกเว้น game action คู่) |
 | ใช้ whoosh 3 ครั้งติด | สลับตระกูล; one whoosh per transition พอแล้ว |
 | SFX ดังกลบ bed | ใช้ไฟล์ processed; ให้ SFX เบากว่า bed ตาม Format Table |
-| วาง track ผิด / frame ผิด | SFX บน track ที่ probe/AddTrack ได้ (โปรเจคทดสอบ = index 2); record_frame = seconds × fps |
+| วาง track ผิด / frame ผิด | ให้ CLI จัดการ track; ตรวจ readback จาก `--verify` ว่า frame ตรงที่ตั้งใจ |
 | ใช้ SFX เดิมซ้ำเยอะเกินไป | ใช้ taxonomy สลับตระกูล (ยกเว้น meme ที่ตั้งใจซ้ำเพื่อมุก) |
 | ใช้ค่า talking-head กับ meme/game/podcast | อ่าน Format Table ก่อนเริ่ม ระบุรูปแบบใน step 0 |
+| เขียน plan โดยไม่รัน `--dry-run` ก่อน | รัน `--dry-run` เสมอ ตรวจไฟล์/timestamp/ซ้อนก่อนวางจริง |
+| ลืม `reason` ใน plan | ทุกตัวต้องมีเหตุผล 1 บรรทัด (Hard Limit; CLI เตือนเป็น warning) |
