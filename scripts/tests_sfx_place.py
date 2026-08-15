@@ -172,5 +172,15 @@ class TestDryRunOutput(unittest.TestCase):
         self.assertEqual(code, 2)
 
 
+class TestPluginJson(unittest.TestCase):
+    def test_plugin_json_is_valid(self):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(root, ".opencode", "skills", "adding-sfx", "kimi.plugin.json")
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.assertEqual(data["name"], "adding-sfx")
+        self.assertEqual(data["skills"][0], "./SKILL.md")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,8 @@
+{
+  "name": "adding-sfx",
+  "version": "2.0.0",
+  "description": "เพิ่ม Sound Effects (SFX) ลงใน timeline ของ DaVinci Resolve",
+  "skills": [
+    "./SKILL.md"
+  ]
+}
