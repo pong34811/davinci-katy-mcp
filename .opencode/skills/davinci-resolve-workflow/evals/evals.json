@@ -1,0 +1,23 @@
+{
+  "skill_name": "davinci-resolve-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "导入几个视频片段到 DaVinci Resolve, 创建一个新的 timeline, 把它们按顺序排列好",
+      "expected_output": "Media Pool 有几个 clips, 新 timeline 有正确的 items",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我对 timeline 上的第一个 clip 做简单的 color grade, 加一个 CDL 调整",
+      "expected_output": "Node graph 有 CDL 调整, grade evidence base 显示变更",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "把这个 timeline 导出成 FCPXML 格式",
+      "expected_output": "FCPXML 文件成功导出",
+      "files": []
+    }
+  ]
+}

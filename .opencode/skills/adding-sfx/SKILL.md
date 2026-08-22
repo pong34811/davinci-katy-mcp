@@ -168,6 +168,13 @@ CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (�
 - **[talking-head] คลิป v2 (127s, 60fps) บทพูดต่อเนื่อง ~90%:** sting สั้นบนคำเน้น (ตัวเลข, ช็อก, จังหวะเปิด-ปิด) 7 จุดใช้ได้จริง ไม่กลบ speech หากเป็น −10 ถึง −16dB ใช้ processed files
 - **[talking-head] `AppendToTimeline` บางครั้ง ignore `endFrame` (วางทั้งไฟล์ยาว):** แก้ด้วยการ pre-trim ไฟล์ wav เป็น sting (0.4–0.6s, stdlib `wave`) ไว้ก่อน แล้ววาง full-length ของ sting นั้น (endFrame = ความยาว sting) ได้ผลทุกครั้ง — CLI/`SFXPlacer` ทำ pre-trim ให้อัตโนมัติ ไม่ต้อง pre-trim มือ
 - **[meme] คลิปสั้น 34s (วันเกิดหมาใน):** sting ที่ 0.12s ตอนเปิดเลยได้ผลดี (meme ไม่มี intro ยาว), 5 sting ต่อ 34s (sparkle/ding/pop/collect/pop) จับจังหวะพีคตรง subtitle เปิดตัว→เผย→ดีใจ→สำคัญ→ปิด ได้จังหวะสนุกโดยไม่รก
+- **[talking-head] คลิป v3 (212s, 60fps, เปลี่ยน Class Elsword):** 16 sting บนคำเน้น/มุก (555+, ตัวเลข 8000%, ประชด "โครตเย่", ดราม่า "ลาก่อน") density 4.5/นาที ใช้ได้จริง ไม่กลบพูด — เปิด-ปิดคลิปได้ sparkle, ประชดใช้ wrong, ดราม่าแกล้งซึ้งใช้ gong
+- **[talking-head] ผู้ใช้อาจต้องการไฟล์เต็มไม่ใช่ sting:** sting 0.5s ใช้ source หมดทั้งไฟล์ → แก้/ยืดใน Resolve ไม่ได้ User (KT404) ขอวางไฟล์เต็มจริง (duration = ความยาวไฟล์) เพื่อให้ตัด/ยืดได้เอง ใช้วิธีนี้เป็น default กับคลิปของ user รายนี้
+- **[talking-head] คลิป v4 (113s, 60fps, ปลูกข้าว day 11, ประกาศไลฟ์บันนี่เกิร์ล):** 9 จุดบนตัวเลข/หัวข้อสำคัญ (1680 subs → pop, 1 ใน 10 → collect, เปิดประเด็น → ding, เป้าหมายโดเนท → kaching, เผยไฮไลต์ → sparkle) วางไฟล์เต็ม ใช้ได้จริง — transcript timecode (frame) เป็นแหล่งหา beat ที่แม่นยำกว่า subtitle text เปล่า
+- **[game] คลิปสั้น 27s (Assassin's Creed ซ่อนตัว NPC เห็น, 30fps):** 4 จุด (sparkle เปิด / pop ถูกจับได้ / impact NPC มาถึง / pop ปิด) density ~8.9/นาทีตามเกณฑ์ game 5-8 ได้จริง — ถ้ามี audio track ว่าง (track 2) อยู่แล้ว CLI จะสร้างใหม่เป็น track 3 ไม่ใช่ track 2 เสมอ
+- **[game] Library อยู่ที่ Z:\SFX จริง (confirmed by scan):** processed files อยู่ที่ Z:\SFX_processed, raw อยู่ที่ Z:\SFX — ใช้ processed เป็นหลัก (normalize แล้ว) ไม่ต้องส่ง --raw-dir/--processed-dir
+- **[game] User preference overrides density table:** User ต้องการ SFX น้อยมาก (2-3/นาที) แม้ density table บอก game 5-8 — วิเคราะห์ story arc หา TRUE hinge/punchline เท่านั้น ไม่ใช่ทุกจังหวะ action
+- **[game] processed ≠ ไฟล์เต็ม:** processed (impact-10.wav 0.67s) สั้นกว่า raw (Impact - Comedy Hit 01.mp3 2.41s) — ถ้า user ต้องการตัด/ยืดเอง ต้องวาง raw ไม่ใช่ processed
 
 ## Verification Checklist
 

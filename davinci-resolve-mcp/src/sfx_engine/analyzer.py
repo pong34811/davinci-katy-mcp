@@ -23,7 +23,7 @@ KEYWORD_PATTERNS: List[Tuple[EventType, float, re.Pattern]] = [
     (
         EventType.EMPHASIS,
         0.75,
-        re.compile(r"(?i)(ตัวเลข|จำนวน|สถิติ|เปอร์เซ็นต์|ล้าน|พัน|ร้อย|บาท|กิโล|เท่า|คะแนน|แสน|\b\d+[\d,.]*\b|percent|million|thousand|first|second)", re.UNICODE),
+        re.compile(r"(?i)(ตัวเลข|จำนวน|สถิติ|เปอร์เซ็นต์|ล้าน|พัน|ร้อย|บาท|กิโล|เท่า|คะแนน|แสน|vtuber|pngtuber|วิทูเบอร์|วีทูปเบอร์|\b\d+[\d,.]*\b|percent|million|thousand|first|second)", re.UNICODE),
     ),
     (
         EventType.REACTION,

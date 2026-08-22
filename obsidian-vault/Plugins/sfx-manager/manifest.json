@@ -1,0 +1,9 @@
+{
+  "id": "sfx-manager",
+  "name": "SFX Manager",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "จัดการ Sound Effects สำหรับ DaVinci Resolve",
+  "author": "DaVinci Resolve MCP",
+  "isDesktopOnly": true
+}

@@ -19,8 +19,7 @@ for _p in (REPO_ROOT, MCP_DIR):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-DEFAULT_RAW_DIR = "Z:/SFX"
-DEFAULT_PROCESSED_DIR = "Z:/SFX_processed"
+DEFAULT_SFX_DIR = r"C:\Users\warit\Desktop\davinci-katy-mcp\SFX"
 MIN_SPACING_SECONDS = 1.0
 DEFAULT_DURATION_SECONDS = 0.5
 
@@ -35,20 +34,18 @@ def load_plan(path: str) -> Dict[str, Any]:
 
 
 def resolve_path(
-    name: str, raw_dir: str, processed_dir: str
+    name: str, sfx_dir: str
 ) -> Optional[str]:
-    """Resolve a basename to a full path, processed dir first."""
-    for base in (processed_dir, raw_dir):
-        candidate = os.path.join(base, name)
-        if os.path.isfile(candidate):
-            return candidate
+    """Resolve a filename to a full path in the SFX directory."""
+    candidate = os.path.join(sfx_dir, name)
+    if os.path.isfile(candidate):
+        return candidate
     return None
 
 
 def validate_plan(
     plan: Dict[str, Any],
-    raw_dir: str,
-    processed_dir: str,
+    sfx_dir: str,
     timeline_duration: Optional[float] = None,
 ) -> Tuple[List[str], List[str]]:
     """Validate a plan. Returns (errors, warnings)."""
@@ -65,8 +62,8 @@ def validate_plan(
         if not name:
             errors.append(f"{tag}: missing 'sfx_file'")
             continue
-        if resolve_path(name, raw_dir, processed_dir) is None:
-            errors.append(f"{tag}: file not found in raw/processed dirs")
+        if resolve_path(name, sfx_dir) is None:
+            errors.append(f"{tag}: file not found in SFX dir: {sfx_dir}")
 
         ts = entry.get("timestamp_seconds")
         if not isinstance(ts, (int, float)):
@@ -100,13 +97,13 @@ def validate_plan(
 
 
 def build_placements(
-    plan: Dict[str, Any], raw_dir: str, processed_dir: str
+    plan: Dict[str, Any], sfx_dir: str
 ) -> List[Dict[str, Any]]:
     """Convert a plan into SFXPlacer.execute_plan placement dicts."""
     placements: List[Dict[str, Any]] = []
     for entry in plan.get("sfx", []):
         name = entry.get("sfx_file", "")
-        full = resolve_path(name, raw_dir, processed_dir)
+        full = resolve_path(name, sfx_dir)
         if full is None:
             continue
         placements.append({
@@ -159,8 +156,8 @@ def main(argv: Optional[List[str]] = None) -> int:
                         help="validate the plan without touching Resolve")
     parser.add_argument("--verify", action="store_true",
                         help="run placement readback verification after placing")
-    parser.add_argument("--raw-dir", default=DEFAULT_RAW_DIR)
-    parser.add_argument("--processed-dir", default=DEFAULT_PROCESSED_DIR)
+    parser.add_argument("--sfx-dir", default=DEFAULT_SFX_DIR,
+                        help="path to SFX directory")
     parser.add_argument("--track-name", default="SFX 1")
     args = parser.parse_args(argv)
 
@@ -171,7 +168,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 2
 
     errors, warnings = validate_plan(
-        plan, args.raw_dir, args.processed_dir, timeline_duration=None
+        plan, args.sfx_dir, timeline_duration=None
     )
     for w in warnings:
         print(f"WARN: {w}")
@@ -180,7 +177,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             print(f"ERROR: {e}")
         return 2
 
-    placements = build_placements(plan, args.raw_dir, args.processed_dir)
+    placements = build_placements(plan, args.sfx_dir)
     print(f"PLAN OK: {len(placements)} SFX to place")
     for p in placements:
         print(f"  {os.path.basename(p['sfx_path'])} @ {p['timestamp_seconds']:.2f}s "
