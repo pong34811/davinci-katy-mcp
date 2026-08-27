@@ -1,7 +1,0 @@
-{
-  "timeline_name": "Timeline 1",
-  "sfx": [
-    {"sfx_file": "kaching-12.wav", "timestamp_seconds": 127.20, "duration": 1.2, "reason": "Eve กูก็ไม่ได้กระจอก นะโว้ย — อวดมั่นใจ (kaching)"},
-    {"sfx_file": "pop-13.wav", "timestamp_seconds": 207.92, "duration": 0.55, "reason": "5555+ — ปิดท้ายมุกหนีไปเล่น eve 1 (pop)"}
-  ]
-}

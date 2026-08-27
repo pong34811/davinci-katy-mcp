@@ -44,6 +44,51 @@ Skills live in `.opencode/skills/<name>/SKILL.md`. Current skills:
 
 Created at `obsidian-vault/` with templates, project notes, SFX Manager plugin, and docs. The `sfx-manager` plugin (`obsidian-vault/Plugins/sfx-manager/`) provides in-Obsidian SFX library browsing.
 
+## LLM Wiki (Karpathy Pattern)
+
+Persistent, interlinked wiki maintained by LLM from raw sources. Based on [Karpathy's llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+
+### Structure
+
+```
+obsidian-vault/
+├── Clippings/          # RAW SOURCES — immutable, never modify
+├── Wiki/
+│   ├── index.md        # content catalog — read this FIRST
+│   ├── log.md          # append-only operation log
+│   ├── overview.md     # high-level synthesis
+│   ├── sources/        # one summary per ingested source
+│   ├── entities/       # people, tools, orgs, repos
+│   ├── concepts/       # ideas, patterns, techniques
+│   └── synthesis/      # query answers filed back into wiki
+└── assets/             # downloaded images (Ctrl+Shift+D)
+```
+
+### Rules
+
+- **Clippings/ is IMMUTABLE.** Never modify raw source files.
+- **Wiki/ is LLM-owned.** Always update `index.md` and `log.md` on every change.
+- Every wiki page gets `type:` in frontmatter and `wiki/*` tags.
+- Heavy use of `[[wikilinks]]` for Obsidian graph view.
+- Source summaries = factual. Interpretation goes in concept/synthesis pages.
+- When sources contradict, note it explicitly — don't silently overwrite.
+- `[key::value]` inline metadata for Dataview queries.
+
+### Operations
+
+**Ingest:** Read raw source → create source summary → create/update entity pages → create/update concept pages → update index.md → update overview.md → append to log.md
+
+**Query:** Read index.md → read relevant wiki pages → synthesize answer with wikilinks → file substantial answers into Wiki/synthesis/ → update index and log
+
+**Lint:** Check for orphan pages, broken wikilinks, stale pages, contradictions, concepts without their own page.
+
+### Frontmatter Schema
+
+Source summary: `type: source-summary`, `source:`, `date_ingested:`, `tags: [wiki, wiki/source]`
+Entity: `type: entity`, `entity_type:`, `source_count:`, `tags: [wiki, wiki/entity]`
+Concept: `type: concept`, `confidence: high|medium|low`, `source_count:`, `tags: [wiki, wiki/concept]`
+Synthesis: `type: synthesis`, `tags: [wiki, wiki/synthesis]`
+
 ## Environment
 
 - Python venv at `davinci-resolve-mcp/venv/`

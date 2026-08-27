@@ -19,86 +19,18 @@ for _p in (REPO_ROOT, MCP_DIR):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-DEFAULT_SFX_DIR = r"C:\Users\warit\Desktop\davinci-katy-mcp\SFX"
-MIN_SPACING_SECONDS = 1.0
+# Import from config
+from config import (
+    SFX_DIR as DEFAULT_SFX_DIR,
+    SFX_FAMILIES,
+    BEAT_TO_SFX,
+    FORMAT_CONFIGS,
+    MIN_SPACING_SECONDS,
+    get_sfx_file as _get_sfx_file_config,
+)
 
-# ── Format Configurations ───────────────────────────────────────────────────
-
-FORMAT_CONFIGS = {
-    "talking-head": {
-        "density_per_minute": 4,  # 3-5, use 4 as default
-        "max_density_per_minute": 5,
-        "sfx_volume_db": -12,  # -10 to -16 dB
-        "bed": "speech",
-        "description": "Talking-head / vlog style",
-    },
-    "game": {
-        "density_per_minute": 6,  # 5-8
-        "max_density_per_minute": 8,
-        "sfx_volume_db": -8,
-        "bed": "game_audio",
-        "description": "Game footage style",
-    },
-    "meme": {
-        "density_per_minute": 10,  # high density
-        "max_density_per_minute": 15,
-        "sfx_volume_db": -10,
-        "bed": "none",
-        "description": "Meme / short clip style",
-    },
-    "podcast": {
-        "density_per_minute": 1,  # minimal
-        "max_density_per_minute": 2,
-        "sfx_volume_db": -16,
-        "bed": "speech_music",
-        "description": "Podcast style",
-    },
-    "livestream": {
-        "density_per_minute": 2,  # alert-driven
-        "max_density_per_minute": 4,
-        "sfx_volume_db": -14,
-        "bed": "streamer_game",
-        "description": "Livestream style",
-    },
-}
-
-# ── SFX Family Mapping ──────────────────────────────────────────────────────
-
-SFX_FAMILIES = {
-    "pop": ["Pop - Short 06.mp3"],
-    "ding": ["Bell - Ding 02.wav", "Bell - Ting.mp3"],
-    "collect": ["Game - Correct Collect Answer.mp3"],
-    "sparkle": ["Harp - Sparkle 01.mp3", "Harp - Sparkle 06.mp3", "Magic - Shimmer 01.mp3"],
-    "whoosh": ["Whoosh - Clean Fast.mp3", "Whoosh - Fast 01.mp3", "Transition - Whoosh 01.mp3"],
-    "impact": ["Impact - Comedy Hit 01.mp3", "Impact - Comedy Hit 02.mp3"],
-    "wrong": ["Game - Wrong Answer.mp3"],
-    "honk": ["Horn - Duck Honk 01.mp3", "Horn - Duck Honk 02.mp3"],
-    "gong": ["Gong - Comical Metal.wav", "Gong - Metal.wav"],
-    "kaching": ["Cash Register - Ka Ching 01.mp3", "Cash Register - Ka Ching 02.mp3"],
-    "blip": ["Comedy - Silly Blip 01.mp3", "Marimba - Comedy Blip 02.mp3"],
-    "plink": ["Guitar - Plink Slide 13.wav"],
-    "scratch": ["Scratch - Turntable Record.mp3"],
-    "rise": ["Rise - Build Up.mp3"],
-    "awkward": ["Awkward Moment.mp3"],
-    "scream": ["Scream - Female 01.mp3", "Scream - Male 01.wav"],
-    "glass": ["Glass - Wine Glass Shatter.mp3"],
-    "explosion": ["Explosion - Medium 02.wav"],
-    "click": ["Click - Button Press.wav", "Click - Sharp 02.wav"],
-    "ui": ["UI - Enter Confirm.mp3", "UI - Loading Bar.mp3"],
-}
-
-# Beat type -> preferred SFX families (in priority order)
-BEAT_TO_SFX = {
-    "surprise": ["pop", "impact"],
-    "excitement": ["sparkle", "kaching", "ding"],
-    "success": ["collect", "kaching", "ding", "sparkle"],
-    "fail": ["wrong", "scratch"],
-    "emphasis": ["ding", "pop", "collect"],
-    "question": ["pop", "blip"],
-    "transition": ["whoosh", "rise"],
-    "closing": ["sparkle", "whoosh"],
-    "neutral": [],  # no SFX
-}
+# Use imported configs directly - no local duplicates
+# All config values are now single-sourced from config.py
 
 
 # ── Plan Generator ──────────────────────────────────────────────────────────

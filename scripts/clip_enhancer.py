@@ -26,7 +26,12 @@ for _p in (REPO_ROOT, MCP_DIR):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-DEFAULT_SFX_DIR = r"C:\Users\warit\Desktop\davinci-katy-mcp\SFX"
+# Import from config
+from config import (
+    SFX_DIR as DEFAULT_SFX_DIR,
+    FORMAT_CONFIGS,
+    get_format_config,
+)
 
 
 def run_full_pipeline(
@@ -37,7 +42,7 @@ def run_full_pipeline(
     plan_json: str = "plan.json",
     dry_run: bool = False,
     verify: bool = False,
-    sfx_dir: str = DEFAULT_SFX_DIR,
+    sfx_dir: str = str(DEFAULT_SFX_DIR),
     skip_place: bool = False,
 ) -> int:
     """Run the full subtitle-driven enhancement pipeline."""
@@ -144,14 +149,14 @@ def run_full_pipeline(
         sys.executable,
         os.path.join(SCRIPT_DIR, "sfx_place.py"),
         "--plan", plan_json,
-        "--raw-dir", sfx_dir,
+        "--sfx-dir", sfx_dir,
     ]
     if dry_run:
         sfx_place_cmd.append("--dry-run")
     if verify:
         sfx_place_cmd.append("--verify")
 
-    print(f"  Running: {' '.join(sfx_place_cmd)}")
+    print(f"  Running: {' '.join(str(c) for c in sfx_place_cmd)}")
 
     # Execute
     import subprocess

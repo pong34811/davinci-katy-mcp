@@ -1,9 +1,0 @@
-{
-  "timeline_name": "4.เเอบยังไงให้เห็นได้",
-  "sfx": [
-    {"sfx_file": "sparkle-10.wav", "timestamp_seconds": 0.5, "duration": 1.5, "reason": "เปิดคลิป — เริ่มฉากซ่อนตัว (sparkle)"},
-    {"sfx_file": "pop-14.wav", "timestamp_seconds": 9.3, "duration": 0.55, "reason": "ตัวน้องหันหน้าอยู่ มันเห็นนะ — เซอร์ไพรส์ถูกจับได้ (pop)"},
-    {"sfx_file": "impact-10.wav", "timestamp_seconds": 21.0, "duration": 0.67, "reason": "น่าแล้ว มานี่มา — NPC วิ่งมาถึงเหตุการณ์ (impact)"},
-    {"sfx_file": "pop-13.wav", "timestamp_seconds": 26.3, "duration": 0.55, "reason": "ปิดท้ายคลิป — จบมุก (pop)"}
-  ]
-}

@@ -90,15 +90,71 @@ SFX คือเครื่องปรุง ไม่ใช่ตัวอา
 - **ทุกตำแหน่งต้องบอกเหตุผล 1 บรรทัด** ถ้าบอกไม่ได้ว่ามันช่วยจังหวะไหน → ตัดทิ้ง
 - ให้ความสำคัญกับจุด Impact ต่อผู้ชมมากที่สุด อย่าใส่ทุกประโยค ทุกการตัดต่อ
 
-## Workflow ใหม่
+## Workflow — 3-Round Subtitle Analysis
 
-0. **ระบุรูปแบบคลิป** (ดู Format Table) — เลือกค่า density/ระดับเสียง/แหล่งหา beat ให้ตรงรูปแบบ
-1. **Inspect:** เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list library จริง, ดู timeline ปัจจุบัน (`timeline.get_current`), audio track (`timeline.probe_audio_track`), อ่าน transcript ถ้ามี (`timeline.get_transcript`)
-2. **หาจุด:** จาก transcript/beats — หา punchline, reaction, ช่วงตกใจ, transition, คำเน้น คิดแบบเล็กและตั้งใจ **ถ้าไม่มี transcript (game/meme/livestream):** หา beat จาก visual cuts, จังหวะ action, kill/death/respawn, UI popup, alert event, จุดเปลี่ยน segment ใช้ `sfx` tool (`action="analyze"` / `action="plan"`) เป็นตัวช่วยหา candidate beats ได้ แต่**ต้องคัดเองเสมอ** — อย่าเชื่อ engine 100%
-3. **เลือกเสียง:** จับคู่เหตุการณ์+โทน จาก Beat Taxonomy กับ list จริง ควรใช้ `Z:\SFX_processed` ตามกฎข้อจำกัด
-4. **เขียน plan JSON** (schema ด้านล่าง) — ทุกตัวต้องมี `reason` 1 บรรทัด
-5. **รัน CLI** (ด้านล่าง) — รัน `--dry-run` ก่อนเสมอ แล้ววางจริง
-6. **ตรวจสอบ** (Verification Checklist ด้านล่าง)
+ทุกครั้งที่มี transcript/subtitle ให้วิเคราะห์ **3 รอบ** ก่อนเขียน plan — ห้ามข้ามรอบ ห้ามทำรอบเดียวจบ
+
+### Step 0 — Setup
+
+เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list library จริง, ดู timeline ปัจจุบัน (`timeline.get_current`), audio track (`timeline.probe_audio_track`), frame rate (`project_settings.get_setting("timelineFrameRate")`), อ่าน transcript (`timeline.get_transcript` with_timecodes=true). ระบุรูปแบบคลิปจาก Format Table
+
+### Round 1 — Structural Scan (โครงสร้าง)
+
+**เป้าหมาย:** เข้าใจภาพรวมของคลิป — ไม่เลือก SFX รอบนี้
+
+1. แปลง frame → วินาที (frame rate) ทุก cue
+2. แบ่ง transcript เป็น **sections** ตามเนื้อหา (เปิด/เรื่องหลัก/เปลี่ยนประเด็น/ปิด)
+3. ระบุ **section boundaries** — จุดที่เนื้อหาเปลี่ยน Topic, เปลี่ยนอารมณ์, หรือเปลี่ยนจังหวะ
+4. บันทึก: format, duration, section map, อารมณ์รวมของแต่ละ section
+
+**Output:** section map ที่มี time range + topic + mood ของแต่ละ section
+
+### Round 2 — Beat Harvesting (เก็บเกี่ยวจังหวะ)
+
+**เป้าหมาย:** หา candidate beat ให้มากที่สุด — ยังไม่ตัด
+
+เดินทีละ cue ใน transcript:
+- อ่าน **ข้อความ** — มีมุก? มีคำเน้น? มีตัวเลข? มี reaction?
+- อ่าน **บริบทรอบข้าง** — cue ก่อน/หลังพูดถึงอะไร? มีการเปลี่ยนอารมณ์ไหม?
+- จด **ทุกจังหวะที่อาจใช้ SFX** พร้อม:
+  - timestamp (วินาที)
+  - ข้อความที่พูด (raw transcript)
+  - ประเภทจังหวะ (มุก/reaction/ตกใจ/เน้นคำ/transition/dramatic/fail/สำเร็จ/emotional)
+  - SFX family ที่เข้ากัน (จาก Beat Taxonomy)
+  - เหตุผลสั้น ๆ
+
+**ถ้าไม่มี transcript (game/meme/livestream):** หา beat จาก visual cuts, จังหวะ action, kill/death/respawn, UI popup, alert event ใช้ `sfx` tool (`action="analyze"` / `action="plan"`) เป็นตัวช่วย แต่**ต้องคัดเองเสมอ**
+
+**Output:** candidate list ที่มีทุกจังหวะที่พบ (คาดว่ามากกว่า density cap — รอบ 3 จะคัดออก)
+
+### Round 3 — Curation & Selection (คัดเลือก)
+
+**เป้าหมาย:** เลือกเฉพาะจังหวะที่มี impact สูงสุด ผ่าน filter 4 ชั้น
+
+**Filter 1 — Density Check:**
+- คำนวณ density cap จาก Format Table (talking-head 3–5/min, game 5–8, podcast 1–2/segment)
+- คำนวณ: candidate count ÷ (duration / 60) = density ถ้าเกิน cap → ตัดจังหวะที่ impact ต่ำสุดก่อน
+
+**Filter 2 — Spacing Check:**
+- เรียง timestamp แล้วตรวจ gap — ห้ามห่างกัน < 1 วินาที
+- ถ้า 2 ตัวชิดกัน → เลือกตัวที่แรงกว่า ตัดอีกตัว
+
+**Filter 3 — Family Variety:**
+- ตรวจว่าไม่ใช้ตระกูลเดียวกันซ้ำใกล้กัน (เช่น whoosh×3, pop×3 ติดกัน)
+- ถ้าซ้ำ → สลับเป็นตระกูลอื่นจาก Beat Taxonomy หรือตัดออก
+
+**Filter 4 — Impact Ranking:**
+- เรียง candidate ตาม impact ต่อผู้ชม (สูง → ต่ำ)
+- ตัดจากท้าย list จนเหลือเท่ากับ density cap
+- ทุกตัวที่เหลือต้องระบุเหตุผลได้ 1 บรรทัด — ถ้าบอกไม่ได้ว่าช่วยจังหวะไหน → ตัด
+
+**Output:** final plan list ที่ผ่านทุก filter + เหตุผลของแต่ละตัว
+
+### Finalize
+
+- **เขียน plan JSON** (schema ด้านล่าง) — ทุกตัวต้องมี `reason` 1 บรรทัด
+- **รัน CLI** — รัน `--dry-run` ก่อนเสมอ แล้ววางจริง
+- **ตรวจสอบ** (Verification Checklist ด้านล่าง)
 
 ## plan JSON Schema
 
@@ -155,10 +211,11 @@ CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (�
 
 หลังวางเสร็จและตรวจแล้ว ให้ทบทวนงานตัวเอง 1 รอบ:
 
-1. มี SFX ตัวไหนที่จริง ๆ แล้วไม่จำเป็นหรือซ้ำรสชาติกันไหม?
-2. มีจังหวะไหนที่ควรได้ SFX แต่พลาดไปไหม?
-3. ระดับเสียง/ตำแหน่ง/การเลือกเสียง มีตัวไหนที่ทำได้ดีกว่าที่ทำไปไหม?
-4. มีกฎอะไรใน skill นี้ที่พิสูจน์แล้วว่าไม่ตรงกับความเป็นจริงของโปรเจคไหม?
+1. Round 2 (Beat Harvesting) หา candidate ครบหรือยัง? มีจังหวะไหนที่漏掉ไหม?
+2. Round 3 (Curation) ตัดจังหวะไหนไปที่จริง ๆ แล้วน่าจะเก็บ?
+3. มี SFX ตัวไหนที่จริง ๆ แล้วไม่จำเป็นหรือซ้ำรสชาติกันไหม?
+4. ระดับเสียง/ตำแหน่ง/การเลือกเสียง มีตัวไหนที่ทำได้ดีกว่าที่ทำไปไหม?
+5. มีกฎอะไรใน skill นี้ที่พิสูจน์แล้วว่าไม่ตรงกับความเป็นจริงของโปรเจคไหม?
 
 แล้ว **update ส่วน "Lessons Learned"** ด้านล่าง: เพิ่มได้แค่ **ไม่เกิน 2 บรรทัด ต่อรูปแบบ** ต่อ session (แยก tag ตาม format เพื่อไม่ให้บทเรียนของ meme ไปแย่งที่ของ podcast) และถ้าบรรทัดใหม่แย้ง/ซ้ำกับบรรทัดเก่าใน tag เดียวกัน ให้ merge หรือลบบรรทัดเก่าออก — เป้าหมายคือส่วนนี้เล็ก คม และชี้ไปที่สิ่งที่ใช้ได้จริง
 
@@ -171,6 +228,7 @@ CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (�
 - **[talking-head] คลิป v3 (212s, 60fps, เปลี่ยน Class Elsword):** 16 sting บนคำเน้น/มุก (555+, ตัวเลข 8000%, ประชด "โครตเย่", ดราม่า "ลาก่อน") density 4.5/นาที ใช้ได้จริง ไม่กลบพูด — เปิด-ปิดคลิปได้ sparkle, ประชดใช้ wrong, ดราม่าแกล้งซึ้งใช้ gong
 - **[talking-head] ผู้ใช้อาจต้องการไฟล์เต็มไม่ใช่ sting:** sting 0.5s ใช้ source หมดทั้งไฟล์ → แก้/ยืดใน Resolve ไม่ได้ User (KT404) ขอวางไฟล์เต็มจริง (duration = ความยาวไฟล์) เพื่อให้ตัด/ยืดได้เอง ใช้วิธีนี้เป็น default กับคลิปของ user รายนี้
 - **[talking-head] คลิป v4 (113s, 60fps, ปลูกข้าว day 11, ประกาศไลฟ์บันนี่เกิร์ล):** 9 จุดบนตัวเลข/หัวข้อสำคัญ (1680 subs → pop, 1 ใน 10 → collect, เปิดประเด็น → ding, เป้าหมายโดเนท → kaching, เผยไฮไลต์ → sparkle) วางไฟล์เต็ม ใช้ได้จริง — transcript timecode (frame) เป็นแหล่งหา beat ที่แม่นยำกว่า subtitle text เปล่า
+- **[talking-head] วิเคราะห์รอบเดียวได้ SFX น้อยผิดปกติ (5 จุด/120s = 2.5/min):** 原因是ข้าม Round 2 (Beat Harvesting) แล้วไปเลือก SFX เลย → 遗漏 candidate หลายจังหวะ แก้ด้วย workflow 3 รอบ: Round 1 (โครงสร้าง) → Round 2 (เก็บเกี่ยวให้หมด) → Round 3 (คัดด้วย density/spacing/family) ได้ 8 จุด/120s = 4/min ซึ่งตรง range มากกว่า
 - **[game] คลิปสั้น 27s (Assassin's Creed ซ่อนตัว NPC เห็น, 30fps):** 4 จุด (sparkle เปิด / pop ถูกจับได้ / impact NPC มาถึง / pop ปิด) density ~8.9/นาทีตามเกณฑ์ game 5-8 ได้จริง — ถ้ามี audio track ว่าง (track 2) อยู่แล้ว CLI จะสร้างใหม่เป็น track 3 ไม่ใช่ track 2 เสมอ
 - **[game] Library อยู่ที่ Z:\SFX จริง (confirmed by scan):** processed files อยู่ที่ Z:\SFX_processed, raw อยู่ที่ Z:\SFX — ใช้ processed เป็นหลัก (normalize แล้ว) ไม่ต้องส่ง --raw-dir/--processed-dir
 - **[game] User preference overrides density table:** User ต้องการ SFX น้อยมาก (2-3/นาที) แม้ density table บอก game 5-8 — วิเคราะห์ story arc หา TRUE hinge/punchline เท่านั้น ไม่ใช่ทุกจังหวะ action
@@ -203,3 +261,4 @@ CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (�
 | ใช้ค่า talking-head กับ meme/game/podcast | อ่าน Format Table ก่อนเริ่ม ระบุรูปแบบใน step 0 |
 | เขียน plan โดยไม่รัน `--dry-run` ก่อน | รัน `--dry-run` เสมอ ตรวจไฟล์/timestamp/ซ้อนก่อนวางจริง |
 | ลืม `reason` ใน plan | ทุกตัวต้องมีเหตุผล 1 บรรทัด (Hard Limit; CLI เตือนเป็น warning) |
+| วิเคราะห์รอบเดียวแล้วเลือก SFX เลย | ทำ 3 รอบเสมอ: Structural Scan → Beat Harvesting → Curation. ข้าม Round 2 = 遗漏 beats ทำให้ได้ SFX น้อยผิดปกติ |

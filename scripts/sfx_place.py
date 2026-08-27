@@ -19,9 +19,11 @@ for _p in (REPO_ROOT, MCP_DIR):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-DEFAULT_SFX_DIR = r"C:\Users\warit\Desktop\davinci-katy-mcp\SFX"
-MIN_SPACING_SECONDS = 1.0
-DEFAULT_DURATION_SECONDS = 0.5
+from config import (
+    SFX_DIR as DEFAULT_SFX_DIR,
+    MIN_SPACING_SECONDS,
+    DEFAULT_DURATION_SECONDS,
+)
 
 
 def load_plan(path: str) -> Dict[str, Any]:

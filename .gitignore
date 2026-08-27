@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+plan.json
+plan_*.json
+beats*.json
+subtitles_*.json
+SFX_PLAN.md
+SFX_RESULTS.md
+tests/
+scripts/legacy/
+scripts/__pycache__/
+scripts/plan*.json
+scripts/beats*.json
+scripts/subtitles_*.json
+.opencode/agent/
