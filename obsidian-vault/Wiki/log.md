@@ -49,3 +49,32 @@ Created concept page documenting distinct rules per format (talking-head, podcas
 ## [2026-08-26] concept | SFX Placement Lessons Learned
 
 Created concept page with empirical rules from real sessions: track index variation, sting vs full file, processed ≠ raw, single-pass under-selection, user density overrides.
+
+## [2026-08-27] fix | SFX Engine config path corrected
+
+Fixed sfx_engine/config.py: DEFAULT_SFX_RAW_DIR changed from Z:/SFX to local SFX/ directory. DEFAULT_SFX_PROCESSED_DIR also points to SFX/ (no SFX_processed/ exists on this machine). Both scripts/config.py and sfx_engine/config.py now agree on the correct path.
+
+## [2026-08-27] restructure | Wiki directory reorganized for machine-usability
+
+Created 6 new categories: core/, subtitle/, sfx/, video-editing/, davinci/, examples/. Migrated and expanded wiki from 6 source summaries + 5 concepts to full machine-usable knowledge base.
+
+## [2026-08-27] ingest | Engine code → Wiki (10 new pages)
+
+Ingested all SFX engine source files into wiki:
+- core/data-models.md ← models.py (3 enums, 6 dataclasses, data flow)
+- core/system-config.md ← config.py (paths, density limits, volume, families)
+- core/event-taxonomy.md ← analyzer.py + search.py (keyword patterns, event→family maps)
+- subtitle/beat-detection.md ← analyzer.py + analyze_subtitles.py (two regex systems)
+- subtitle/analysis-pipeline.md ← analyze_subtitles.py (emotion→beat→SFX pipeline)
+- sfx/library-scanner.md ← scanner.py (taxonomy, caching, file parsing)
+- sfx/search-engine.md ← search.py (fuzzy matching, event search)
+- sfx/family-mapping.md ← scripts/config.py (21 families, BEAT_TO_SFX)
+- video-editing/plan-generation.md ← generate_sfx_plan.py + recommender.py
+- video-editing/placement-engine.md ← placer.py (Resolve API bridge)
+- video-editing/audio-mixing.md ← SKILL.md audio mixing rules
+- sfx/negative-knowledge.md ← failure patterns from skills + lessons learned
+- sfx/evaluation-system.md ← 6-dimension quality scoring framework
+
+## [2026-08-27] update | Index and overview rewritten
+
+Rewrote index.md with category-based reading order (10-step onboarding path for new agents). Rewrote overview.md with new knowledge graph and category summary table. Total: 13 concepts, 3 entities, 6 sources, 1 synthesis.

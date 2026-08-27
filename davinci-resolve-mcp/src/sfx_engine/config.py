@@ -15,9 +15,14 @@ from typing import Any, Dict, Optional
 
 logger = logging.getLogger(__name__)
 
-# Default SFX library paths
-DEFAULT_SFX_RAW_DIR = "Z:/SFX"
-DEFAULT_SFX_PROCESSED_DIR = "Z:/SFX_processed"
+# Default SFX library paths (ponytail: single source of truth lives in scripts/config.py)
+import os as _os
+_DEFAULT_SFX_RAW = _os.path.join(
+    _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))),
+    "SFX",
+)
+DEFAULT_SFX_RAW_DIR = _DEFAULT_SFX_RAW
+DEFAULT_SFX_PROCESSED_DIR = _DEFAULT_SFX_RAW  # ponytail: no SFX_processed dir on this machine, both point to SFX/
 
 
 @dataclass

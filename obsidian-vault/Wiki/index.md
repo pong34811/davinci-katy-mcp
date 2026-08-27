@@ -1,57 +1,82 @@
 ---
 type: index
 tags: [wiki, wiki/index]
-date_updated: 2026-08-26
+date_updated: 2026-08-27
 ---
 
 # Wiki Index
 
 Content catalog for the LLM-maintained wiki. Read this first when answering queries or starting any operation.
 
-## Unprocessed Sources
+## Categories
 
-| File | Added | Status |
-|------|-------|--------|
-| — | — | All sources ingested. Add new clippings to `Clippings/` then ingest. |
+### core/ — System Foundation
+| Page | Description |
+|------|-------------|
+| [[data-models]] | All enums, dataclasses, and data flow (SFXFile → SFXPlan) |
+| [[system-config]] | Configuration: paths, density limits, volume, SFX_FAMILIES, BEAT_TO_SFX |
+| [[event-taxonomy]] | Keyword patterns, event→family mapping, format score modifiers |
 
-## Sources
+### subtitle/ — Subtitle Analysis
+| Page | Description |
+|------|-------------|
+| [[beat-detection]] | Two regex systems for finding beats in transcript text |
+| [[analysis-pipeline]] | Subtitle → emotion → beat type → SFX suggestion pipeline |
 
-| Page | Source | Date Ingested |
-|------|--------|---------------|
-| [[davinci-resolve-sfx-system-readme]] | Docs/README.md | 2026-08-26 |
-| [[sfx-library]] | Notes/SFX Library.md | 2026-08-26 |
-| [[emotion-analysis]] | Notes/Emotion Analysis.md | 2026-08-26 |
-| [[subtitle-analysis]] | Notes/Subtitle Analysis.md | 2026-08-26 |
-| [[adding-sfx-skill]] | .opencode/skills/adding-sfx/SKILL.md | 2026-08-26 |
-| [[sfx-review-skill]] | .opencode/skills/sfx-review/SKILL.md | 2026-08-26 |
+### sfx/ — SFX Library & Intelligence
+| Page | Description |
+|------|-------------|
+| [[library-scanner]] | Scanning, taxonomy classification, caching |
+| [[search-engine]] | Fuzzy matching, event search, family filtering |
+| [[family-mapping]] | 21 families, actual filenames, BEAT_TO_SFX |
+| [[negative-knowledge]] | What NOT to do — hard-won failure patterns |
+| [[evaluation-system]] | 6-dimension quality scoring framework |
 
-## Entities
+### video-editing/ — Editing Workflow
+| Page | Description |
+|------|-------------|
+| [[plan-generation]] | Beats → plan JSON with density/spacing/family checks |
+| [[placement-engine]] | SFXPlacer: Resolve API bridge, WAV trim, frame placement |
+| [[audio-mixing]] | Volume levels, bed types, fade rules by format |
 
-| Page | Type | Source Count |
-|------|------|-------------|
-| [[DaVinci Resolve SFX System]] | tool | 2 |
-| [[SFX Library]] | tool | 2 |
-| [[Emotion Analysis System]] | tool | 1 |
+### sources/ — Raw Source Summaries
+| Page | Source |
+|------|--------|
+| [[davinci-resolve-sfx-system-readme]] | Docs/README.md |
+| [[sfx-library]] | Notes/SFX Library.md |
+| [[emotion-analysis]] | Notes/Emotion Analysis.md |
+| [[subtitle-analysis]] | Notes/Subtitle Analysis.md |
+| [[adding-sfx-skill]] | .opencode/skills/adding-sfx/SKILL.md |
+| [[sfx-review-skill]] | .opencode/skills/sfx-review/SKILL.md |
 
-## Concepts
+### entities/ — People, Tools, Organizations
+| Page | Type |
+|------|------|
+| [[DaVinci Resolve SFX System]] | tool |
+| [[SFX Library]] | tool |
+| [[Emotion Analysis System]] | tool |
 
-| Page | Confidence | Source Count |
-|------|-----------|-------------|
-| [[SFX Beat Detection]] | high | 2 |
-| [[Subtitle-Driven Beat Detection]] | high | 2 |
-| [[Three-Round SFX Analysis]] | high | 1 |
-| [[Format-Specific SFX Behavior]] | high | 1 |
-| [[SFX Placement Lessons Learned]] | high | 1 |
+### synthesis/ — Cross-Cutting Answers
+| Page | Topic |
+|------|-------|
+| [[End-to-End SFX Workflow]] | Complete agent guide from request to verified placement |
 
-## Synthesis
+## Reading Order for New Agents
 
-| Page | Topic | Date Created |
-|------|-------|-------------|
-| [[End-to-End SFX Workflow]] | Complete agent guide from request to verified placement | 2026-08-26 |
+1. [[data-models]] — understand the data types
+2. [[system-config]] — know the config and paths
+3. [[event-taxonomy]] — how events map to SFX
+4. [[family-mapping]] — what SFX files exist
+5. [[beat-detection]] — how beats are found
+6. [[plan-generation]] — how plans are built
+7. [[placement-engine]] — how SFX lands on timeline
+8. [[negative-knowledge]] — what NOT to do
+9. [[evaluation-system]] — how to score quality
+10. [[End-to-End SFX Workflow]] — put it all together
 
 ## Stats
 
-- Total sources ingested: 6
+- Total sources: 6
 - Total entities: 3
-- Total concepts: 5
-- Total synthesis pages: 1
+- Total concepts: 13 (3 old + 10 new)
+- Total synthesis: 1
