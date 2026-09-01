@@ -11,7 +11,7 @@ High-level synthesis of everything in the wiki. Updated as sources are ingested 
 
 ## Current State
 
-6 original sources + 6 engine code files ingested. 13 concepts, 3 entities, 1 synthesis. Knowledge base now covers the full pipeline from subtitle analysis through SFX placement with machine-usable structure.
+6 original sources + 6 engine code files ingested. 13 concepts, 3 entities, 1 synthesis. Knowledge base now covers the full pipeline from subtitle analysis through SFX placement with machine-usable structure. Enhanced with impact scoring, story arc analysis, timing intelligence, evaluation framework, and Thai-language-aware comedy beat detection.
 
 ## Domain
 
@@ -49,9 +49,12 @@ DaVinci Resolve SFX automation — AI-powered sound effects placement for video 
 1. **Read [[End-to-End SFX Workflow]] first** — complete step-by-step with MCP calls
 2. **Detect format before anything else** — [[event-taxonomy]] rules differ dramatically per format
 3. **3 rounds, never 1** — single-pass under-selects (2.5/min vs target 4/min)
-4. **Check [[negative-knowledge]]** — failure patterns that override defaults
-5. **Delta-only review** — use sfx-review skill for improvements, never re-place from scratch
-6. **Verify with [[evaluation-system]]** — 6-dimension scoring after placement
+4. **Use [[impact-scoring-system]]** — multi-factor scoring replaces simple keyword matching
+5. **Apply [[story-arc-analysis]]** — find turning points, not just keywords
+6. **Check [[negative-knowledge]]** — failure patterns that override defaults
+7. **Apply [[timing-intelligence]]** — precise pre-hit/on-hit/post-hit timing
+8. **Verify with [[evaluation-framework]]** — 9-dimension scoring after placement
+9. **Delta-only review** — use sfx-review skill for improvements, never re-place from scratch
 
 ## Key Insights
 

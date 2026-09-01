@@ -1,7 +1,7 @@
 ---
 type: log
 tags: [wiki, wiki/log]
-date_updated: 2026-08-26
+date_updated: 2026-08-27
 ---
 
 # Wiki Log
@@ -78,3 +78,41 @@ Ingested all SFX engine source files into wiki:
 ## [2026-08-27] update | Index and overview rewritten
 
 Rewrote index.md with category-based reading order (10-step onboarding path for new agents). Rewrote overview.md with new knowledge graph and category summary table. Total: 13 concepts, 3 entities, 6 sources, 1 synthesis.
+
+## [2026-08-27] enhancement | Impact Scoring System
+
+Created [[impact-scoring-system]] concept with 7-dimension scoring: comedy, emotion, surprise, emphasis, transition, retention, context. Implements [[impact_scorer.py]] with ImpactScorer class.
+
+## [2026-08-27] enhancement | Story Arc Analysis
+
+Created [[story-arc-analysis]] concept with Setup→Build-up→Punchline→Reaction→Resolution structure. Implements [[story_arc_analyzer.py]] with StoryArcAnalyzer class.
+
+## [2026-08-27] enhancement | Timing Intelligence
+
+Created [[timing-intelligence]] concept with pre-hit/on-hit/post-hit timing presets. Implements [[timing_intelligence.py]] with TimingIntelligence class.
+
+## [2026-08-27] enhancement | SFX Evaluation Framework
+
+Created [[sfx-evaluation-framework]] concept with 9-dimension quality scoring. Implements [[sfx_evaluator.py]] with SFXEvaluator class.
+
+## [2026-08-27] enhancement | Negative Knowledge Base
+
+Created [[sfx-selection-negative-knowledge]] concept documenting anti-patterns and when to skip SFX.
+
+## [2026-08-27] enhancement | Thai Language Analysis
+
+Created [[thai-language-analysis]] concept with sarcasm detection, idiom recognition, cultural reference handling. Implements [[thai_language_analyzer.py]] with ThaiLanguageAnalyzer class.
+
+## [2026-08-27] enhancement | Development Progress Documented
+
+Created DEVELOPMENT_PROGRESS.md tracking all work completed for LLM Wiki + Subtitle-to-SFX Intelligence project.
+
+## [2026-08-28] live | SFX Placement — เรื่องแปลกของยามะ (20.4s comedy short)
+
+Read 21 subtitles from live subtitle track 1 in DaVinci Resolve (Project: "เรื่องแปลกของยามะ", Timeline 1, 60fps).
+Analyzed beats manually (auto-detection missed 4 comedic beats due to Thai keyword gaps).
+Generated 9-point SFX plan: 3× Pop, 2× Whoosh, 2× Bell Ding, 1× Correct Collect, 1× Wrong Answer.
+Placed all 9 SFX on Track 2 (SFX 1) via SFXPlacer / Resolve API bridge.
+Verified: 9/9 clips confirmed at correct timestamps on timeline.
+SFX families used: pop, whoosh, ding, collect, wrong — all from C:\Users\warit\Desktop\davinci-katy-mcp\SFX\.
+Plan: plan_live.json | Results: SFX_RESULTS.md | Report: placement_report.json

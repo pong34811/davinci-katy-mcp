@@ -1,0 +1,44 @@
+{
+  "placed": 9,
+  "total": 9,
+  "track_index": 2,
+  "fps": 60.0,
+  "placements": [
+    {
+      "sfx": "Pop - Short 06.mp3",
+      "timestamp_seconds": 0.65
+    },
+    {
+      "sfx": "Pop - Short 06.mp3",
+      "timestamp_seconds": 4.8
+    },
+    {
+      "sfx": "Pop - Short 06.mp3",
+      "timestamp_seconds": 8.75
+    },
+    {
+      "sfx": "Whoosh - Clean Fast.mp3",
+      "timestamp_seconds": 11.05
+    },
+    {
+      "sfx": "Bell - Ding 02.wav",
+      "timestamp_seconds": 12.77
+    },
+    {
+      "sfx": "Game - Correct Collect Answer.mp3",
+      "timestamp_seconds": 14.6
+    },
+    {
+      "sfx": "Whoosh - Clean Fast.mp3",
+      "timestamp_seconds": 15.6
+    },
+    {
+      "sfx": "Game - Wrong Answer.mp3",
+      "timestamp_seconds": 16.85
+    },
+    {
+      "sfx": "Bell - Ding 02.wav",
+      "timestamp_seconds": 19.97
+    }
+  ]
+}

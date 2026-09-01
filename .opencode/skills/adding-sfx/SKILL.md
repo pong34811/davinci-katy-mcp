@@ -90,6 +90,112 @@ SFX คือเครื่องปรุง ไม่ใช่ตัวอา
 - **ทุกตำแหน่งต้องบอกเหตุผล 1 บรรทัด** ถ้าบอกไม่ได้ว่ามันช่วยจังหวะไหน → ตัดทิ้ง
 - ให้ความสำคัญกับจุด Impact ต่อผู้ชมมากที่สุด อย่าใส่ทุกประโยค ทุกการตัดต่อ
 
+## Impact Scoring (New!) — Multi-Factor Analysis
+
+**ระบบคะแนน Impact 7 มิติ** แทนที่ keyword matching แบบเดิม:
+
+| มิติ | น้ำหนั่ก | สัญญาณ |
+|------|---------|---------|
+| Comedy | 15% | หัวเราะ, มุก, sarcasm |
+| Emotion | 20% | คำอารมณ์ไทย/อังกฤษ, particles |
+| Surprise | 20% | อุทาน, disbelief |
+| Emphasis | 15% | ตัวเลข, เปอร์เซ็นต์, อันดับ |
+| Transition | 10% | เปลี่ยนฉาก, หัวข้อ |
+| Retention | 10% | คำถาม, teaser, curiosity |
+| Context | 10% | story arc position, surrounding |
+
+**Impact Levels:**
+- CRITICAL (≥0.7): วาง SFX เสมอ
+- HIGH (0.5-0.7): Strong candidate
+- MEDIUM (0.3-0.5): Consider if density allows
+- LOW (0.15-0.3): Skip unless empty
+- NONE (<0.15): Never place
+
+**กฎสำคัญ:**
+1. ไม่ทุก subtitle ต้องการ SFX — เฉพาะ impact ≥ 0.3
+2. Context matters — "but" ก่อน surprise = +score
+3. Sarcasm = comedy อัตโนมัติ
+4. Punchlines ได้ +0.15 bonus
+5. Transitions threshold ต่ำกว่า (≥0.2)
+
+**เครื่องมือ:** `scripts/impact_scorer.py` — `ImpactScorer.score_transcript()`
+
+## Story Arc Analysis (New!)
+
+**อ่าน 3-5 subtitle ก่อน/หลังก่อนตัดสิน:**
+
+```
+Setup → Build-up → Turning Point → Punchline → Reaction → Resolution
+ neutral   tension     shift        impact     response   calm
+```
+
+**Detection Rules:**
+| Position | Detection | SFX Priority |
+|----------|-----------|-------------|
+| Setup | Start of video, intro | LOW |
+| Build-up | Creating tension, "but" | MEDIUM |
+| Turning Point | Emotional shift | HIGH |
+| Punchline | Short punchy text | CRITICAL |
+| Reaction | "really?", "what?" | HIGH |
+| Resolution | Closing, "bye" | MEDIUM |
+
+**เครื่องมือ:** `scripts/story_arc_analyzer.py` — `StoryArcAnalyzer.analyze()`
+
+## Timing Intelligence (New!)
+
+**Precise timing decisions:**
+- Pre-hit (-0.1s): Anticipation before punchline
+- On-hit (0.0s): Exact moment of impact
+- Post-hit (+0.2s): Reaction after event
+
+**Timing Presets:**
+| Event | Timing | Duration |
+|-------|--------|----------|
+| Punchline | Pre-hit | 0.4s |
+| Surprise | On-hit | 0.3s |
+| Reaction | Post-hit | 0.5s |
+| Emphasis | On-hit | 0.3s |
+| Transition | Pre-hit | 0.8s |
+| Fail | On-hit | 0.5s |
+
+**Spacing:** Min gap 0.5s from adjacent SFX
+
+**เครื่องมือ:** `scripts/timing_intelligence.py` — `TimingIntelligence.decide_timing()`
+
+## SFX Evaluation Framework (New!)
+
+**9-Dimension Quality Scoring:**
+1. Context Accuracy (15%)
+2. SFX Relevance (15%)
+3. Timing Accuracy (15%)
+4. Emotional Match (15%)
+5. Intensity Match (10%)
+6. Audio Clarity (10%)
+7. Non-Intrusiveness (10%)
+8. Variety (5%)
+9. Viewer Engagement (5%)
+
+**Grading:** A (8.5+), B (7-8.4), C (5.5-6.9), D (4-5.4), F (<4)
+
+**เครื่องมือ:** `scripts/sfx_evaluator.py` — `SFXEvaluator.evaluate()`
+
+## Negative Knowledge (Anti-Patterns)
+
+**When to SKIP SFX:**
+- Neutral filler (impact < 0.15)
+- Continuous speech without peaks
+- Over-saturation (density exceeded)
+- Context conflict
+- Weak reason (can't explain WHY)
+
+**Common Mistakes:**
+- SFX on every subtitle → audio fatigue
+- Same family 3+ times → monotony
+- Loud SFX over speech → destroys clarity
+- Long SFX (>2s) on short segments → overwhelms
+- Ignoring context → misses setup→punchline
+- Placing on setup not punchline → wastes impact
+
 ## Workflow — 3-Round Subtitle Analysis
 
 ทุกครั้งที่มี transcript/subtitle ให้วิเคราะห์ **3 รอบ** ก่อนเขียน plan — ห้ามข้ามรอบ ห้ามทำรอบเดียวจบ
@@ -233,6 +339,34 @@ CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (�
 - **[game] Library อยู่ที่ Z:\SFX จริง (confirmed by scan):** processed files อยู่ที่ Z:\SFX_processed, raw อยู่ที่ Z:\SFX — ใช้ processed เป็นหลัก (normalize แล้ว) ไม่ต้องส่ง --raw-dir/--processed-dir
 - **[game] User preference overrides density table:** User ต้องการ SFX น้อยมาก (2-3/นาที) แม้ density table บอก game 5-8 — วิเคราะห์ story arc หา TRUE hinge/punchline เท่านั้น ไม่ใช่ทุกจังหวะ action
 - **[game] processed ≠ ไฟล์เต็ม:** processed (impact-10.wav 0.67s) สั้นกว่า raw (Impact - Comedy Hit 01.mp3 2.41s) — ถ้า user ต้องการตัด/ยืดเอง ต้องวาง raw ไม่ใช่ processed
+
+### Python environment for Resolve scripting (bridge vs direct)
+
+The `DaVinciResolveScript` module **will segfault** (Signal 11 / exit 139) if imported without the DLL directory setup. The `src/server.py` handles this by calling `os.add_dll_directory()` and prepending the Resolve install dir to `PATH` + setting `PYTHONHOME` **before** `import DaVinciResolveScript`. Replicate this exact sequence when calling Resolve APIs from the Hermes venv (the venv's Python 3.11 cannot load the native bridge without it):
+
+```python
+import os, sys
+RESOLVE_LIB = r"C:\Program Files\Blackmagic Design\DaVinci Resolve\fusionscript.dll"
+RESOLVE_MODULES = r"C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Developer\Scripting\Modules"
+sys.path.insert(0, RESOLVE_MODULES)           # makes DaVinciResolveScript.py findable
+if os.path.isfile(RESOLVE_LIB):
+    _d = os.path.dirname(RESOLVE_LIB)
+    if not os.environ.get("PYTHONHOME"):
+        os.environ["PYTHONHOME"] = sys.base_prefix
+    p = os.environ.get("PATH", "")
+    if _d.lower() not in p.lower():
+        os.environ["PATH"] = _d + os.pathsep + p
+    if hasattr(os, "add_dll_directory"):
+        try: os.add_dll_directory(_d)
+        except OSError: pass
+import DaVinciResolveScript as dvr           # now safe — no segfault
+```
+
+Two connection modes exist:
+- **Direct (above):** works when the venv has `add_dll_directory` access and Resolve is running. Used by `scripts/sfx_place.py --plan plan.json --dry-run` and direct API calls.
+- **In-app bridge** (`Workspace > Scripts > resolve_bridge`): the server's normal path; connects over loopback. Requires `DAVINCI_RESOLVE_BRIDGE=1` env var and the bridge script running inside Resolve. Use `connect_resolve()` / `BridgeProxy` for this mode.
+
+When the direct import segfaults (Signal 11 / exit 139), the bridge is the fallback — but the bridge requires the in-Resolve script to be started first.
 
 ## Verification Checklist
 

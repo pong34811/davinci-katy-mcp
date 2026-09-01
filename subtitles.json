@@ -1,0 +1,802 @@
+[
+  {
+    "index": 1,
+    "start_frame": 0,
+    "end_frame": 78,
+    "start_seconds": 0.0,
+    "end_seconds": 1.3,
+    "duration_seconds": 1.3,
+    "text": "สวัสดีทุกคน",
+    "fps": 60.0
+  },
+  {
+    "index": 2,
+    "start_frame": 78,
+    "end_frame": 135,
+    "start_seconds": 1.3,
+    "end_seconds": 2.25,
+    "duration_seconds": 0.95,
+    "text": "กันด้วยนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 3,
+    "start_frame": 157,
+    "end_frame": 253,
+    "start_seconds": 2.617,
+    "end_seconds": 4.217,
+    "duration_seconds": 1.6,
+    "text": "ยินดีต้อนรับเข้าสู่",
+    "fps": 60.0
+  },
+  {
+    "index": 4,
+    "start_frame": 253,
+    "end_frame": 313,
+    "start_seconds": 4.217,
+    "end_seconds": 5.217,
+    "duration_seconds": 1.0,
+    "text": "คลิปวิดีโอของ",
+    "fps": 60.0
+  },
+  {
+    "index": 5,
+    "start_frame": 313,
+    "end_frame": 379,
+    "start_seconds": 5.217,
+    "end_seconds": 6.317,
+    "duration_seconds": 1.1,
+    "text": "เคทีนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 6,
+    "start_frame": 398,
+    "end_frame": 464,
+    "start_seconds": 6.633,
+    "end_seconds": 7.733,
+    "duration_seconds": 1.1,
+    "text": "วันนี้",
+    "fps": 60.0
+  },
+  {
+    "index": 7,
+    "start_frame": 464,
+    "end_frame": 562,
+    "start_seconds": 7.733,
+    "end_seconds": 9.367,
+    "duration_seconds": 1.633,
+    "text": "เป็นวันที่ 18",
+    "fps": 60.0
+  },
+  {
+    "index": 8,
+    "start_frame": 562,
+    "end_frame": 628,
+    "start_seconds": 9.367,
+    "end_seconds": 10.467,
+    "duration_seconds": 1.1,
+    "text": "ของการปลูกข้าว",
+    "fps": 60.0
+  },
+  {
+    "index": 9,
+    "start_frame": 628,
+    "end_frame": 715,
+    "start_seconds": 10.467,
+    "end_seconds": 11.917,
+    "duration_seconds": 1.45,
+    "text": "จนกว่า\nยอดผู้ติดตามจะถึง",
+    "fps": 60.0
+  },
+  {
+    "index": 10,
+    "start_frame": 715,
+    "end_frame": 823,
+    "start_seconds": 11.917,
+    "end_seconds": 13.717,
+    "duration_seconds": 1.8,
+    "text": "1 หมื่นซับนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 11,
+    "start_frame": 860,
+    "end_frame": 922,
+    "start_seconds": 14.333,
+    "end_seconds": 15.367,
+    "duration_seconds": 1.033,
+    "text": "ยังไงก็",
+    "fps": 60.0
+  },
+  {
+    "index": 12,
+    "start_frame": 922,
+    "end_frame": 981,
+    "start_seconds": 15.367,
+    "end_seconds": 16.35,
+    "duration_seconds": 0.983,
+    "text": "ฝากเป็นกำลังใจ",
+    "fps": 60.0
+  },
+  {
+    "index": 13,
+    "start_frame": 981,
+    "end_frame": 1072,
+    "start_seconds": 16.35,
+    "end_seconds": 17.867,
+    "duration_seconds": 1.517,
+    "text": "ให้ด้วยนะครับทุกคน",
+    "fps": 60.0
+  },
+  {
+    "index": 14,
+    "start_frame": 1301,
+    "end_frame": 1377,
+    "start_seconds": 21.683,
+    "end_seconds": 22.95,
+    "duration_seconds": 1.267,
+    "text": "ตอนนี้ล่าสุด",
+    "fps": 60.0
+  },
+  {
+    "index": 15,
+    "start_frame": 1400,
+    "end_frame": 1519,
+    "start_seconds": 23.333,
+    "end_seconds": 25.317,
+    "duration_seconds": 1.983,
+    "text": "เคทีมียอดผู้ติดตาม",
+    "fps": 60.0
+  },
+  {
+    "index": 16,
+    "start_frame": 1519,
+    "end_frame": 1578,
+    "start_seconds": 25.317,
+    "end_seconds": 26.3,
+    "duration_seconds": 0.983,
+    "text": "อยู่ที่",
+    "fps": 60.0
+  },
+  {
+    "index": 17,
+    "start_frame": 1583,
+    "end_frame": 1687,
+    "start_seconds": 26.383,
+    "end_seconds": 28.117,
+    "duration_seconds": 1.733,
+    "text": "1,800 แล้ว",
+    "fps": 60.0
+  },
+  {
+    "index": 18,
+    "start_frame": 1700,
+    "end_frame": 1806,
+    "start_seconds": 28.333,
+    "end_seconds": 30.1,
+    "duration_seconds": 1.767,
+    "text": "ขอบคุณ\nทุกคนมากเลยนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 19,
+    "start_frame": 1806,
+    "end_frame": 1936,
+    "start_seconds": 30.1,
+    "end_seconds": 32.267,
+    "duration_seconds": 2.167,
+    "text": "ต้องขอ\nอภัยด้วยที่ช่วงนี้",
+    "fps": 60.0
+  },
+  {
+    "index": 20,
+    "start_frame": 1936,
+    "end_frame": 2052,
+    "start_seconds": 32.267,
+    "end_seconds": 34.2,
+    "duration_seconds": 1.933,
+    "text": "ไม่ได้อัป\nคลิปวิดีโอบ่อย",
+    "fps": 60.0
+  },
+  {
+    "index": 21,
+    "start_frame": 2052,
+    "end_frame": 2096,
+    "start_seconds": 34.2,
+    "end_seconds": 34.933,
+    "duration_seconds": 0.733,
+    "text": "เพราะว่า",
+    "fps": 60.0
+  },
+  {
+    "index": 22,
+    "start_frame": 2096,
+    "end_frame": 2197,
+    "start_seconds": 34.933,
+    "end_seconds": 36.617,
+    "duration_seconds": 1.683,
+    "text": "เคที",
+    "fps": 60.0
+  },
+  {
+    "index": 23,
+    "start_frame": 2217,
+    "end_frame": 2317,
+    "start_seconds": 36.95,
+    "end_seconds": 38.617,
+    "duration_seconds": 1.667,
+    "text": "ช่วงสัปดาห์สุดท้าย",
+    "fps": 60.0
+  },
+  {
+    "index": 24,
+    "start_frame": 2317,
+    "end_frame": 2363,
+    "start_seconds": 38.617,
+    "end_seconds": 39.383,
+    "duration_seconds": 0.767,
+    "text": "ของแต่ละเดือน",
+    "fps": 60.0
+  },
+  {
+    "index": 25,
+    "start_frame": 2363,
+    "end_frame": 2426,
+    "start_seconds": 39.383,
+    "end_seconds": 40.433,
+    "duration_seconds": 1.05,
+    "text": "เคทีจะมา",
+    "fps": 60.0
+  },
+  {
+    "index": 26,
+    "start_frame": 2426,
+    "end_frame": 2479,
+    "start_seconds": 40.433,
+    "end_seconds": 41.317,
+    "duration_seconds": 0.883,
+    "text": "นั่ง",
+    "fps": 60.0
+  },
+  {
+    "index": 27,
+    "start_frame": 2494,
+    "end_frame": 2602,
+    "start_seconds": 41.567,
+    "end_seconds": 43.367,
+    "duration_seconds": 1.8,
+    "text": "ดูไลฟ์\nสตรีมย้อนหลัง",
+    "fps": 60.0
+  },
+  {
+    "index": 28,
+    "start_frame": 2602,
+    "end_frame": 2678,
+    "start_seconds": 43.367,
+    "end_seconds": 44.633,
+    "duration_seconds": 1.267,
+    "text": "เพื่อที่เคทีจะ",
+    "fps": 60.0
+  },
+  {
+    "index": 29,
+    "start_frame": 2678,
+    "end_frame": 2745,
+    "start_seconds": 44.633,
+    "end_seconds": 45.75,
+    "duration_seconds": 1.117,
+    "text": "เอาคอนเทนต์",
+    "fps": 60.0
+  },
+  {
+    "index": 30,
+    "start_frame": 2745,
+    "end_frame": 2808,
+    "start_seconds": 45.75,
+    "end_seconds": 46.8,
+    "duration_seconds": 1.05,
+    "text": "ที่น่าสนใจ",
+    "fps": 60.0
+  },
+  {
+    "index": 31,
+    "start_frame": 2808,
+    "end_frame": 2889,
+    "start_seconds": 46.8,
+    "end_seconds": 48.15,
+    "duration_seconds": 1.35,
+    "text": "ตัดมา\nเป็นคลิป Shorts",
+    "fps": 60.0
+  },
+  {
+    "index": 32,
+    "start_frame": 2889,
+    "end_frame": 2983,
+    "start_seconds": 48.15,
+    "end_seconds": 49.717,
+    "duration_seconds": 1.567,
+    "text": "เพื่อลง\nช่องนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 33,
+    "start_frame": 3001,
+    "end_frame": 3103,
+    "start_seconds": 50.017,
+    "end_seconds": 51.717,
+    "duration_seconds": 1.7,
+    "text": "แล้วก็เคทีก็",
+    "fps": 60.0
+  },
+  {
+    "index": 34,
+    "start_frame": 3103,
+    "end_frame": 3194,
+    "start_seconds": 51.717,
+    "end_seconds": 53.233,
+    "duration_seconds": 1.517,
+    "text": "เพิ่งจะหาร้าน",
+    "fps": 60.0
+  },
+  {
+    "index": 35,
+    "start_frame": 3194,
+    "end_frame": 3286,
+    "start_seconds": 53.233,
+    "end_seconds": 54.767,
+    "duration_seconds": 1.533,
+    "text": "ที่รับตัดต่อ\nคลิปวิดีโอ",
+    "fps": 60.0
+  },
+  {
+    "index": 36,
+    "start_frame": 3286,
+    "end_frame": 3362,
+    "start_seconds": 54.767,
+    "end_seconds": 56.033,
+    "duration_seconds": 1.267,
+    "text": "ของเคทีให้",
+    "fps": 60.0
+  },
+  {
+    "index": 37,
+    "start_frame": 3362,
+    "end_frame": 3484,
+    "start_seconds": 56.033,
+    "end_seconds": 58.067,
+    "duration_seconds": 2.033,
+    "text": "ได้เป็น\nที่เรียบร้อยแล้ว",
+    "fps": 60.0
+  },
+  {
+    "index": 38,
+    "start_frame": 3484,
+    "end_frame": 3559,
+    "start_seconds": 58.067,
+    "end_seconds": 59.317,
+    "duration_seconds": 1.25,
+    "text": "ขอบคุณ\nทางร้านมาก",
+    "fps": 60.0
+  },
+  {
+    "index": 39,
+    "start_frame": 3583,
+    "end_frame": 3682,
+    "start_seconds": 59.717,
+    "end_seconds": 61.367,
+    "duration_seconds": 1.65,
+    "text": "แต่ยังไม่มี\nโอกาสได้แปะเครดิต",
+    "fps": 60.0
+  },
+  {
+    "index": 40,
+    "start_frame": 3682,
+    "end_frame": 3737,
+    "start_seconds": 61.367,
+    "end_seconds": 62.283,
+    "duration_seconds": 0.917,
+    "text": "แต่ยังไงก็",
+    "fps": 60.0
+  },
+  {
+    "index": 41,
+    "start_frame": 3760,
+    "end_frame": 3831,
+    "start_seconds": 62.667,
+    "end_seconds": 63.85,
+    "duration_seconds": 1.183,
+    "text": "จะมาทำคลิป",
+    "fps": 60.0
+  },
+  {
+    "index": 42,
+    "start_frame": 3831,
+    "end_frame": 3897,
+    "start_seconds": 63.85,
+    "end_seconds": 64.95,
+    "duration_seconds": 1.1,
+    "text": "ขอบพระคุณ\nอีกรอบนึง",
+    "fps": 60.0
+  },
+  {
+    "index": 43,
+    "start_frame": 3897,
+    "end_frame": 4001,
+    "start_seconds": 64.95,
+    "end_seconds": 66.683,
+    "duration_seconds": 1.733,
+    "text": "เพราะว่างาน\nของเคทีเยอะมากเลย",
+    "fps": 60.0
+  },
+  {
+    "index": 44,
+    "start_frame": 4065,
+    "end_frame": 4221,
+    "start_seconds": 67.75,
+    "end_seconds": 70.35,
+    "duration_seconds": 2.6,
+    "text": "แล้วล่าสุด\nในส่วนของ",
+    "fps": 60.0
+  },
+  {
+    "index": 45,
+    "start_frame": 4221,
+    "end_frame": 4280,
+    "start_seconds": 70.35,
+    "end_seconds": 71.333,
+    "duration_seconds": 0.983,
+    "text": "ไลฟ์บันนี่เกอร์",
+    "fps": 60.0
+  },
+  {
+    "index": 46,
+    "start_frame": 4354,
+    "end_frame": 4439,
+    "start_seconds": 72.567,
+    "end_seconds": 73.983,
+    "duration_seconds": 1.417,
+    "text": "ตอนนี้เคที",
+    "fps": 60.0
+  },
+  {
+    "index": 47,
+    "start_frame": 4458,
+    "end_frame": 4551,
+    "start_seconds": 74.3,
+    "end_seconds": 75.85,
+    "duration_seconds": 1.55,
+    "text": "ยังอยู่ในช่วงของการ",
+    "fps": 60.0
+  },
+  {
+    "index": 48,
+    "start_frame": 4551,
+    "end_frame": 4701,
+    "start_seconds": 75.85,
+    "end_seconds": 78.35,
+    "duration_seconds": 2.5,
+    "text": "หาคอนเทนต์เพิ่ม",
+    "fps": 60.0
+  },
+  {
+    "index": 49,
+    "start_frame": 4701,
+    "end_frame": 4731,
+    "start_seconds": 78.35,
+    "end_seconds": 78.85,
+    "duration_seconds": 0.5,
+    "text": "ตอนนี้",
+    "fps": 60.0
+  },
+  {
+    "index": 50,
+    "start_frame": 4774,
+    "end_frame": 4838,
+    "start_seconds": 79.567,
+    "end_seconds": 80.633,
+    "duration_seconds": 1.067,
+    "text": "หาลิสต์ไว้ประมาณ",
+    "fps": 60.0
+  },
+  {
+    "index": 51,
+    "start_frame": 4838,
+    "end_frame": 4918,
+    "start_seconds": 80.633,
+    "end_seconds": 81.967,
+    "duration_seconds": 1.333,
+    "text": "15 คลิปได้แล้ว",
+    "fps": 60.0
+  },
+  {
+    "index": 52,
+    "start_frame": 4918,
+    "end_frame": 4988,
+    "start_seconds": 81.967,
+    "end_seconds": 83.133,
+    "duration_seconds": 1.167,
+    "text": "อยากจะลิสต์ไว้สัก",
+    "fps": 60.0
+  },
+  {
+    "index": 53,
+    "start_frame": 4988,
+    "end_frame": 5054,
+    "start_seconds": 83.133,
+    "end_seconds": 84.233,
+    "duration_seconds": 1.1,
+    "text": "30 คลิปครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 54,
+    "start_frame": 5054,
+    "end_frame": 5141,
+    "start_seconds": 84.233,
+    "end_seconds": 85.683,
+    "duration_seconds": 1.45,
+    "text": "แล้วหลังจากที่ลิสต์ครบ",
+    "fps": 60.0
+  },
+  {
+    "index": 55,
+    "start_frame": 5162,
+    "end_frame": 5283,
+    "start_seconds": 86.033,
+    "end_seconds": 88.05,
+    "duration_seconds": 2.017,
+    "text": "ก็จะมา\nแจ้งอัปเดตให้",
+    "fps": 60.0
+  },
+  {
+    "index": 56,
+    "start_frame": 5283,
+    "end_frame": 5342,
+    "start_seconds": 88.05,
+    "end_seconds": 89.033,
+    "duration_seconds": 0.983,
+    "text": "ทราบผ่านดิสคอร์",
+    "fps": 60.0
+  },
+  {
+    "index": 57,
+    "start_frame": 5342,
+    "end_frame": 5385,
+    "start_seconds": 89.033,
+    "end_seconds": 89.75,
+    "duration_seconds": 0.717,
+    "text": "ของเคทีนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 58,
+    "start_frame": 5385,
+    "end_frame": 5465,
+    "start_seconds": 89.75,
+    "end_seconds": 91.083,
+    "duration_seconds": 1.333,
+    "text": "ยังไงก็\nสามารถเข้ามาได้",
+    "fps": 60.0
+  },
+  {
+    "index": 59,
+    "start_frame": 5485,
+    "end_frame": 5573,
+    "start_seconds": 91.417,
+    "end_seconds": 92.883,
+    "duration_seconds": 1.467,
+    "text": "ขอบคุณทุกคน\nมากเลยนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 60,
+    "start_frame": 5573,
+    "end_frame": 5621,
+    "start_seconds": 92.883,
+    "end_seconds": 93.683,
+    "duration_seconds": 0.8,
+    "text": "ยังไงก็",
+    "fps": 60.0
+  },
+  {
+    "index": 61,
+    "start_frame": 5648,
+    "end_frame": 5675,
+    "start_seconds": 94.133,
+    "end_seconds": 94.583,
+    "duration_seconds": 0.45,
+    "text": "ยังไงก็ใครที่",
+    "fps": 60.0
+  },
+  {
+    "index": 62,
+    "start_frame": 5675,
+    "end_frame": 5726,
+    "start_seconds": 94.583,
+    "end_seconds": 95.433,
+    "duration_seconds": 0.85,
+    "text": "เข้ามาดูครั้งแรก",
+    "fps": 60.0
+  },
+  {
+    "index": 63,
+    "start_frame": 5726,
+    "end_frame": 5784,
+    "start_seconds": 95.433,
+    "end_seconds": 96.4,
+    "duration_seconds": 0.967,
+    "text": "ฝากกดติดตาม",
+    "fps": 60.0
+  },
+  {
+    "index": 64,
+    "start_frame": 5784,
+    "end_frame": 5870,
+    "start_seconds": 96.4,
+    "end_seconds": 97.833,
+    "duration_seconds": 1.433,
+    "text": "และเป็น\nกำลังใจด้วยนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 65,
+    "start_frame": 5870,
+    "end_frame": 5939,
+    "start_seconds": 97.833,
+    "end_seconds": 98.983,
+    "duration_seconds": 1.15,
+    "text": "หากสะดวกยังไง",
+    "fps": 60.0
+  },
+  {
+    "index": 66,
+    "start_frame": 5939,
+    "end_frame": 6005,
+    "start_seconds": 98.983,
+    "end_seconds": 100.083,
+    "duration_seconds": 1.1,
+    "text": "เฮ้ย ชิบหายละ",
+    "fps": 60.0
+  },
+  {
+    "index": 67,
+    "start_frame": 6033,
+    "end_frame": 6164,
+    "start_seconds": 100.55,
+    "end_seconds": 102.733,
+    "duration_seconds": 2.183,
+    "text": "เฮ้ยๆ เชี่ยตกใจ",
+    "fps": 60.0
+  },
+  {
+    "index": 68,
+    "start_frame": 6225,
+    "end_frame": 6287,
+    "start_seconds": 103.75,
+    "end_seconds": 104.783,
+    "duration_seconds": 1.033,
+    "text": "เออเดี๋ยว\nขอต่อแล้วกันนะ",
+    "fps": 60.0
+  },
+  {
+    "index": 69,
+    "start_frame": 6315,
+    "end_frame": 6391,
+    "start_seconds": 105.25,
+    "end_seconds": 106.517,
+    "duration_seconds": 1.267,
+    "text": "เออสำหรับ\nใครนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 70,
+    "start_frame": 6401,
+    "end_frame": 6497,
+    "start_seconds": 106.683,
+    "end_seconds": 108.283,
+    "duration_seconds": 1.6,
+    "text": "ที่แบบสะดวกก็",
+    "fps": 60.0
+  },
+  {
+    "index": 71,
+    "start_frame": 6497,
+    "end_frame": 6612,
+    "start_seconds": 108.283,
+    "end_seconds": 110.2,
+    "duration_seconds": 1.917,
+    "text": "สามารถฝากให้เพื่อนๆ",
+    "fps": 60.0
+  },
+  {
+    "index": 72,
+    "start_frame": 6612,
+    "end_frame": 6697,
+    "start_seconds": 110.2,
+    "end_seconds": 111.617,
+    "duration_seconds": 1.417,
+    "text": "เข้ามาดูแล้ว",
+    "fps": 60.0
+  },
+  {
+    "index": 73,
+    "start_frame": 6697,
+    "end_frame": 6784,
+    "start_seconds": 111.617,
+    "end_seconds": 113.067,
+    "duration_seconds": 1.45,
+    "text": "ไลฟ์สตรีม\nเคทีได้นะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 74,
+    "start_frame": 6792,
+    "end_frame": 6858,
+    "start_seconds": 113.2,
+    "end_seconds": 114.3,
+    "duration_seconds": 1.1,
+    "text": "ใครที่ยังไม่ได้กด",
+    "fps": 60.0
+  },
+  {
+    "index": 75,
+    "start_frame": 6858,
+    "end_frame": 6970,
+    "start_seconds": 114.3,
+    "end_seconds": 116.167,
+    "duration_seconds": 1.867,
+    "text": "ก็ช่วยกด\nอีกรอบนึงนะครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 76,
+    "start_frame": 6970,
+    "end_frame": 7073,
+    "start_seconds": 116.167,
+    "end_seconds": 117.883,
+    "duration_seconds": 1.717,
+    "text": "ขอบคุณครับ",
+    "fps": 60.0
+  },
+  {
+    "index": 77,
+    "start_frame": 7073,
+    "end_frame": 7124,
+    "start_seconds": 117.883,
+    "end_seconds": 118.733,
+    "duration_seconds": 0.85,
+    "text": "เอ้าค้าง",
+    "fps": 60.0
+  },
+  {
+    "index": 78,
+    "start_frame": 7124,
+    "end_frame": 7161,
+    "start_seconds": 118.733,
+    "end_seconds": 119.35,
+    "duration_seconds": 0.617,
+    "text": "เกิดอะไรขึ้น",
+    "fps": 60.0
+  },
+  {
+    "index": 79,
+    "start_frame": 7472,
+    "end_frame": 7498,
+    "start_seconds": 124.533,
+    "end_seconds": 124.967,
+    "duration_seconds": 0.433,
+    "text": "อา",
+    "fps": 60.0
+  },
+  {
+    "index": 80,
+    "start_frame": 7572,
+    "end_frame": 7681,
+    "start_seconds": 126.2,
+    "end_seconds": 128.017,
+    "duration_seconds": 1.817,
+    "text": "What the fuck",
+    "fps": 60.0
+  }
+]

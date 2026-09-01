@@ -60,6 +60,7 @@ Content catalog for the LLM-maintained wiki. Read this first when answering quer
 | Page | Topic |
 |------|-------|
 | [[End-to-End SFX Workflow]] | Complete agent guide from request to verified placement |
+| [[live-sfx-placement-20260828]] | Live placement: เรื่องแปลกของยามะ (9 SFX on Track 2) |
 
 ## Reading Order for New Agents
 
@@ -80,3 +81,4 @@ Content catalog for the LLM-maintained wiki. Read this first when answering quer
 - Total entities: 3
 - Total concepts: 13 (3 old + 10 new)
 - Total synthesis: 1
+- Scripts: impact_scorer.py, story_arc_analyzer.py, timing_intelligence.py, sfx_evaluator.py, sfx_audio_analyzer.py
