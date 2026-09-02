@@ -14,3 +14,4 @@ scripts/plan*.json
 scripts/beats*.json
 scripts/subtitles_*.json
 .opencode/agent/
+LLM_WIKI/SFX/
