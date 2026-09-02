@@ -11,10 +11,14 @@
             "id": "cf3891a2c8148e61",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "raw/nvkllm-wiki LLM-compiled knowledge bases for any AI agent. Parallel multi-agent research, thesis-driven investigation, source ingestion, wiki compilation, querying, and artifact generation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "nvkllm-wiki LLM-compiled knowledge bases for any AI agent. Parallel multi-agent research, thesis-driven investigation, source ingestion, wiki compilation, querying, and artifact generation"
             }
           }
         ]
@@ -186,9 +190,27 @@
   },
   "active": "cf3891a2c8148e61",
   "lastOpenFiles": [
+    "raw/llm-wiki 1.md",
+    "raw/nvkllm-wiki LLM-compiled knowledge bases for any AI agent. Parallel multi-agent research, thesis-driven investigation, source ingestion, wiki compilation, querying, and artifact generation.md",
+    "raw/universal-subtitle-translator, AI Coding Skill for Claude Code, OpenCode, Gemini CLI, Cline, Roo Code, Codex CLI.md",
+    "raw/Skills.md",
+    "raw/agent-skillsskillsvideo-subtitle-translatorREADME.md at main.md",
+    "raw/Wiki/sources/sfx/sfx-library-catalog.md",
+    "raw/ทำตาม Andrej Karpathy — แค่ 5 นาที AI เก่งขึ้น x10!.md",
+    "raw/Sound Effects AI Agent Skill.md",
+    "raw/skillsskillsdavinci-resolveSKILL.md at main.md",
+    "raw/SamurAIGPTllm-wiki-agent A personal knowledge base that builds and maintains itself. Drop in sources — Claude (or CodexGemini) reads them, extracts knowledge, and maintains a persistent interlinked wiki. Works with Claude Code, Codex, OpenCode,.md",
+    "raw/Post by @karpathy on X.md",
+    "raw/llm-wiki - AI Agents on GitHub (1.2k★).md",
+    "raw/Free Skill Sound Effects Download.md",
+    "raw/Davinci-Resolve.md",
+    "raw/davinci...  LevyByAI-SKILL-~16ye2y5 Agent Skill.md",
+    "raw/davinci-resolve Hermes AI Agent Skill.md",
+    "raw/davinci-resolve Automate DaVinci Resolve projects, timelines, and rendering via Python scripting.md",
+    "raw/davinci-re...  TerminalSkillsskills Agent Skill.md",
+    "raw/Clippings",
     "raw/Wiki/sources/leadership/บทความ - Data Analysis Skill คืออะไร ทำความเข้าใจทักษะแห่งยุคใหม่ฉบับเจาะลึก.md",
     "Wiki/sources/sfx-library-catalog.md",
-    "raw/Wiki/sources/sfx/sfx-library-catalog.md",
     "raw/Wiki/sources/sfx",
     "raw/Wiki/sources/video-editing/Automate Your Video Workflow A Deep Dive into the DaVinci Resolve MCP Server.md",
     "Wiki/sources/leadership/AI Skill Gap Analyzer  Identify Your Skill Gaps with TestnHire.md",
@@ -196,23 +218,6 @@
     "Wiki/sources/leadership/18 AI Data Analysis Skills for Smarter Data Processing.md",
     "Wiki/sources/leadership/AI-Powered Skills Gap Analysis.md",
     "Wiki/sources/leadership/What is an AI skills assessment.md",
-    "Wiki/sources/leadership/Build software better, together.md",
-    "Wiki/sources/leadership/What Is a Skills Gap.md",
-    "Wiki/sources/leadership/Skill Gap Analysis  Beam AI.md",
-    "Wiki/sources/leadership/AI Skill Assessment Meaning & Definition.md",
-    "raw/Wiki/sources/leadership/What is an AI skills assessment.md",
-    "raw/Wiki/sources/leadership/What Is a Skills Gap.md",
-    "raw/Wiki/sources/leadership/Skill Gap Analysis  Beam AI.md",
-    "raw/Wiki/sources/leadership/Build software better, together.md",
-    "raw/Wiki/sources/leadership/AI-Powered Skills Gap Analysis.md",
-    "raw/Wiki/sources/leadership/AI Skills Opportunity Map.md",
-    "raw/Wiki/sources/leadership/AI Skill Gap Analyzer  Identify Your Skill Gaps with TestnHire.md",
-    "raw/Wiki/sources/leadership/AI Skill Assessment Meaning & Definition.md",
-    "raw/Wiki/sources/leadership/18 AI Data Analysis Skills for Smarter Data Processing.md",
-    "raw/llm-wiki.md",
-    "Wiki/sources/audio/skillssound-effectsSKILL.md at main.md",
-    "Wiki/sources/audio/DaVinci Resolve  Blackmagic Design.md",
-    "Wiki/sources/leadership/Skill analysis.md",
     "Wiki/sources/leadership",
     "Wiki/sources/audio",
     "Wiki/sources/video-editing",
@@ -220,7 +225,6 @@
     "raw/Wiki/sources/audio",
     "raw/Wiki/sources/video-editing",
     "raw/Wiki/sources",
-    "raw/Wiki",
-    "Clippings"
+    "raw/Wiki"
   ]
 }
