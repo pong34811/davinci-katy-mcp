@@ -105,7 +105,7 @@ FORMAT_CONFIGS: Dict[str, Dict[str, Any]] = {
 
 # ── Spacing Configuration ────────────────────────────────────────────────────
 
-MIN_SPACING_SECONDS = 1.0
+MIN_SPACING_SECONDS = 0.5
 DEFAULT_DURATION_SECONDS = 0.5
 
 # ── Emotion Keywords ─────────────────────────────────────────────────────────

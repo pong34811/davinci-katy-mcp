@@ -11,6 +11,7 @@ import json
 import os
 import sys
 from typing import Any, Dict, List, Optional, Tuple
+import inspect
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
@@ -24,6 +25,11 @@ from config import (
     MIN_SPACING_SECONDS,
     DEFAULT_DURATION_SECONDS,
 )
+
+# Debugging prints
+print(f"DEBUG: MIN_SPACING_SECONDS loaded: {MIN_SPACING_SECONDS}")
+config_module = sys.modules['config']
+print(f"DEBUG: config.py path: {inspect.getfile(config_module)}")
 
 
 def load_plan(path: str) -> Dict[str, Any]:
