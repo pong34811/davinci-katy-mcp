@@ -49,16 +49,16 @@ Two special files help the LLM (and you) navigate the wiki as it grows. They ser
 
 ## Source organization
 
-The `raw/` folder contains source documents organized by topic domain:
+โฟลเดอร์ `raw/` มีเอกสารแหล่งที่มาจัดระเบียบตามโดเมนหัวข้อ:
 
-- `raw/Wiki/sources/video-editing/` — DaVinci Resolve MCP server articles, AI control experiments, Higgsfield plugins, viaSocket MCP (13 source summaries)
-- `raw/Wiki/sources/audio/` — DaVinci Resolve audio workflow guides, SFX plugins comparison, Fairlight resources (7 source summaries)
-- `raw/Wiki/sources/leadership/` — Skills analysis, leadership assessment, AI skills gap analysis, data analysis skill articles (14 source summaries)
-- `raw/Wiki/sources/sfx/` — Complete SFX library catalog — 73 sound effects files, 37 families (1 source summary)
+- `raw/Wiki/sources/video-editing/` — บทความ DaVinci Resolve MCP server, การทดลอง AI control, Higgsfield plugins, viaSocket MCP (14 สรุปแหล่งที่มา)
+- `raw/Wiki/sources/audio/` — คู่มือ DaVinci Resolve audio workflow, เปรียบเทียบปลั๊กอิน SFX, แหล่งข้อมูล Fairlight (7 สรุปแหล่งที่มา)
+- `raw/Wiki/sources/leadership/` — การวิเคราะห์ทักษะ, การประเมิน leadership, AI skills gap analysis, บทความทักษะ data analysis (14 สรุปแหล่งที่มา)
+- `raw/Wiki/sources/sfx/` — แคตตาลอกคลังเสียงครบถ้วน — ไฟล์เสียงเอฟเฟ็กต์ 73 ไฟล์, 37 ตระกูล (1 สรุปแหล่งที่มา)
 
-Source summaries in `raw/Wiki/sources/` follow the Karpathy wiki pattern: each file is a concise summary of the original article with frontmatter metadata (title, source, author, tags) and cross-references to related sources. Near-duplicate articles are consolidated into single authoritative summaries.
+สรุปแหล่งที่มาใน `raw/Wiki/sources/` ทำตามรูปแบบ Karpathy wiki: ไฟล์แต่ละไฟล์เป็นสรุปสั้นๆ ของบทความต้นฉบับพร้อม metadata frontmatter (title, source, author, tags) และการอ้างอิงข้ามไปยังแหล่งที่มาที่เกี่ยวข้อง บทความ near-duplicate ถูกรวมเป็นสรุปเดียวที่เชื่อถือได้
 
-For the full content of each source, see the corresponding file in `raw/Wiki/sources/`. For the synthesized wiki pages, see `Wiki/`.
+ดูเนื้อหาเต็มของแต่ละแหล่งที่มาในไฟล์ที่ตรงกันใน `raw/Wiki/sources/` ดูหน้าวิกิสังเคราะห์ที่ `Wiki/`
 
 ## Optional: CLI tools
 
@@ -83,29 +83,29 @@ The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, cu
 
 ---
 
-## Source Organization (this wiki)
+## การจัดระเบียบแหล่งที่มา (วิกินี้)
 
-This wiki has **34 source documents** organized into **4 domains** under `LLM_WIKI/raw/Wiki/sources/`:
+วิกินี้มี **เอกสารแหล่งที่มา 35 รายการ** จัดระเบียบเป็น **5 โดเมน** ภายใต้ `LLM_WIKI/raw/Wiki/sources/`:
 
-| Domain | Sources | Description |
+| โดเมน | แหล่งที่มา | คำอธิบาย |
 |--------|---------|-------------|
-| video-editing/ | 13 | DaVinci Resolve MCP servers, AI control, Higgsfield, viaSocket |
-| audio/ | 7 | Fairlight workflow, SFX plugins, SFX library guides, Skill Soundboard |
-| leadership/ | 9 | Skills analysis, AI skills gap, data analysis, intentional leadership |
-| sfx/ | 1 | SFX library catalog — 73 sound effects files (37 families) |
+| video-editing/ | 13 | เซิร์ฟเวอร์ DaVinci Resolve MCP, การทดลอง AI control, Higgsfield plugins, viaSocket MCP |
+| audio/ | 7 | คู่มือ Fairlight workflow, เปรียบเทียบปลั๊กอิน SFX, แหล่งข้อมูล Soundboard |
+| leadership/ | 9 | การวิเคราะห์ทักษะ, AI skills gap, data analysis, leadership |
+| sfx/ | 1 | แคตตาลอกคลังเสียง — ไฟล์เสียงเอฟเฟ็กต์ 73 ไฟล์ (37 ตระกูล) |
 
-### Raw source files
+### ไฟล์แหล่งที่มา
 
-- `raw/Wiki/sources/video-editing/` — 13 source summaries (DaVinci Resolve MCP, AI control, Higgsfield, viaSocket)
-- `raw/Wiki/sources/audio/` — 7 source summaries (Fairlight, plugins, Skill Soundboard)
-- `raw/Wiki/sources/leadership/` — 9 source summaries (skills analysis, AI gap)
-- `raw/Wiki/sources/sfx/sfx-library-catalog.md` — Complete SFX library catalog (73 files, 37 families)
+- `raw/Wiki/sources/video-editing/` — สรุปแหล่งที่มา 13 รายการ (DaVinci Resolve MCP, AI control, Higgsfield, viaSocket)
+- `raw/Wiki/sources/audio/` — สรุปแหล่งที่มา 7 รายการ (Fairlight, plugins, Skill Soundboard)
+- `raw/Wiki/sources/leadership/` — สรุปแหล่งที่มา 9 รายการ (การวิเคราะห์ทักษะ, AI gap)
+- `raw/Wiki/sources/sfx/sfx-library-catalog.md` — แคตตาลอกคลังเสียงครบถ้วน (73 ไฟล์, 37 ตระกูล)
 
 ### Clippings
 
-`raw/Clippings/` contains 17 raw source clippings from various web articles and documents.
+`raw/Clippings/` มีคลิปแหล่งที่มาดิบ 17 รายการจากบทความและเอกสารเว็บต่างๆ
 
-See [[index]] for the full content catalog.
+ดู [[index]] สำหรับแคตตาลอกเนื้อหาเต็ม
 
 ## Note
 

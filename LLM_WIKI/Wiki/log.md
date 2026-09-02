@@ -117,11 +117,11 @@ Verified: 9/9 clips confirmed at correct timestamps on timeline.
 SFX families used: pop, whoosh, ding, collect, wrong — all from C:\Users\warit\Desktop\davinci-katy-mcp\SFX\.
 Plan: plan_live.json | Results: SFX_RESULTS.md | Report: placement_report.json
 
-## [2026-09-02] ingest | SFX Library Catalog
+## [2026-09-02] ingest | แคตตาลอกคลังเสียง SFX
 
-Created raw source summary and wiki page for the complete SFX library catalog (73 files, 37 families).
+สร้างไฟล์สรุปแหล่งที่มาและหน้าวิกิสำหรับแคตตาลอกคลังเสียง SFX (73 ไฟล์, 37 ตระกูล)
 
-- Created `LLM_WIKI/raw/Wiki/sources/sfx/sfx-library-catalog.md` — raw source document with full family breakdown
-- Created `LLM_WIKI/Wiki/sources/sfx-library-catalog.md` — synthesized source summary page
-- Updated `LLM_WIKI/Wiki/index.md` — added sfx-library-catalog entry
-- Raw source: `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`
+- สร้าง `LLM_WIKI/raw/Wiki/sources/sfx/sfx-library-catalog.md` — เอกสารสรุปแหล่งที่มาพร้อมรายละเอียดตระกูลครบถ้วน
+- สร้าง `LLM_WIKI/Wiki/sources/sfx-library-catalog.md` — หน้าสังเคราะห์สรุปแหล่งที่มา
+- อัปเดต `LLM_WIKI/Wiki/index.md` — เพิ่มรายการ sfx-library-catalog
+- แหล่งที่มา: `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`

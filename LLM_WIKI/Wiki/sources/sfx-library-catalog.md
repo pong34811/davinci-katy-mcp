@@ -5,30 +5,30 @@ date_ingested: 2026-09-02
 tags: [wiki, wiki/source, sfx, sound-effects, library]
 ---
 
-# Source: SFX Library — Complete Sound Effects Catalog
+# แหล่งที่มา: คลังเสียง SFX — แคตตาลอกเสียงเอฟเฟ็กต์ครบถ้วน
 
-Complete catalog of 73 sound effects files in the project SFX library (`C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`).
+แคตตาลอกไฟล์เสียงเอฟเฟ็กต์ 73 ไฟล์ในคลังเสียงของโปรเจกต์ (`C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`)
 
-## Key Facts
+## ข้อเท็จจริงหลัก
 
-- **Source directory:** `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`
-- **Total files:** 73 (49 MP3 + 24 WAV)
-- **Canonical families:** 20 (defined in `scripts/config.py` → `SFX_FAMILIES`)
-- **Extended families:** 37 (by filename prefix)
-- **Config file:** `scripts/config.py` — central configuration for SFX families and beat-to-SFX mapping
-- **SFX_FAMILIES dict:** Maps canonical family names to filenames
+- **ไดเรกทอรีแหล่งที่มา:** `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`
+- **ไฟล์ทั้งหมด:** 73 (49 MP3 + 24 WAV)
+- **ตระกูลหลัก:** 20 (กำหนดไว้ใน `scripts/config.py` → `SFX_FAMILIES`)
+- **ตระกูลขยาย:** 37 (โดยคำนำหน้าชื่อไฟล์)
+- **ไฟล์กำหนดค่า:** `scripts/config.py` — การกำหนดค่าส่วนกลางสำหรับตระกูล SFX และการแมปบีตไปยัง SFX
+- **SFX_FAMILIES dict:** แมปชื่อตระกูลหลักไปยังชื่อไฟล์
 
-## Extended Families (not yet in SFX_FAMILIES)
+## ตระกูลขยาย (ยังไม่อยู่ใน SFX_FAMILIES)
 
 Bell (3), Cartoon (4), Click (4), Crowd (2), Digital (1), Explosion (1), Fight (4), Game (3), Glitch (1), Gong (3), Horn (4), Huh sound effect (1), Impact (4), Keyboard (2), Magic (2), Marimba (1), Media (1), Metal (2), Paper (1), Reaction (1), Stomp (1), Transition (3), UI (2), whoosh-simple (1)
 
-## See also
+## ดูเพิ่มเติม
 
-- [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)|Comparison]]
-- [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound|Fairlight guide]]
-- [[adding-sfx|SFX placement skill]]
-- [[sfx-library-manager|SFX library search skill]]
-- [[sfx-library|SFX library page]]
+- [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)|ปลั๊กอินเสียง]]
+- [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound|คู่มือ Fairlight]]
+- [[adding-sfx|ทักษะการวาง SFX]]
+- [[sfx-library-manager|ทักษะการค้นหาคลังเสียง]]
+- [[sfx-library|หน้าคลังเสียง]]
 
 ---
-*Created: 2026-09-02*
+*สร้าง: 2026-09-02*

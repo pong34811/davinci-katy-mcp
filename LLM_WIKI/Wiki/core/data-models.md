@@ -7,37 +7,37 @@ tags:
   - wiki/concept
 ---
 
-# SFX Engine Data Models
+# โมเดลข้อมูลเครื่องยนต์ SFX
 
-All data structures for the SFX Engine, defined in `scripts/main.py` and the SFX placement scripts.
+โครงสร้างข้อมูลทั้งหมดของเครื่องยนต์ SFX ที่กำหนดไว้ใน `scripts/main.py` และสคริปต์การวาง SFX
 
 ## Enums
 
-### SFXCategory (13 values)
+### SFXCategory (13 ค่า)
 
-Classification of sound effects into functional groups:
+การจำแนกประเภทเสียงเอฟเฟ็กต์เป็นกลุ่มฟังก์ชัน:
 
-| Value | Description |
+| ค่า | คำอธิบาย |
 |---|---|
-| `COMEDY` | pop, blip, plink, honk, marimba — humorous punctuation |
-| `REACTION` | awkward, huh, awww — emotional response sounds |
-| `IMPACT` | impact, scream, glass — heavy hitting sounds |
-| `ACCENT` | ding, pop, collect, sparkle — light emphasis marks |
-| `FAIL` | wrong, scratch, bleep — failure/error indicators |
-| `TRANSITION` | whoosh variants, rise — scene change markers |
-| `SUCCESS` | collect, kaching, ding, crowd-cheer — win/achievement |
-| `DRAMATIC` | rise, gong, metal, glitch — suspense/tension builders |
-| `ACTION` | impact, whoosh, explosion, stomp — physical action |
-| `UI` | click, UI-enter, digital, keyboard — interface sounds |
-| `MUSIC` | harp, guitar, marimba stingers — musical accents |
-| `CROWD` | crowd noises, cheers, applause — audience reactions |
-| `WHOOSH` | clean, fast, intro whooshes — air movement sounds |
+| `COMEDY` | pop, blip, plink, honk, marimba — เครื่องหมายประจักษ์ขำขัน |
+| `REACTION` | awkward, huh, awww — เสียงตอบสนองอารมณ์ |
+| `IMPACT` | impact, scream, glass — เสียงตีหนัก |
+| `ACCENT` | ding, pop, collect, sparkle — เครื่องหมายเน้นเบาๆ |
+| `FAIL` | wrong, scratch, bleep — ตัวบ่งชี้ความล้มเหลว/ข้อผิดพลาด |
+| `TRANSITION` | whoosh variants, rise — เครื่องหมายเปลี่ยนฉาก |
+| `SUCCESS` | collect, kaching, ding, crowd-cheer — ชนะ/ความสำเร็จ |
+| `DRAMATIC` | rise, gong, metal, glitch — ตัวสร้างความตึงเครียด |
+| `ACTION` | impact, whoosh, explosion, stomp — การกระทำทางกายภาพ |
+| `UI` | click, UI-enter, digital, keyboard — เสียงอินเทอร์เฟซ |
+| `MUSIC` | harp, guitar, marimba stingers — เสียงเน้นดนตรี |
+| `CROWD` | เสียงฝูงชน, เสียงเชียร์, ปรบมือ — ปฏิกิริยาผู้ชม |
+| `WHOOSH` | clean, fast, intro whooshes — เสียงการเคลื่อนที่ของอากาศ |
 
-### EventType (12 values)
+### EventType (12 ค่า)
 
-Events detected on the video timeline that trigger SFX placement:
+เหตุการณ์ที่ตรวจจับได้บนวิดีโอไทม์ไลน์ที่กระตุ้นการวาง SFX:
 
-| Value | Thai | Description |
+| ค่า | Thai | คำอธิบาย |
 |---|---|---|
 | `JOKE` | มุก / punchline | จังหวะตลก, คำพูดที่ทำให้หัวเราะ |
 | `REACTION` | อึ้ง/งง/เขิน | ปฏิกิริยาตอบสนอง, ความรู้สึก |
@@ -52,13 +52,13 @@ Events detected on the video timeline that trigger SFX placement:
 | `INTRO` | Opening / intro | ช่วงเปิดคลิป |
 | `OUTRO` | Closing / outro | ช่วงปิดคลิป |
 
-### ContentFormat (5 values)
+### ContentFormat (5 ค่า)
 
-Video content format classification:
+การจำแนกรูปแบบเนื้อหาวิดีโอ:
 
-| Value | Description |
+| ค่า | คำอธิบาย |
 |---|---|
-| `TALKING_HEAD` | Vlog, single speaker talking — คลิปพูดคนเดียว |
+| `TALKING_HEAD` | Vlog, ผู้พูดคนเดียว — คลิปพูดคนเดียว |
 | `PODCAST` | Long form multi-speaker dialogue — รายการสนทนา |
 | `GAME` | Gameplay, action, kills, alerts — เกมเพลย์ |
 | `MEME` | Short video, high density meme edits — คลิปสั้น/มีม |
@@ -68,98 +68,98 @@ Video content format classification:
 
 ### SFXFile
 
-Represents a single SFX audio file with extracted metadata.
+แสดงถึงไฟล์เสียงเอฟเฟ็กต์เดียวพร้อม metadata ที่สกัดออกมา
 
-| Field | Type | Description |
+| ฟิลด์ | Type | คำอธิบาย |
 |---|---|---|
-| `path` | `Path` | Absolute file path |
-| `filename` | `str` | Filename including extension |
-| `name` | `str` | Human-readable short name |
+| `path` | `Path` | เส้นทางไฟล์แบบเต็ม |
+| `filename` | `str` | ชื่อไฟล์พร้อมนามสกุล |
+| `name` | `str` | ชื่อสั้นที่อ่านเข้าใจได้ |
 | `extension` | `str` | `.wav`, `.mp3` |
-| `is_processed` | `bool` | `True` if from SFX_processed |
-| `duration_seconds` | `float` | Duration in seconds (default 0.0) |
-| `sample_rate` | `int` | Sample rate in Hz (default 0) |
-| `channels` | `int` | Number of channels (default 0) |
-| `file_size_bytes` | `int` | File size in bytes (default 0) |
-| `target_db` | `Optional[float]` | Level from filename (e.g. -14) |
-| `peak_db` | `Optional[float]` | Peak level |
-| `rms_db` | `Optional[float]` | RMS loudness |
-| `category` | `SFXCategory` | Category classification (default ACCENT) |
-| `tags` | `List[str]` | Search tags |
-| `family` | `str` | Family name (e.g. "whoosh", "pop") |
-| `intensity` | `str` | `low`, `medium`, `high` (default "medium") |
-| `is_sting` | `bool` | Whether it's a sting variant |
-| `sting_path` | `Optional[Path]` | Path to sting variant |
-| `content_hash` | `str` | Hash for caching |
+| `is_processed` | `bool` | `True` ถ้ามาจาก SFX_processed |
+| `duration_seconds` | `float` | ระยะเวลาเป็นวินาที (ค่าเริ่มต้น 0.0) |
+| `sample_rate` | `int` | Sample rate ใน Hz (ค่าเริ่มต้น 0) |
+| `channels` | `int` | จำนวน channel (ค่าเริ่มต้น 0) |
+| `file_size_bytes` | `int` | ขนาดไฟล์เป็นไบต์ (ค่าเริ่มต้น 0) |
+| `target_db` | `Optional[float]` | ระดับจากชื่อไฟล์ (เช่น -14) |
+| `peak_db` | `Optional[float]` | ระดับสูงสุด |
+| `rms_db` | `Optional[float]` | ความดัง RMS |
+| `category` | `SFXCategory` | การจำแนกประเภท (ค่าเริ่มต้น ACCENT) |
+| `tags` | `List[str]` | แท็กการค้นหา |
+| `family` | `str` | ชื่อตระกูล (เช่น "whoosh", "pop") |
+| `intensity` | `str` | `low`, `medium`, `high` (ค่าเริ่มต้น "medium") |
+| `is_sting` | `bool` | ว่าเป็น sting variant หรือไม่ |
+| `sting_path` | `Optional[Path]` | เส้นทางไปยัง sting variant |
+| `content_hash` | `str` | Hash สำหรับการแคช |
 
-Has `to_dict()` and `from_dict()` for JSON serialization.
+มี `to_dict()` และ `from_dict()` สำหรับการ serialization JSON
 
 ### SFXSearchResult
 
-| Field | Type | Description |
+| ฟิลด์ | Type | คำอธิบาย |
 |---|---|---|
-| `file` | `SFXFile` | The matched SFX file |
-| `score` | `float` | Match confidence score (0.0–1.0) |
+| `file` | `SFXFile` | ไฟล์ SFX ที่ตรงกัน |
+| `score` | `float` | คะแนนความมั่นใจในการตรงกัน (0.0–1.0) |
 
 ### TimelineEvent
 
-An identified event on the video timeline requiring SFX consideration.
+เหตุการณ์ที่ระบุบนวิดีโอไทม์ไลน์ที่ต้องการพิจารณา SFX
 
-| Field | Type | Description |
+| ฟิลด์ | Type | คำอธิบาย |
 |---|---|---|
-| `type` | `EventType` | Event type |
-| `timestamp` | `float` | Time in seconds |
-| `description` | `str` | Human-readable description |
-| `impact_score` | `float` | Importance 0.0–1.0 (default 0.5) |
-| `duration` | `float` | Duration of the event window (default 0.0) |
-| `text_snippet` | `Optional[str]` | Source text that triggered detection |
+| `type` | `EventType` | ประเภทเหตุการณ์ |
+| `timestamp` | `float` | เวลาเป็นวินาที |
+| `description` | `str` | คำอธิบายที่อ่านเข้าใจได้ |
+| `impact_score` | `float` | ความสำคัญ 0.0–1.0 (ค่าเริ่มต้น 0.5) |
+| `duration` | `float` | ระยะเวลาของหน้าต่างเหตุการณ์ (ค่าเริ่มต้น 0.0) |
+| `text_snippet` | `Optional[str]` | ข้อความต้นทางที่กระตุ้นการตรวจจับ |
 
 ### BeatPoint
 
-A scored beat point extracted for potential SFX alignment.
+จุด beat ที่มีคะแนนสกัดออกมาสำหรับการจัดแนว SFX ที่เป็นไปได้
 
-| Field | Type | Description |
+| ฟิลด์ | Type | คำอธิบาย |
 |---|---|---|
-| `timestamp` | `float` | Time in seconds |
-| `event_type` | `EventType` | Event type |
-| `impact_score` | `float` | Format-adjusted score |
-| `description` | `str` | Human-readable description |
+| `timestamp` | `float` | เวลาเป็นวินาที |
+| `event_type` | `EventType` | ประเภทเหตุการณ์ |
+| `impact_score` | `float` | คะแนนที่ปรับ format แล้ว |
+| `description` | `str` | คำอธิบายที่อ่านเข้าใจได้ |
 
 ### SFXPlacement
 
-Represents a planned SFX placement on the timeline.
+แทนการวาง SFX ที่วางแผนไว้บือไทม์ไลน์
 
-| Field | Type | Description |
+| ฟิลด์ | Type | คำอธิบาย |
 |---|---|---|
-| `sfx` | `SFXFile` | The SFX file to place |
-| `timestamp` | `float` | Placement time in seconds |
-| `beat` | `BeatPoint` | The beat this placement satisfies |
-| `volume_db` | `float` | Volume level (default -14.0) |
-| `record_frame` | `int` | Timeline frame number (default 0) |
-| `duration_seconds` | `float` | SFX duration (default 0.5) |
-| `track_index` | `int` | Target audio track (default 2) |
-| `confidence` | `float` | Placement confidence (default 0.8) |
-| `reason` | `str` | Why this SFX at this moment |
+| `sfx` | `SFXFile` | ไฟล์ SFX ที่จะวาง |
+| `timestamp` | `float` | เวลาวางเป็นวินาที |
+| `beat` | `BeatPoint` | จุด beat ที่การวางนี้ตอบสนอง |
+| `volume_db` | `float` | ระดับเสียง (ค่าเริ่มต้น -14.0) |
+| `record_frame` | `int` | เลขเฟรมไทม์ไลน์ (ค่าเริ่มต้น 0) |
+| `duration_seconds` | `float` | ระยะเวลา SFX (ค่าเริ่มต้น 0.5) |
+| `track_index` | `int` | Track เสียงเป้าหมาย (ค่าเริ่มต้น 2) |
+| `confidence` | `float` | ความมั่นใจในการวาง (ค่าเริ่มต้น 0.8) |
+| `reason` | `str` | เหตุผลที่วาง SFX นี้ในจังหวะนี้ |
 
-Has `to_dict()` for JSON serialization.
+มี `to_dict()` สำหรับ JSON serialization
 
 ### SFXPlan
 
-Complete SFX recommendation plan for a video timeline.
+แผนคำแนะนำ SFX ครบถ้วนสำหรับไทม์ไลน์วิดีโอ
 
-| Field | Type | Description |
+| ฟิลด์ | Type | คำอธิบาย |
 |---|---|---|
-| `format` | `ContentFormat` | Detected content format |
-| `placements` | `List[SFXPlacement]` | Ordered list of placements |
-| `timeline_duration_seconds` | `float` | Total timeline length |
-| `fps` | `float` | Frames per second (default 60.0) |
-| `density_per_minute` | `float` | SFX count per minute |
-| `warnings` | `List[str]` | Quality warnings |
-| `spacing_violations` | `List[str]` | Placements too close together |
+| `format` | `ContentFormat` | format เนื้อหาที่ตรวจจับ |
+| `placements` | `List[SFXPlacement]` | รายการ placement ที่เรียงลำดับ |
+| `timeline_duration_seconds` | `float` | ความยาวไทม์ไลน์รวม |
+| `fps` | `float` | เฟรมต่อวินาที (ค่าเริ่มต้น 60.0) |
+| `density_per_minute` | `float` | จำนวน SFX ต่อนาที |
+| `warnings` | `List[str]` | คำเตือนคุณภาพ |
+| `spacing_violations` | `List[str]` | การวางวัดชิดกันเกินไป |
 
-Has `to_dict()` for JSON serialization.
+มี `to_dict()` สำหรับ JSON serialization
 
-## How Models Flow
+## How Models Flow (การไหลของโมเดล)
 
 ```
 SFXFile (library scan)
@@ -169,12 +169,12 @@ SFXFile (library scan)
         → SFXPlan (complete timeline)
 ```
 
-1. **SFXFile** — library scanner reads audio files, extracts metadata, classifies by category/family
-2. **SFXSearchResult** — search engine matches files to queries, returns scored results
-3. **TimelineEvent** — analyzer detects keyword matches in subtitles/transcript, creates timestamped events
-4. **BeatPoint** — events are format-adjusted (PODCAST suppresses JOKE×0.4, GAME boosts ACTION×1.3)
-5. **SFXPlacement** — placer selects best SFX file for each beat, computes frame position and volume
-6. **SFXPlan** — all placements assembled with density checks, spacing validation, and warnings
+1. **SFXFile** — library scanner อ่านไฟล์เสียง, สกัด metadata, จำแนกตาม category/family
+2. **SFXSearchResult** — search engine จับคู่ไฟล์กับ queries, คืนผลลัพธ์ที่มีคะแนน
+3. **TimelineEvent** — analyzer ตรวจจับการจับคู่ keyword ใน subtitle/transcript, สร้าง timestamped events
+4. **BeatPoint** — events ถูกปรับ format (PODCAST suppresses JOKE×0.4, GAME boosts ACTION×1.3)
+5. **SFXPlacement** — placer เลือกไฟล์ SFX ที่ดีที่สุดสำหรับแต่ละ beat, คำนวณ frame position และ volume
+6. **SFXPlan** — ทุก placement ถูกรวบรวมพร้อม density checks, spacing validation, และ warnings
 
 ## Related
 
