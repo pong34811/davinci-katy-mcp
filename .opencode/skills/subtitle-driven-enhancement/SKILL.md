@@ -1,13 +1,13 @@
 ---
 name: subtitle-driven-enhancement
-description: ใช้เมื่อต้องการปรับแต่งคลิปวิดีโอโดยอ่าน subtitle track 1 แล้วเพิ่ม SFX/เอฟเฟกต์ให้คลิปน่าสนใจขึ้น — "ปรับแต่งคลิปจาก subtitle", "เพิ่ม SFX จาก subtitle", "enhance clip from subtitles", "make clip interesting from subtitles", "subtitle-driven editing". ใช้กับคลิปทุกรูปแบบ: talking-head, vlog, podcast, game, meme, livestream
+description: ใช้เมื่อปรับแต่งคลิปวิดีโอโดยอ่าน SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` แล้วเพิ่ม SFX/เอฟเฟกต์ให้คลิปน่าสนใจขึ้น — "ปรับแต่งคลิปจาก SRT", "เพิ่ม SFX จาก subtitle", "enhance clip from subtitles", "make clip interesting from subtitles", "subtitle-driven editing". ใช้กับคลิปทุกรูปแบบ: talking-head, vlog, podcast, game, meme, livestream
 ---
 
 # Subtitle-Driven Clip Enhancement
 
 ## บทบาท: อ่าน subtitle → วิเคราะห์ → เพิ่มความน่าสนใจ
 
-ระบบจะอ่าน subtitle track 1 จาก DaVinci Resolve แล้วใช้ AI วิเคราะห์เนื้อหาเพื่อ:
+ระบบจะอ่าน SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` แล้วใช้ AI วิเคราะห์เนื้อหาเพื่อ:
 1. **ระบุจังหวะสำคัญ** — จุดที่ควรเพิ่ม SFX/เอฟเฟกต์
 2. **วิเคราะห์อารมณ์** — แต่ละช่วงมีอารมณ์อะไร (ตลก, ตกใจ, สำเร็จ, ล้มเหลว)
 3. **สร้าง SFX plan** — แนะนำ SFX ที่เหมาะสมพร้อม timestamp
@@ -15,11 +15,11 @@ description: ใช้เมื่อต้องการปรับแต่�
 
 ## Workflow
 
-### ขั้นตอนที่ 1: อ่าน Subtitle Track 1
+### ขั้นตอนที่ 1: อ่าน Subtitle จาก SRT File
 ```bash
-python scripts/analyze_subtitles.py --action read
+python scripts/analyze_subtitles.py --action read --srt "C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt"
 ```
-- อ่าน subtitle track 1 จาก Resolve
+- อ่าน subtitle จากไฟล์ SRT ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 - แสดงผลเป็นตาราง: index, start, end, text
 - บันทึกเป็น JSON สำหรับขั้นตอนถัดไป
 
@@ -66,7 +66,7 @@ python scripts/sfx_place.py --plan plan.json --verify    # วางจริง
 
 ## ข้อจำกัด
 
-- อ่านเฉพาะ subtitle track 1 เท่านั้น
+- อ่านเฉพาะ SRT file เท่านั้น — `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 - SFX ต้องไม่ทับเสียงหลัก (ดูจาก subtitle timing)
 - Density ตาม Format Table
 - ทุก SFX ต้องมี `reason` 1 บรรทัด

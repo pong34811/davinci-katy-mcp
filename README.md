@@ -1,137 +1,181 @@
-# DaVinci Resolve SFX System
+# DaVinci Resolve SFX Enhancement System
 
-ระบบ AI สำหรับเพิ่ม Sound Effects ให้คลิปวิดีโอใน DaVinci Resolve โดยอัตโนมัติ
+> **Hermes Agent** — autonomous AI agent for adding Sound Effects to DaVinci Resolve clips
 
-## ฟีเจอร์หลัก
+## Overview
 
-1. **อ่าน Subtitle Track 1** - ดึงข้อความจาก subtitle อัตโนมัติ
-2. **วิเคราะห์อารมณ์** - ใช้ AI วิเคราะห์อารมณ์จากใบหน้าและเสียง
-3. **สร้าง SFX Plan** - แนะนำ SFX ที่เหมาะสมตามจังหวะ
-4. **วางอัตโนมัติ** - วาง SFX ลง timeline โดยไม่ต้องทำมือ
+An AI-powered system that reads subtitle files, analyzes emotional beats, and automatically places Sound Effects (SFX) on DaVinci Resolve timelines.
 
-## การติดตั้ง
+## Architecture
 
-### ความต้องการ
-
-- DaVinci Resolve (Studio หรือ Free)
-- Python 3.8+
-- OpenCV (สำหรับ face analysis)
-- MediaPipe (สำหรับ face landmarks)
-
-### ขั้นตอนการติดตั้ง
-
-```bash
-# Clone โปรเจค
-git clone <repository-url>
-cd davinci-katy-mcp
-
-# ติดตั้ง dependencies
-pip install opencv-python mediapipe pytest
-
-# ทดสอบระบบ
-python scripts/main.py status
+```
+┌─────────────────────────────────────────────────────┐
+│                   Hermes Agent                       │
+│  ┌─────────┐  ┌─────────┐  ┌──────────────────────┐ │
+│  │  CLI     │  │ Desktop │  │ MCP Server           │ │
+│  │ (hermes) │  │  App    │  │ (davinci-resolve-mcp)│ │
+│  └────┬─────┘  └────┬────┘  └──────────┬───────────┘ │
+│       │              │                 │              │
+│       ▼              ▼                 ▼              │
+│  ┌──────────────────────────────────────────────┐   │
+│  │           AIAgent (run_agent.py)              │   │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────────┐  │   │
+│  │  │ Prompt   │ │ Provider │ │ Tool Dispatch│  │   │
+│  │  │ Builder  │ │ Resolution│ │ (28 toolsets)│  │   │
+│  │  └────┬─────┘ └────┬─────┘ └──────┬───────┘  │   │
+│  │       │            │              │           │   │
+│  │  ┌────┴────────────┴──────────────┴───────┐   │   │
+│  │  │     Context Engine + Compression       │   │   │
+│  │  └───────────────────────────────────────┘   │   │
+│  └──────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        ▼                   ▼                   ▼
+  ┌───────────┐      ┌──────────────┐     ┌──────────────┐
+  │ Skills    │      │ DaVinci      │     │ SFX Library  │
+  │ (.opencode│      │ Resolve      │     │ (SFX/)       │
+  │ /skills/) │      │ MCP Server   │     │ 70+ files    │
+  └───────────┘      └──────────────┘     └──────────────┘
 ```
 
-## วิธีใช้งาน
-
-### ใช้ main.py (แนะนำ)
+## Quick Start
 
 ```bash
-# แสดงสถานะระบบ
-python scripts/main.py status
+# Full pipeline: read SRT → analyze → plan → place SFX
+python scripts/sfx_place.py --plan scripts/plan.json --verify
 
-# วิเคราะห์ subtitle
-python scripts/main.py analyze --srt subtitle_from_track1.srt
+# Analyze subtitle from SRT file
+python scripts/analyze_subtitles.py --action read --srt "C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt"
 
-# สร้าง SFX plan
-python scripts/main.py plan --beats beats.json --format talking-head
-
-# วาง SFX
-python scripts/main.py place --plan plan.json --verify
-
-# ทำทุกขั้นตอน
-python scripts/main.py enhance --srt subtitle_from_track1.srt --skip-place
+# Generate SFX plan from beats
+python scripts/generate_sfx_plan.py --beats scripts/subtitles_beats.json --format talking-head
 ```
 
-### ใช้ scripts แยก
+## Workflow
 
-```bash
-# อ่าน subtitle
-python scripts/analyze_subtitles.py --action read --input subtitle_from_track1.srt
+1. **Read SRT** → Parse subtitle file at `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
+2. **Analyze beats** → Identify emotional turning points, emphasis, fails, transitions
+3. **Generate plan** → Match beats to SFX families with timestamps
+4. **Dry-run** → Validate plan (file existence, timestamp overlap check)
+5. **Place SFX** → Create Track 2 (SFX 1) and place all SFX
+6. **Verify** → Read back frame positions and confirm placement
 
-# วิเคราะห์อารมณ์
-python scripts/face_analyzer.py --video clip.mp4 --output face_emotions.json
-python scripts/voice_analyzer.py --video clip.mp4 --output voice_emotions.json
-python scripts/emotion_analyzer.py --face face_emotions.json --voice voice_emotions.json
-
-# สร้าง SFX plan
-python scripts/generate_sfx_plan.py --beats beats.json --format talking-head
-
-# วาง SFX
-python scripts/sfx_place.py --plan plan.json --verify
-```
-
-## โครงสร้างโปรเจค
+## Project Structure
 
 ```
 davinci-katy-mcp/
-├── scripts/
-│   ├── config.py                 # Configuration กลาง
-│   ├── main.py                   # Entry point หลัก
-│   ├── analyze_subtitles.py      # อ่าน subtitle
-│   ├── generate_sfx_plan.py      # สร้าง SFX plan
-│   ├── clip_enhancer.py          # Script หลัก
-│   ├── face_analyzer.py          # วิเคราะห์ใบหน้า
-│   ├── voice_analyzer.py         # วิเคราะห์เสียง
-│   ├── emotion_analyzer.py       # รวมผลวิเคราะห์
-│   └── sfx_place.py              # วาง SFX
-├── tests/
-│   ├── test_config.py
-│   └── test_analyze_subtitles.py
-├── davinci-resolve-mcp/          # MCP Server
-├── SFX/                          # ไฟล์ SFX
-├── SFX_processed/                # ไฟล์ SFX ที่ normalize แล้ว
-├── .opencode/skills/             # Skills
-└── obsidian-vault/               # Obsidian vault
+├── hermes-config/             # Hermes Agent configuration
+│   ├── config.yaml            # Main config (model, toolsets, skills)
+│   ├── settings.local.json    # Claude local settings (permissions)
+│   ├── skills-registry.md     # Skill registration and evaluation
+│   └── README.md              # Configuration guide
+├── scripts/                   # CLI tools and analysis scripts
+│   ├── main.py                # Entry point (status, analyze, plan, place, enhance)
+│   ├── config.py              # Central configuration
+│   ├── analyze_subtitles.py   # Subtitle analysis from SRT
+│   ├── generate_sfx_plan.py   # SFX plan generation
+│   ├── sfx_place.py           # SFX placement on timeline
+│   ├── impact_scorer.py       # Impact scoring for beats
+│   ├── emotion_analyzer.py    # Emotion analysis (face + voice)
+│   ├── face_analyzer.py       # Face landmark detection
+│   ├── voice_analyzer.py      # Voice analysis
+│   ├── story_arc_analyzer.py  # Story arc detection
+│   ├── sfx_evaluator.py       # SFX quality evaluation
+│   ├── sfx_audio_analyzer.py  # SFX audio analysis
+│   ├── timing_intelligence.py # Precise timing decisions
+│   └── __pycache__/           # Compiled Python cache
+├── davinci-resolve-mcp/       # MCP server for DaVinci Resolve API
+│   ├── src/                   # Source code
+│   │   ├── server.py          # Main MCP server (28k+ lines)
+│   │   └── utils/             # Utility modules
+│   ├── venv/                  # Python virtual environment
+│   └── logs/                  # Server logs
+├── SFX/                       # Raw SFX library (70+ files)
+│   ├── Pop - Short 06.mp3
+│   ├── Bell - Ding 02.wav
+│   ├── Game - Wrong Answer.mp3
+│   └── ...
+├── .opencode/                 # OpenCode configuration
+│   ├── skills/                # 20+ skill definitions
+│   │   ├── adding-sfx/        # Main SFX placement skill
+│   │   ├── subtitle-driven-enhancement/  # Subtitle-driven enhancement
+│   │   ├── sfx-review/        # SFX review skill
+│   │   ├── sfx-library-manager/   # SFX library manager
+│   │   ├── sfx-story-analyzer/    # Story arc analyzer
+│   │   ├── subtitle-analyzer/     # Subtitle analyzer
+│   │   ├── emotion-analysis/      # Emotion analysis
+│   │   ├── davinci-resolve-workflow/ # DaVinci Resolve workflow
+│   │   └── ...                # 20+ additional skills
+│   ├── agent/                 # Agent definitions
+│   │   ├── skill-first.md     # Primary agent (skill-first)
+│   │   └── sfx-editor.md      # SFX subagent
+│   └── evals/                 # Skill evaluation configs
+├── .hermes.md                 # Hermes-specific project rules
+├── AGENTS.md                  # Portable project rules
+├── CLAUDE.md                  # Claude-flavored tier checklist
+├── SFX_RESULTS.md             # Latest SFX placement results
+└── obsidian-vault/            # Obsidian knowledge base
+    ├── Wiki/                  # LLM-maintained wiki
+    ├── Clippings/             # Raw sources (immutable)
+    └── Plugins/sfx-manager/   # In-Obsidian SFX library browser
 ```
 
-## SFX Library
+## Skills
 
-| Family | ไฟล์ | จังหวะที่เหมาะ |
-|---|---|---|
-| pop | Pop - Short 06.mp3 | surprise, emphasis |
-| ding | Bell - Ding 02.wav | emphasis, success |
-| collect | Game - Correct Collect Answer.mp3 | success |
-| sparkle | Harp - Sparkle 01.mp3 | excitement, closing |
-| whoosh | Whoosh - Clean Fast.mp3 | transition |
-| impact | Impact - Comedy Hit 01.mp3 | surprise |
-| wrong | Game - Wrong Answer.mp3 | fail |
+| Skill | Purpose | Trigger |
+|-------|---------|---------|
+| `adding-sfx` | Place SFX on timeline | "เพิ่ม SFX", "ใส่เสียงประกอบ" |
+| `sfx-review` | Review/adjust placed SFX | "ใส่น้อย", "ตรวจละเอียด" |
+| `subtitle-driven-enhancement` | Read SRT, analyze, enhance | "ปรับแต่งคลิปจาก SRT" |
+| `sfx-library-manager` | Search SFX library | "หา SFX", "เปรียบเทียบเสียง" |
+| `sfx-story-analyzer` | Story arc from SRT | "วิเคราะห์ story arc" |
+| `subtitle-analyzer` | Subtitle/transcript analysis | "วิเคราะห์ subtitle" |
+| `emotion-analysis` | Face + voice emotion | "วิเคราะห์อารมณ์" |
+| `davinci-resolve-workflow` | Resolve MCP tools | "timeline", "color", "render" |
 
-## ทดสอบ
+## SFX File Mapping
+
+| Family | Filename |
+|--------|----------|
+| pop | `Pop - Short 06.mp3` |
+| ding | `Bell - Ding 02.wav` |
+| sparkle | `Harp - Sparkle 01.mp3` |
+| whoosh | `Whoosh - Clean Fast.mp3` |
+| impact | `Impact - Comedy Hit 01.mp3` |
+| wrong | `Game - Wrong Answer.mp3` |
+| collect | `Game - Correct Collect Answer.mp3` |
+
+## Rules
+
+- Read subtitles ONLY from `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
+- Use ONLY files in `SFX/` directory — never guess filenames
+- SFX placed on Track 2 (SFX 1)
+- Density: ~10-15/min (user preference)
+- Always: dry-run → place → verify
+- Every SFX must have a `reason` 1 บรรทัด
+
+## Python Environment
 
 ```bash
-# รัน tests ทั้งหมด
-python -m pytest tests/ -v
-
-# รัน tests สำหรับ config
-python -m pytest tests/test_config.py -v
-
-# รัน tests สำหรับ analyze_subtitles
-python -m pytest tests/test_analyze_subtitles.py -v
+# Use the venv Python
+davinci-resolve-mcp\venv\Scripts\python.exe scripts\sfx_place.py --plan scripts/plan.json --verify
 ```
 
-## Skills ที่ติดตั้ง
+## Requirements
 
-- adding-sfx - สำหรับเพิ่ม SFX ลง timeline
-- subtitle-driven-enhancement - สำหรับปรับแต่งคลิปจาก subtitle
-- emotion-analysis - สำหรับวิเคราะห์อารมณ์
-- obsidian-best-practices - สำหรับพัฒนา Obsidian plugin
-- obsidian-cli - สำหรับจัดการ Obsidian vault
-- และอื่นๆ อีก 20+ skills
+- DaVinci Resolve (Studio or Free) — must be running
+- Python 3.8+
+- OpenCV + MediaPipe (for face analysis)
+- ffmpeg (for audio extraction)
 
-## ลิงก์ที่เกี่ยวข้อง
+## Testing
 
-- [[DaVinci Resolve SFX System]]
-- [[SFX Library]]
-- [[Emotion Analysis]]
-- [[Subtitle Analysis]]
+```bash
+# Run tests
+davinci-resolve-mcp\venv\Scripts\python.exe -m pytest tests/ -v
+```
+
+## License
+
+MIT

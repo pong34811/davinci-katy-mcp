@@ -1,6 +1,6 @@
 ---
 name: subtitle-analyzer
-description: "วิเคราะห์ subtitle/transcript สำหรับ editing decisions — หาจังหวะ, แบ่งช่วง, จับอารมณ์, แนะนำจุดตัด/insert ใช้เมื่อต้องการวิเคราะห์ subtitle track, หาว่าวินาทีไหนพูดอะไร, ต้องการแบ่งช่วงเรื่อง, ต้องการหาจังหวะสำหรับ SFX/transition/cut, หรือต้องการเข้าใจเนื้อหาจาก transcript"
+description: "วิเคราะห์ subtitle/transcript จาก SRT file สำหรับ editing decisions — หาจังหวะ, แบ่งช่วง, จับอารมณ์, แนะนำจุดตัด/insert ใช้เมื่อต้องการวิเคราะห์ SRT file, หาว่าวินาทีไหนพูดอะไร, ต้องการแบ่งช่วงเรื่อง, ต้องการหาจังหวะสำหรับ SFX/transition/cut, หรือต้องการเข้าใจเนื้อหาจาก SRT file"
 ---
 
 # Subtitle Analyzer
@@ -19,14 +19,15 @@ description: "วิเคราะห์ subtitle/transcript สำหรับ
 
 ### Step 1: ดึง Subtitle
 
-จาก DaVinci Resolve:
-```python
-timeline.get_transcript(with_timecodes=True)
-```
-
-จาก SRT file:
+อ่านจาก SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`:
 ```
 อ่าน SRT file ตรงๆ
+```
+
+จาก DaVinci Resolve ( fallback ถ้าไม่มี SRT file ):
+```python
+# Fallback: อ่านจาก Resolve transcript (ไม่แนะนำ ใช้เฉพาะเมื่อไม่มี SRT file)
+timeline.get_transcript(with_timecodes=True)
 ```
 
 ### Step 2: แบ่งช่วงเรื่อง (Story Segmentation)

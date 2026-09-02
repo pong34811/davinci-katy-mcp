@@ -1,6 +1,6 @@
 ---
 name: adding-sfx
-description: ใช้เมื่อเพิ่ม Sound Effects (SFX) ลงใน timeline ของ DaVinci Resolve เพื่อทำให้คลิปสนุก มีจังหวะ และน่าสนใจขึ้น — "เพิ่ม SFX", "เพิ่มเสียงประกอบ", "ใส่เสียงตลก", "เพิ่ม Sound Effects (SFX)", "add SFX", "sound effects", "make the clip more interesting/lively". ใช้กับคลิปทุกรูปแบบ: talking-head/vlog, podcast, game footage, meme, livestream. ใช้ด้วยเมื่อเจอ brief ลักษณะ "งานที่ต้องดำเนินการ: เพิ่ม SFX ให้กับคลิปวิดีโอ" / "เริ่มดำเนินการแก้ไขคลิปวิดีโอ" และเมื่อ review/ตรวจสอบ SFX ที่วางอยู่แล้วว่าควรปรับ/ลบ/เพิ่มตรงไหน
+description: ใช้เมื่อเพิ่ม Sound Effects (SFX) ลงใน timeline ของ DaVinci Resolve โดยอ่าน subtitle จาก SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` — "เพิ่ม SFX", "เพิ่มเสียงประกอบ", "ใส่เสียงตลก", "add SFX", "sound effects", "make the clip more interesting/lively". ใช้กับคลิปทุกรูปแบบ: talking-head/vlog, podcast, game footage, meme, livestream. ใช้ด้วยเมื่อเจอ brief ลักษณะ "งานที่ต้องดำเนินการ: เพิ่ม SFX ให้กับคลิปวิดีโอ" / "เริ่มดำเนินการแก้ไขคลิปวิดีโอ" และเมื่อ review/ตรวจสอบ SFX ที่วางอยู่แล้วว่าควรปรับ/ลบ/เพิ่มตรงไหน
 ---
 
 # Adding SFX ลง Timeline ของ DaVinci Resolve
@@ -32,6 +32,11 @@ SFX คือเครื่องปรุง ไม่ใช่ตัวอา
 **ถ้าระบุไม่ได้/คลุมเครือ** → ถามผู้ใช้สั้น ๆ ว่าคลิปเป็นรูปแบบไหน หรือใช้ค่า conservative (talking-head) เป็น default แล้วบอกในสรุป
 
 ## ตรวจ Library ก่อนเสมอ
+
+**อ่าน subtitle จาก SRT file ก่อน** — ไฟล์ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` (ส่งมาให้):
+```
+อ่าน SRT file ตรงๆ
+```
 
 มี 2 โฟลเดอร์ — **เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list จริงทุกครั้งก่อนเริ่ม** แล้วอ้างถึงเฉพาะไฟล์ที่อยู่ใน list เท่านั้น:
 
@@ -202,7 +207,7 @@ Setup → Build-up → Turning Point → Punchline → Reaction → Resolution
 
 ### Step 0 — Setup
 
-เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list library จริง, ดู timeline ปัจจุบัน (`timeline.get_current`), audio track (`timeline.probe_audio_track`), frame rate (`project_settings.get_setting("timelineFrameRate")`), อ่าน transcript (`timeline.get_transcript` with_timecodes=true). ระบุรูปแบบคลิปจาก Format Table
+เรียก `sfx` MCP tool (`action="scan"`) เพื่อ list library จริง, อ่าน SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`, ดู timeline ปัจจุบัน (`timeline.get_current`), audio track (`timeline.probe_audio_track`), frame rate (`project_settings.get_setting("timelineFrameRate")`), ระบุรูปแบบคลิปจาก Format Table
 
 ### Round 1 — Structural Scan (โครงสร้าง)
 
@@ -219,17 +224,17 @@ Setup → Build-up → Turning Point → Punchline → Reaction → Resolution
 
 **เป้าหมาย:** หา candidate beat ให้มากที่สุด — ยังไม่ตัด
 
-เดินทีละ cue ใน transcript:
+เดินทีละ cue ใน SRT file:
 - อ่าน **ข้อความ** — มีมุก? มีคำเน้น? มีตัวเลข? มี reaction?
 - อ่าน **บริบทรอบข้าง** — cue ก่อน/หลังพูดถึงอะไร? มีการเปลี่ยนอารมณ์ไหม?
 - จด **ทุกจังหวะที่อาจใช้ SFX** พร้อม:
   - timestamp (วินาที)
-  - ข้อความที่พูด (raw transcript)
+  - ข้อความที่พูด (raw subtitle text จาก SRT file)
   - ประเภทจังหวะ (มุก/reaction/ตกใจ/เน้นคำ/transition/dramatic/fail/สำเร็จ/emotional)
   - SFX family ที่เข้ากัน (จาก Beat Taxonomy)
   - เหตุผลสั้น ๆ
 
-**ถ้าไม่มี transcript (game/meme/livestream):** หา beat จาก visual cuts, จังหวะ action, kill/death/respawn, UI popup, alert event ใช้ `sfx` tool (`action="analyze"` / `action="plan"`) เป็นตัวช่วย แต่**ต้องคัดเองเสมอ**
+**ถ้าไม่มี SRT file (game/meme/livestream):** หา beat จาก visual cuts, จังหวะ action, kill/death/respawn, UI popup, alert event ใช้ `sfx` tool (`action="analyze"` / `action="plan"`) เป็นตัวช่วย แต่**ต้องคิดเองเสมอ**
 
 **Output:** candidate list ที่มีทุกจังหวะที่พบ (คาดว่ามากกว่า density cap — รอบ 3 จะคัดออก)
 
@@ -333,8 +338,9 @@ CLI ทำทุกอย่างเอง: หา/สร้าง SFX track (�
 - **[meme] คลิปสั้น 34s (วันเกิดหมาใน):** sting ที่ 0.12s ตอนเปิดเลยได้ผลดี (meme ไม่มี intro ยาว), 5 sting ต่อ 34s (sparkle/ding/pop/collect/pop) จับจังหวะพีคตรง subtitle เปิดตัว→เผย→ดีใจ→สำคัญ→ปิด ได้จังหวะสนุกโดยไม่รก
 - **[talking-head] คลิป v3 (212s, 60fps, เปลี่ยน Class Elsword):** 16 sting บนคำเน้น/มุก (555+, ตัวเลข 8000%, ประชด "โครตเย่", ดราม่า "ลาก่อน") density 4.5/นาที ใช้ได้จริง ไม่กลบพูด — เปิด-ปิดคลิปได้ sparkle, ประชดใช้ wrong, ดราม่าแกล้งซึ้งใช้ gong
 - **[talking-head] ผู้ใช้อาจต้องการไฟล์เต็มไม่ใช่ sting:** sting 0.5s ใช้ source หมดทั้งไฟล์ → แก้/ยืดใน Resolve ไม่ได้ User (KT404) ขอวางไฟล์เต็มจริง (duration = ความยาวไฟล์) เพื่อให้ตัด/ยืดได้เอง ใช้วิธีนี้เป็น default กับคลิปของ user รายนี้
-- **[talking-head] คลิป v4 (113s, 60fps, ปลูกข้าว day 11, ประกาศไลฟ์บันนี่เกิร์ล):** 9 จุดบนตัวเลข/หัวข้อสำคัญ (1680 subs → pop, 1 ใน 10 → collect, เปิดประเด็น → ding, เป้าหมายโดเนท → kaching, เผยไฮไลต์ → sparkle) วางไฟล์เต็ม ใช้ได้จริง — transcript timecode (frame) เป็นแหล่งหา beat ที่แม่นยำกว่า subtitle text เปล่า
+- **[talking-head] คลิป v4 (113s, 60fps, ปลูกข้าว day 11, ประกาศไลฟ์บันนี่เกิร์ล):** 9 จุดบนตัวเลข/หัวข้อสำคัญ (1680 subs → pop, 1 ใน 10 → collect, เปิดประเด็น → ding, เป้าหมายโดเนท → kaching, เผยไฮไลต์ → sparkle) วางไฟล์เต็ม ใช้ได้จริง — SRT file timecode เป็นแหล่งหา beat ที่แม่นยำกว่า subtitle text เปล่า
 - **[talking-head] วิเคราะห์รอบเดียวได้ SFX น้อยผิดปกติ (5 จุด/120s = 2.5/min):** 原因是ข้าม Round 2 (Beat Harvesting) แล้วไปเลือก SFX เลย → 遗漏 candidate หลายจังหวะ แก้ด้วย workflow 3 รอบ: Round 1 (โครงสร้าง) → Round 2 (เก็บเกี่ยวให้หมด) → Round 3 (คัดด้วย density/spacing/family) ได้ 8 จุด/120s = 4/min ซึ่งตรง range มากกว่า
+- **[talking-head] SRT file เป็นแหล่งข้อมูลหลัก:** อ่าน subtitle จาก SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` เท่านั้น — timestamps ใน SRT จะตรงกับ timeline เสมอ
 - **[game] คลิปสั้น 27s (Assassin's Creed ซ่อนตัว NPC เห็น, 30fps):** 4 จุด (sparkle เปิด / pop ถูกจับได้ / impact NPC มาถึง / pop ปิด) density ~8.9/นาทีตามเกณฑ์ game 5-8 ได้จริง — ถ้ามี audio track ว่าง (track 2) อยู่แล้ว CLI จะสร้างใหม่เป็น track 3 ไม่ใช่ track 2 เสมอ
 - **[game] Library อยู่ที่ Z:\SFX จริง (confirmed by scan):** processed files อยู่ที่ Z:\SFX_processed, raw อยู่ที่ Z:\SFX — ใช้ processed เป็นหลัก (normalize แล้ว) ไม่ต้องส่ง --raw-dir/--processed-dir
 - **[game] User preference overrides density table:** User ต้องการ SFX น้อยมาก (2-3/นาที) แม้ density table บอก game 5-8 — วิเคราะห์ story arc หา TRUE hinge/punchline เท่านั้น ไม่ใช่ทุกจังหวะ action

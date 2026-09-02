@@ -21,7 +21,7 @@ description: "รีวิวและปรับปรุง SFX อย่า�
 ```
 timeline.get_current()                    — รู้ timeline ไหนและชื่อ
 timeline.get_items(audio, track_index=2)  — อ่าน SFX ทั้งหมดใน track ปัจจุบัน (ปกติ track 2)
-timeline.get_transcript(with_timecodes=true)  — อ่าน subtitle พร้อม timecodes
+อ่าน SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` — subtitle พร้อม timecodes
 timeline.get_setting("timelineFrameRate")   — แปลง frame เป็นเวลา
 ```
 
@@ -33,7 +33,8 @@ timeline.get_setting("timelineFrameRate")   — แปลง frame เป็น�
 - ตรวจสอบการใช้ตระกูล SFZ ซ้ำเกินไป (family repetition)
 - ประเมินความเหมาะสมของเหตุผล (reason quality)
 
-### ขั้นตอนที่ 3: วิเคราะห์ transcript ลึกเพื่อหาโอกาส
+### ขั้นตอนที่ 3: วิเคราะห์ subtitle จาก SRT file ลึกเพื่อหาโอกาส
+- อ่าน SRT file ที่ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 - วิเคราะห์แต่ละ subtitle ด้วย keyword matching ขั้นสูง
 - ตรวจจับตัวเลข วันที่ เปอร์เซ็นต์ (สำหรับ emphasis)
 - ประเมินระดับ impact แต่ละจุด (0-3 scale)

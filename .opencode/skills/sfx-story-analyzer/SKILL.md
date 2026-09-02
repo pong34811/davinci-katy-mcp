@@ -1,11 +1,11 @@
 ---
 name: sfx-story-analyzer
-description: "วิเคราะห์คลิปวิดีโอจาก subtitle track แล้ววาง SFX ให้ตรงจังหวะ story arc — ใช้เมื่อต้องการใส่ SFX ให้คลิปที่มี subtitle/subtitle track อยู่แล้ว, ต้องการวิเคราะห์ว่าจังหวะไหนควรใส่ SFX, ต้องการให้ AI คิดเหมือน Video Editor ที่เข้าใจเนื้อหา, หรือต้องการ workflow ที่อ่าน subtitle ก่อนค่อยตัดสินใจวาง SFX — ใช้กับทุกรูปแบบ: talking-head, gaming, vlog, podcast, meme, livestream"
+description: "วิเคราะห์คลิปวิดีโอจาก SRT file แล้ววาง SFX ให้ตรงจังหวะ story arc — ใช้เมื่อต้องการใส่ SFX ให้คลิปที่มี SRT file อยู่แล้ว, ต้องการวิเคราะห์ว่าจังหวะไหนควรใส่ SFX, ต้องการให้ AI คิดเหมือน Video Editor ที่เข้าใจเนื้อหา, หรือต้องการ workflow ที่อ่าน SRT ก่อนค่อยตัดสินใจวาง SFX — ใช้กับทุกรูปแบบ: talking-head, gaming, vlog, podcast, meme, livestream"
 ---
 
 # SFX Story Analyzer
 
-วิเคราะห์ story arc จาก subtitle track แล้ววาง SFX ให้ตรงจังหวะจริง ไม่ใช่ keyword matching
+วิเคราะห์ story arc จาก SRT file แล้ววาง SFX ให้ตรงจังหวะจริง ไม่ใช่ keyword matching
 
 ## หลักการ
 
@@ -19,13 +19,7 @@ description: "วิเคราะห์คลิปวิดีโอจาก
 
 ### Step 1: ดึง Subtitle
 
-ใช้ MCP tools ดึง subtitle จาก timeline:
-
-```
-timeline(action="get_transcript")
-```
-
-ถ้าไม่มี subtitle track ให้ใช้ SRT file ที่用户提供
+ใช้ SRT file ที่用户提供 — อ่านจากไฟล์ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 
 ### Step 2: วิเคราะห์ Story Arc
 

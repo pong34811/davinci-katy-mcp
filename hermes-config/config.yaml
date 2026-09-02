@@ -1,0 +1,90 @@
+# hermes-config/config.yaml — Hermes Main Configuration
+
+# Profile settings
+profile: default
+
+# Model configuration
+model:
+  default: inclusionai/ling-3.0-flash-fin:free
+  provider: nous
+  base_url: null
+
+# Terminal settings
+terminal:
+  backend: local
+  timeout: 600
+  cwd: C:\Users\warit\Desktop\davinci-katy-mcp
+
+# Compression settings
+compression:
+  enabled: true
+  threshold: 0.50
+  target_ratio: 0.20
+
+# Display settings
+display:
+  interface: cli
+  language: th
+  pet: true
+
+# Approval settings
+approvals:
+  mode: smart
+  timeout: 300
+
+# Memory settings
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  provider: hermes-state
+
+# Toolsets — always enabled for this project
+toolsets:
+  - terminal
+  - code_execution
+  - file
+  - skills
+  - todo
+  - clarify
+  - web
+  - browser
+
+# Skills — always enabled
+skills:
+  - adding-sfx
+  - subtitle-driven-enhancement
+  - sfx-story-analyzer
+  - sfx-review
+  - sfx-library-manager
+  - subtitle-analyzer
+  - emotion-analysis
+  - davinci-resolve-workflow
+  - skill-creator
+  - systematic-debugging
+  - brainstorming
+  - xlsx
+
+# Delegation
+delegation:
+  max_concurrent_children: 3
+  max_iterations: 50
+  max_spawn_depth: 2
+
+# Cron
+cron:
+  enabled: true
+
+# HERMES_HOME for this project
+hermes_home: C:\Users\warit\AppData\Local\hermes
+
+# Project-specific paths
+project:
+  root: C:\Users\warit\Desktop\davinci-katy-mcp
+  scripts: C:\Users\warit\Desktop\davinci-katy-mcp\scripts
+  sfx_dir: C:\Users\warit\Desktop\davinci-katy-mcp\SFX
+  srt_source: C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt
+  resolve_mcp: C:\Users\warit\Desktop\davinci-katy-mcp\davinci-resolve-mcp
+  venv: C:\Users\warit\Desktop\davinci-katy-mcp\davinci-resolve-mcp\venv
+  skills_dir: C:\Users\warit\Desktop\davinci-katy-mcp\.opencode\skills
+  agent_dir: C:\Users\warit\Desktop\davinci-katy-mcp\.opencode\agent
+  obsidian_vault: C:\Users\warit\Desktop\davinci-katy-mcp\obsidian-vault
