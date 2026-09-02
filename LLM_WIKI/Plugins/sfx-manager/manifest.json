@@ -1,9 +1,10 @@
 {
   "id": "sfx-manager",
   "name": "SFX Manager",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "minAppVersion": "0.15.0",
-  "description": "จัดการ Sound Effects สำหรับ DaVinci Resolve",
+  "description": "จัดการ Sound Effects สำหรับ DaVinci Resolve — คลังเสียง 73 ไฟล์ 37 ตระกูล",
   "author": "DaVinci Resolve MCP",
-  "isDesktopOnly": true
+  "isDesktopOnly": true,
+  "src": "main.js"
 }
