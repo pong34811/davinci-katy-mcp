@@ -51,9 +51,9 @@ Two special files help the LLM (and you) navigate the wiki as it grows. They ser
 
 โฟลเดอร์ `raw/` มีเอกสารแหล่งที่มาจัดระเบียบตามโดเมนหัวข้อ:
 
-- `raw/Wiki/sources/video-editing/` — บทความ DaVinci Resolve MCP server, การทดลอง AI control, Higgsfield plugins, viaSocket MCP (14 สรุปแหล่งที่มา)
+- `raw/Wiki/sources/video-editing/` — บทความ DaVinci Resolve MCP server, การทดลอง AI control, Higgsfield plugins, viaSocket MCP (13 สรุปแหล่งที่มา)
 - `raw/Wiki/sources/audio/` — คู่มือ DaVinci Resolve audio workflow, เปรียบเทียบปลั๊กอิน SFX, แหล่งข้อมูล Fairlight (7 สรุปแหล่งที่มา)
-- `raw/Wiki/sources/leadership/` — การวิเคราะห์ทักษะ, การประเมิน leadership, AI skills gap analysis, บทความทักษะ data analysis (14 สรุปแหล่งที่มา)
+- `raw/Wiki/sources/leadership/` — การวิเคราะห์ทักษะ, การประเมิน leadership, AI skills gap analysis, บทความทักษะ data analysis (10 สรุปแหล่งที่มา)
 - `raw/Wiki/sources/sfx/` — แคตตาลอกคลังเสียงครบถ้วน — ไฟล์เสียงเอฟเฟ็กต์ 73 ไฟล์, 37 ตระกูล (1 สรุปแหล่งที่มา)
 
 สรุปแหล่งที่มาใน `raw/Wiki/sources/` ทำตามรูปแบบ Karpathy wiki: ไฟล์แต่ละไฟล์เป็นสรุปสั้นๆ ของบทความต้นฉบับพร้อม metadata frontmatter (title, source, author, tags) และการอ้างอิงข้ามไปยังแหล่งที่มาที่เกี่ยวข้อง บทความ near-duplicate ถูกรวมเป็นสรุปเดียวที่เชื่อถือได้
