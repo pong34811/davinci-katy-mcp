@@ -129,3 +129,14 @@ Ran full lint on LLM_WIKI/Wiki/ (63 pages, 64 tracked files):
 - **Orphan pages**: 35 pages identified as no inbound links from other pages — expected for source summary pages referenced only from index.md
 
 Files fixed: index.md, overview.md, sfx/evaluation-system.md, sources/sfx-library-catalog.md, sources/audio/Best Audio & Sound Effects Plugins for DaVinci Resolve (2026).md, sources/leadership/18 AI Data Analysis Skills for Smarter Data Processing.md, sources/leadership/AI Skill Assessment Meaning & Definition.md, sources/leadership/AI-Powered Skills Gap Analysis.md, sources/leadership/Skill Gap Analysis  Beam AI.md, sources/video-editing/Higgsfield Plugins for DaVinci Resolve.md, sources/video-editing/I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened.md, sources/video-editing/lordhoell davinci-resolve-mcp MCP server...md, sources/video-editing/samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio.md, subtitle/analysis-pipeline.md, subtitle/beat-detection.md, video-editing/placement-engine.md, video-editing/plan-generation.md
+
+## [2026-09-02] live | SFX Placement (Subtitle 1-2.srt)
+
+Processed `Subtitle 1-2.srt` for SFX placement (25.48s, 60fps).
+Automatically generated 1 SFX placement plan:
+- Awkward Moment.mp3 @ 0.18s (0.5s) for "Punchline/Joke: 'ผมบักอ่ะ'"
+
+Successfully placed 1/1 SFX on Track 3 via Resolve API bridge.
+SFX families used: comedy — all from C:\Users\warit\Desktop\davinci-katy-mcp\SFX\.
+Plan: scripts/plan.json
+

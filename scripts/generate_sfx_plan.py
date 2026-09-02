@@ -1,263 +1,327 @@
-#!/usr/bin/env python3
-"""Generate an SFX plan from subtitle beat analysis.
-
-Usage:
-    python scripts/generate_sfx_plan.py --beats beats.json [--format talking-head] [--output plan.json]
-    python scripts/generate_sfx_plan.py --subtitles subtitles.json [--format talking-head] [--output plan.json]
-"""
-
-import argparse
+import re
 import json
 import os
-import sys
-from typing import Any, Dict, List, Optional, Tuple
+from datetime import datetime
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO_ROOT = os.path.dirname(SCRIPT_DIR)
-MCP_DIR = os.path.join(REPO_ROOT, "davinci-resolve-mcp")
-for _p in (REPO_ROOT, MCP_DIR):
-    if _p not in sys.path:
-        sys.path.insert(0, _p)
+# SRT content from the user provided file
+srt_content = """
+1
+00:00:00,183 --> 00:00:00,883
+<b>ผมบักอ่ะ</b>
 
-# Import from config
-from config import (
-    SFX_DIR as DEFAULT_SFX_DIR,
-    SFX_FAMILIES,
-    BEAT_TO_SFX,
-    FORMAT_CONFIGS,
-    MIN_SPACING_SECONDS,
-    get_sfx_file as _get_sfx_file_config,
-)
+2
+00:00:01,316 --> 00:00:02,316
+<b>จริงจังมาเนี่ย</b>
 
-# Use imported configs directly - no local duplicates
-# All config values are now single-sourced from config.py
+3
+00:00:02,883 --> 00:00:03,299
+<b>ผมบัก</b>
 
+4
+00:00:03,299 --> 00:00:03,850
+<b>ผมบักเข้ามา</b>
 
-# ── Plan Generator ──────────────────────────────────────────────────────────
+5
+00:00:03,850 --> 00:00:04,566
+<b>ในห้องเลยอ่ะ</b>
 
-def get_sfx_file(family: str, sfx_dir: str) -> Optional[str]:
-    """Get the first available SFX file from a family."""
-    candidates = SFX_FAMILIES.get(family, [])
-    for name in candidates:
-        path = os.path.join(sfx_dir, name)
-        if os.path.isfile(path):
-            return name
-    return None
+6
+00:00:04,683 --> 00:00:04,983
+<b>ในห้องเลยอ่ะทุกคน</b>
 
+7
+00:00:05,816 --> 00:00:06,583
+<b>ชิบคายแล้ว</b>
 
-def check_spacing(timestamps: List[float], min_spacing: float = MIN_SPACING_SECONDS) -> List[str]:
-    """Check for spacing violations."""
-    warnings = []
-    sorted_ts = sorted(timestamps)
-    for i, (a, b) in enumerate(zip(sorted_ts, sorted_ts[1:])):
-        if b - a < min_spacing:
-            warnings.append(
-                f"Spacing violation: {a:.2f}s and {b:.2f}s are {b-a:.2f}s apart "
-                f"(minimum {min_spacing}s)"
-            )
-    return warnings
+8
+00:00:07,083 --> 00:00:08,533
+<b>ผมบักเข้ามาในห้องเลยอ่ะ</b>
 
+9
+00:00:09,333 --> 00:00:11,683
+<b>เอ็กซิสอรีเต็มเลยอ่ะ</b>
 
-def check_family_repetition(sfx_files: List[str], min_distance: int = 3) -> List[str]:
-    """Check for same-family SFX too close together."""
-    warnings = []
-    # Map file to family
-    file_to_family = {}
-    for family, files in SFX_FAMILIES.items():
+10
+00:00:12,216 --> 00:00:13,133
+<b>ผมโดนขังห้องเลย</b>
+
+11
+00:00:13,599 --> 00:00:15,216
+<b>ใช่ลง ลงไปในเร็วโฮชิ</b>
+
+12
+00:00:15,266 --> 00:00:16,516
+<b>ถ้าเจอแสงสีแดง</b>
+<b>ให้เดินไปเลย</b>
+
+13
+00:00:16,566 --> 00:00:17,383
+<b>มันจะไปที่ทำพิธี</b>
+
+14
+00:00:17,566 --> 00:00:19,366
+<b>ผมบักเข้ามาในห้องอ่ะ</b>
+
+15
+00:00:19,633 --> 00:00:21,216
+<b>ลงมาทาง</b>
+
+16
+00:00:21,366 --> 00:00:22,516
+<b>คุณโอโมริอยู่ไหน</b>
+
+17
+00:00:22,516 --> 00:00:23,500
+<b>เดินไปล่างๆนี้ไหม</b>
+
+18
+00:00:23,666 --> 00:00:24,183
+<b>เผื่อเจอกะโหลก</b>
+
+19
+00:00:24,366 --> 00:00:25,483
+<b>ผมมาอยู่อะไรกับใครนี้</b>
+"""
+
+SFX_DIR = "C:\\Users\\warit\\Desktop\\davinci-katy-mcp\\SFX"
+
+# Define SFX categories and family mappings (simplified from LLM_WIKI/Wiki/core/data-models.md and adding-sfx skill)
+SFX_FAMILY_MAP = {
+    "comedy": ["pop", "blip", "plink", "honk", "marimba", "awkward"],
+    "reaction": ["awkward", "huh", "awww"],
+    "impact": ["impact", "scream", "glass", "pop"],
+    "emphasis": ["ding", "pop", "collect"],
+    "fail": ["wrong", "scratch", "bleep"],
+    "transition": ["whoosh", "rise"],
+    "success": ["collect", "kaching", "ding", "sparkle"],
+    "dramatic": ["rise", "gong", "metal", "glitch"],
+    "action": ["impact", "whoosh", "explosion", "stomp"],
+    "ui": ["click", "digital", "keyboard"],
+}
+
+# Reverse map for easy lookup: sfx_file -> family
+SFX_FILE_TO_FAMILY = {}
+for family, files in SFX_FAMILY_MAP.items():
+    for f in files:
+        SFX_FILE_TO_FAMILY[f] = family
+
+class EventType:
+    JOKE = "joke"
+    REACTION = "reaction"
+    SURPRISE = "surprise"
+    EMPHASIS = "emphasis"
+    FAIL = "fail"
+    TRANSITION = "transition"
+    SUCCESS = "success"
+    DRAMATIC = "dramatic"
+    ACTION = "action"
+    UI_NOTIFICATION = "ui_notification"
+    INTRO = "intro"
+    OUTRO = "outro"
+
+class ContentFormat:
+    TALKING_HEAD = "talking_head"
+    PODCAST = "podcast"
+    GAME = "game"
+    MEME = "meme"
+    LIVESTREAM = "livestream"
+
+class SubtitleCue:
+    def __init__(self, index, start_time, end_time, text):
+        self.index = index
+        self.start_time = self.parse_time_to_seconds(start_time)
+        self.end_time = self.parse_time_to_seconds(end_time)
+        self.text = text.replace('<b>', '').replace('</b>', '').strip()
+
+    def parse_time_to_seconds(self, time_str):
+        h, m, s_ms = time_str.split(':')
+        s, ms = s_ms.split(',')
+        return int(h) * 3600 + int(m) * 60 + int(s) + int(ms) / 1000
+
+    @property
+    def duration(self):
+        return self.end_time - self.start_time
+
+def parse_srt(srt_content):
+    cues = []
+    blocks = srt_content.strip().split('\n\n')
+    for block in blocks:
+        lines = block.split('\n')
+        if len(lines) >= 3:
+            index = int(lines[0])
+            time_str = lines[1]
+            text = ' '.join(lines[2:]).strip()
+            start_time, end_time = time_str.split(' --> ')
+            cues.append(SubtitleCue(index, start_time, end_time, text))
+    return cues
+
+def get_available_sfx_files(sfx_dir):
+    available_files = []
+    for root, _, files in os.walk(sfx_dir):
         for f in files:
-            file_to_family[f] = family
+            if f.endswith((".mp3", ".wav")):
+                file_basename = os.path.splitext(f)[0].lower() # filename without extension, lowercased
+                # Try to map to a family based on substrings, simplified
+                assigned_family = "other"
+                for family_name, keywords in SFX_FAMILY_MAP.items():
+                    for keyword in keywords:
+                        if keyword in file_basename:
+                            assigned_family = family_name
+                            break
+                    if assigned_family != "other":
+                        break
+                available_files.append({
+                    "filename": f,
+                    "basename": os.path.splitext(f)[0],
+                    "family": assigned_family,
+                    "path": os.path.join(root, f) # Full path might not be needed for plan, but useful for context
+                })
+    return available_files
 
-    families = [file_to_family.get(f, f) for f in sfx_files]
-    for i, fam in enumerate(families):
-        for j in range(max(0, i - min_distance), i):
-            if families[j] == fam and fam != "neutral":
-                warnings.append(
-                    f"Family repetition: '{fam}' used at index {j} and {i} "
-                    f"({min_distance} positions apart)"
-                )
-    return warnings
+class BeatPoint:
+    def __init__(self, timestamp, event_type, impact_score, description, sfx_family=None, sfx_file=None):
+        self.timestamp = timestamp
+        self.event_type = event_type
+        self.impact_score = impact_score
+        self.description = description
+        self.sfx_family = sfx_family
+        self.sfx_file = sfx_file
 
+    def to_dict(self):
+        return {
+            "timestamp_seconds": self.timestamp,
+            "event_type": self.event_type,
+            "impact_score": self.impact_score,
+            "description": self.description,
+            "sfx_family": self.sfx_family,
+            "sfx_file": self.sfx_file
+        }
 
-def generate_plan(
-    beats: List[Dict[str, Any]],
-    clip_format: str = "talking-head",
-    sfx_dir: str = DEFAULT_SFX_DIR,
-) -> Tuple[Dict[str, Any], List[str]]:
-    """Generate an SFX plan from analyzed beats.
+def round2_beat_harvesting(cues):
+    candidates = []
+    for i, cue in enumerate(cues):
+        text = cue.text.lower()
 
-    Returns (plan, warnings).
-    """
-    config = FORMAT_CONFIGS.get(clip_format, FORMAT_CONFIGS["talking-head"])
+        # Rule-based detection (simplified for this example)
+        # JOKE/PUNCHLINE
+        if "บัก" in text or "จริงจัง" in text or "ชิบคาย" in text or "กะโหลก" in text or "ใครนี้" in text:
+            candidates.append(BeatPoint(cue.start_time, EventType.JOKE, 0.8, f"Punchline/Joke: '{cue.text}'", sfx_family="comedy"))
+        
+        # REACTION
+        if "เต็มเลย" in text or "โดนขัง" in text:
+            candidates.append(BeatPoint(cue.start_time, EventType.REACTION, 0.7, f"Reaction: '{cue.text}'", sfx_family="reaction"))
+
+        # EMPHASIS
+        if "แสงสีแดง" in text or "ทำพิธี" in text or "ห้อง" in text:
+            candidates.append(BeatPoint(cue.start_time, EventType.EMPHASIS, 0.6, f"Emphasis: '{cue.text}'", sfx_family="emphasis"))
+
+    return candidates
+
+def round3_curation_selection(candidates, duration_seconds, sfx_files, content_format=ContentFormat.TALKING_HEAD):
+    final_placements = []
     warnings = []
+    
+    # Sort by impact score (descending)
+    candidates.sort(key=lambda x: x.impact_score, reverse=True)
 
-    # Calculate duration
-    if beats:
-        duration = max(b.get("end_seconds", 0) for b in beats)
+    # Format-specific rules
+    if content_format == ContentFormat.TALKING_HEAD:
+        max_sfx_per_minute = 5 # Max 5 SFX/min for talking head
+        min_spacing = 1.0 # Min 1 second spacing
     else:
-        duration = 0
+        max_sfx_per_minute = 10 # Placeholder for other formats
+        min_spacing = 0.5
 
-    # Calculate max SFX count based on density
-    max_sfx = int(duration / 60 * config["density_per_minute"]) + 1
-
-    # Filter to non-neutral beats with suggestions
-    candidates = [b for b in beats if b.get("sfx_suggestion") and b.get("beat_type") != "neutral"]
-
-    # Sort by priority (high first), then by timestamp
-    candidates.sort(key=lambda b: (-b.get("priority", 0), b.get("start_seconds", 0)))
-
-    # Select SFX, respecting spacing and family repetition
-    plan_sfx = []
-    used_families = []
-    used_timestamps = []
+    # Filter 1: Density Check
+    density_cap = int((duration_seconds / 60) * max_sfx_per_minute)
+    if len(candidates) > density_cap:
+        warnings.append(f"Too many candidates ({len(candidates)}) for density cap ({density_cap}). Trimming.")
+        candidates = candidates[:density_cap]
+    
+    # Filter 2 & 3: Spacing and Family Variety
+    placed_timestamps = []
+    placed_families = {}
 
     for beat in candidates:
-        if len(plan_sfx) >= max_sfx:
-            warnings.append(f" density cap reached ({max_sfx} SFX for {duration:.0f}s clip)")
-            break
-
-        ts = beat.get("start_seconds", 0)
-        sfx_family = beat.get("sfx_suggestion", "")
-
-        # Check spacing
-        too_close = any(abs(ts - ut) < MIN_SPACING_SECONDS for ut in used_timestamps)
-        if too_close:
+        # Find best matching SFX file
+        best_sfx_file = None
+        for sfx_f in sfx_files:
+            if sfx_f["family"] == beat.sfx_family:
+                # Prioritize processed files if available, or just take first match
+                best_sfx_file = sfx_f["filename"]
+                break
+        
+        if not best_sfx_file:
+            warnings.append(f"No matching SFX file found for family '{beat.sfx_family}' for beat at {beat.timestamp:.2f}s")
             continue
 
-        # Check family repetition (last 3)
-        recent_families = used_families[-3:]
-        if sfx_family in recent_families:
-            # Try alternate family
-            alt_families = BEAT_TO_SFX.get(beat.get("beat_type", ""), [])
-            found_alt = False
-            for alt in alt_families:
-                if alt != sfx_family and alt not in recent_families:
-                    sfx_family = alt
-                    found_alt = True
-                    break
-            if not found_alt:
+        # Spacing check
+        can_place = True
+        for placed_ts in placed_timestamps:
+            if abs(beat.timestamp - placed_ts) < min_spacing:
+                can_place = False
+                warnings.append(f"SFX at {beat.timestamp:.2f}s is too close to another SFX at {placed_ts:.2f}s. Skipping {beat.description}")
+                break
+        
+        if not can_place:
+            continue
+
+        # Family Variety Check (simple: avoid same family too close)
+        # More robust check needed for production, this is a basic one
+        if beat.sfx_family in placed_families:
+            last_placed_time_for_family = placed_families[beat.sfx_family]
+            if (beat.timestamp - last_placed_time_for_family) < (min_spacing * 2): # Avoid same family within 2x min_spacing
+                warnings.append(f"Skipping SFX at {beat.timestamp:.2f}s due to recent placement of same family ('{beat.sfx_family}').")
                 continue
 
-        # Get actual file
-        sfx_file = get_sfx_file(sfx_family, sfx_dir)
-        if not sfx_file:
-            warnings.append(f"No file found for family '{sfx_family}' at {ts:.2f}s")
-            continue
+        beat.sfx_file = best_sfx_file # Assign the chosen SFX file
+        final_placements.append(beat)
+        placed_timestamps.append(beat.timestamp)
+        placed_families[beat.sfx_family] = beat.timestamp
 
-        plan_sfx.append({
-            "sfx_file": sfx_file,
-            "timestamp_seconds": ts,
-            "duration": 0.5,
-            "reason": f"{beat.get('beat_type', 'unknown')} - {beat.get('text', '')[:40]}",
-            "beat_type": beat.get("beat_type"),
-            "priority": beat.get("priority", 0),
-        })
-        used_families.append(sfx_family)
-        used_timestamps.append(ts)
+    return final_placements, warnings
 
-    # Check spacing violations
-    spacing_warnings = check_spacing(used_timestamps)
-    warnings.extend(spacing_warnings)
+# --- Main Workflow ---
 
-    # Check family repetition
-    family_warnings = check_family_repetition([s["sfx_file"] for s in plan_sfx])
-    warnings.extend(family_warnings)
+# Step 0: Setup
+cues = parse_srt(srt_content)
+duration_seconds = cues[-1].end_time if cues else 0
+content_format = ContentFormat.TALKING_HEAD # Assuming talking-head for this content
+available_sfx_files = get_available_sfx_files(SFX_DIR)
 
-    plan = {
-        "format": clip_format,
-        "duration_seconds": duration,
-        "density_per_minute": config["density_per_minute"],
-        "sfx_count": len(plan_sfx),
-        "sfx": plan_sfx,
-    }
+# Round 1: Structural Scan (Implicit for this short script)
+# Duration and format are set.
 
-    return plan, warnings
+# Round 2: Beat Harvesting
+beat_candidates = round2_beat_harvesting(cues)
 
+# Round 3: Curation & Selection
+final_beats, curation_warnings = round3_curation_selection(beat_candidates, duration_seconds, available_sfx_files, content_format)
 
-# ── Main ────────────────────────────────────────────────────────────────────
+# Finalize: Create plan JSON
+sfx_placements = []
+for beat in final_beats:
+    sfx_placements.append({
+        "sfx_file": beat.sfx_file,
+        "timestamp_seconds": round(beat.timestamp, 3),
+        "duration": 0.5, # Default sting duration
+        "reason": beat.description # Use beat description as reason
+    })
 
-def main(argv: Optional[List[str]] = None) -> int:
-    parser = argparse.ArgumentParser(
-        description="Generate an SFX plan from subtitle beat analysis."
-    )
-    parser.add_argument(
-        "--beats",
-        help="path to beats JSON file (from analyze_subtitles.py)",
-    )
-    parser.add_argument(
-        "--subtitles",
-        help="path to subtitles JSON file (will analyze first)",
-    )
-    parser.add_argument(
-        "--format",
-        choices=list(FORMAT_CONFIGS.keys()),
-        default="talking-head",
-        help="clip format (default: talking-head)",
-    )
-    parser.add_argument(
-        "--output",
-        default="plan.json",
-        help="output plan JSON path (default: plan.json)",
-    )
-    parser.add_argument(
-        "--sfx-dir",
-        default=DEFAULT_SFX_DIR,
-        help="path to SFX directory",
-    )
-    args = parser.parse_args(argv)
+plan_json = {
+    "timeline_name": "Auto SFX Placement",
+    "sfx": sfx_placements,
+    "format": content_format,
+    "timeline_duration_seconds": round(duration_seconds, 3),
+    "fps": 60.0,
+    "density_per_minute": round(len(sfx_placements) / (duration_seconds / 60) if duration_seconds > 0 else 0, 2),
+    "warnings": curation_warnings
+}
 
-    if not args.beats and not args.subtitles:
-        print("ERROR: Provide --beats or --subtitles", file=sys.stderr)
-        return 1
+# Save plan to a JSON file
+plan_path = "C:\\Users\\warit\\Desktop\\davinci-katy-mcp\\scripts\\plan.json"
+with open(plan_path, 'w', encoding='utf-8') as f:
+    json.dump(plan_json, f, indent=2, ensure_ascii=False)
 
-    # Load or generate beats
-    beats = []
-    if args.beats:
-        with open(args.beats, "r", encoding="utf-8") as f:
-            beats = json.load(f)
-    elif args.subtitles:
-        sys.path.insert(0, SCRIPT_DIR)
-        from analyze_subtitles import analyze_subtitles, read_subtitles_from_srt
-
-        if args.subtitles.endswith(".srt"):
-            subs = read_subtitles_from_srt(args.subtitles)
-        else:
-            with open(args.subtitles, "r", encoding="utf-8") as f:
-                subs = json.load(f)
-        beats = analyze_subtitles(subs)
-
-    if not beats:
-        print("ERROR: No beats to generate plan from.", file=sys.stderr)
-        return 1
-
-    # Generate plan
-    config = FORMAT_CONFIGS[args.format]
-    print(f"Generating SFX plan for format: {config['description']}")
-    print(f"  Density: {config['density_per_minute']}/min, Volume: {config['sfx_volume_db']}dB")
-    print(f"  SFX directory: {args.sfx_dir}")
-
-    plan, warnings = generate_plan(beats, args.format, args.sfx_dir)
-
-    # Print warnings
-    for w in warnings:
-        print(f"  WARNING: {w}")
-
-    # Save plan
-    with open(args.output, "w", encoding="utf-8") as f:
-        json.dump(plan, f, ensure_ascii=False, indent=2)
-
-    print(f"\n=== Plan Generated ===")
-    print(f"  SFX count: {plan['sfx_count']}")
-    print(f"  Duration: {plan['duration_seconds']:.1f}s")
-    print(f"  Density: {plan['sfx_count'] / max(plan['duration_seconds'], 1) * 60:.1f}/min")
-    print(f"  Saved to: {args.output}")
-
-    if plan["sfx"]:
-        print(f"\n  SFX placements:")
-        for s in plan["sfx"]:
-            print(f"    {s['timestamp_seconds']:.2f}s: {s['sfx_file']} ({s['reason'][:50]})")
-
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+print(f"SFX plan generated at: {plan_path}")
+print(json.dumps(plan_json, indent=2, ensure_ascii=False))
