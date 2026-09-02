@@ -42,7 +42,7 @@ Content catalog for the LLM-maintained wiki. Read this first when answering quer
 ||| Page | Source |
 |||------|--------|
 ||| [[davinci-resolve-sfx-system-readme]] | Docs/README.md |
-||| [[sfx-library]] | Notes/SFX Library.md |
+|||| [[sfx-library-catalog]] | Complete catalog of 73 SFX files (37 families) |
 ||| [[emotion-analysis]] | Notes/Emotion Analysis.md |
 ||| [[subtitle-analysis]] | C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt |
 ||| [[adding-sfx-skill]] | .opencode/skills/adding-sfx/SKILL.md |

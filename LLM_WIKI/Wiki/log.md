@@ -116,3 +116,12 @@ Placed all 9 SFX on Track 2 (SFX 1) via SFXPlacer / Resolve API bridge.
 Verified: 9/9 clips confirmed at correct timestamps on timeline.
 SFX families used: pop, whoosh, ding, collect, wrong — all from C:\Users\warit\Desktop\davinci-katy-mcp\SFX\.
 Plan: plan_live.json | Results: SFX_RESULTS.md | Report: placement_report.json
+
+## [2026-09-02] ingest | SFX Library Catalog
+
+Created raw source summary and wiki page for the complete SFX library catalog (73 files, 37 families).
+
+- Created `LLM_WIKI/raw/Wiki/sources/sfx/sfx-library-catalog.md` — raw source document with full family breakdown
+- Created `LLM_WIKI/Wiki/sources/sfx-library-catalog.md` — synthesized source summary page
+- Updated `LLM_WIKI/Wiki/index.md` — added sfx-library-catalog entry
+- Raw source: `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`

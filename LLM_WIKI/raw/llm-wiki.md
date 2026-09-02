@@ -54,6 +54,7 @@ The `raw/` folder contains source documents organized by topic domain:
 - `raw/Wiki/sources/video-editing/` — DaVinci Resolve MCP server articles, AI control experiments, Higgsfield plugins, viaSocket MCP (13 source summaries)
 - `raw/Wiki/sources/audio/` — DaVinci Resolve audio workflow guides, SFX plugins comparison, Fairlight resources (7 source summaries)
 - `raw/Wiki/sources/leadership/` — Skills analysis, leadership assessment, AI skills gap analysis, data analysis skill articles (14 source summaries)
+- `raw/Wiki/sources/sfx/` — Complete SFX library catalog — 73 sound effects files, 37 families (1 source summary)
 
 Source summaries in `raw/Wiki/sources/` follow the Karpathy wiki pattern: each file is a concise summary of the original article with frontmatter metadata (title, source, author, tags) and cross-references to related sources. Near-duplicate articles are consolidated into single authoritative summaries.
 
@@ -81,6 +82,30 @@ The human's job is to curate sources, direct the analysis, ask good questions, a
 The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, curated knowledge store with associative trails between documents. Bush's vision was closer to this than to what the web became: private, actively curated, with the connections between documents as valuable as the documents themselves. The part he couldn't solve was who does the maintenance. The LLM handles that.
 
 ---
+
+## Source Organization (this wiki)
+
+This wiki has **34 source documents** organized into **4 domains** under `LLM_WIKI/raw/Wiki/sources/`:
+
+| Domain | Sources | Description |
+|--------|---------|-------------|
+| video-editing/ | 13 | DaVinci Resolve MCP servers, AI control, Higgsfield, viaSocket |
+| audio/ | 7 | Fairlight workflow, SFX plugins, SFX library guides, Skill Soundboard |
+| leadership/ | 9 | Skills analysis, AI skills gap, data analysis, intentional leadership |
+| sfx/ | 1 | SFX library catalog — 73 sound effects files (37 families) |
+
+### Raw source files
+
+- `raw/Wiki/sources/video-editing/` — 13 source summaries (DaVinci Resolve MCP, AI control, Higgsfield, viaSocket)
+- `raw/Wiki/sources/audio/` — 7 source summaries (Fairlight, plugins, Skill Soundboard)
+- `raw/Wiki/sources/leadership/` — 9 source summaries (skills analysis, AI gap)
+- `raw/Wiki/sources/sfx/sfx-library-catalog.md` — Complete SFX library catalog (73 files, 37 families)
+
+### Clippings
+
+`raw/Clippings/` contains 17 raw source clippings from various web articles and documents.
+
+See [[index]] for the full content catalog.
 
 ## Note
 
