@@ -18,8 +18,8 @@ AI tools running natively inside DaVinci Resolve — no exports, no switching ap
 
 ## See also
 
-- [[samuelgursky davinci-resolve-mcp MCP server|Primary]] — MCP server for programmatic control
-- [[I Gave Claude Direct Access to DaVinci Resolve|Experiment article]]
+- [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio]] — MCP server for programmatic control
+- [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]]
 
 ---
 *Created: 2026-09-02*

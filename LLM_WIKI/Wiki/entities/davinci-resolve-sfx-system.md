@@ -12,7 +12,7 @@ AI-powered system for automated Sound Effects placement in DaVinci Resolve video
 
 ## Components
 
-- **[[SFX Library]]** — 70+ audio files organized by family (pop, ding, sparkle, whoosh, impact, wrong, collect)
+- **[[sfx-library]]** — 70+ audio files organized by family (pop, ding, sparkle, whoosh, impact, wrong, collect)
 - **Subtitle Analyzer** — reads transcript from timeline track 1
 - **Emotion Analyzer** — face + voice emotion detection
 - **SFX Placer** — CLI tool that places SFX on timeline via Resolve API

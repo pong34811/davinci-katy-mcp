@@ -17,8 +17,8 @@ Uncover role-level skill gaps, benchmark readiness, and drive workforce transfor
 ## See also
 
 - [[Skills Analysis|Definition]]
-- [[What Is a Skills Gap?|Overview]]
-- [[AI Skill Gap Analyzer | Identify Your Skill Gaps with TestnHire|Tool]]
+- [[What Is a Skills Gap]]
+- [[AI Skill Gap Analyzer  Identify Your Skill Gaps with TestnHire|Tool]]
 
 ---
 *Created: 2026-09-02*

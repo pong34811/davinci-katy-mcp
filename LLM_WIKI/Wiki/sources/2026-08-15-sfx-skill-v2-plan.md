@@ -35,6 +35,6 @@ SRT file → analyze_subtitles.py → subtitles_beats.json → generate_sfx_plan
 
 ## Related
 
-- [[DaVinci Resolve SFX System]]
-- [[Adding SFX Skill]]
-- [[End-to-End SFX Workflow]]
+- [[davinci-resolve-sfx-system]]
+- [[adding-sfx-skill]]
+- [[end-to-end-sfx-workflow]]

@@ -22,7 +22,7 @@ Comparison of five audio plugins/libraries for DaVinci Resolve on price, free-ve
 - [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound|Guide]]
 - [[How to Add Sound Effects to DaVinci Resolve|Guide]]
 - [[How to Create a Sound Effects Library with DaVinci Resolve|Guide]]
-- [[DaVinci Resolve | Blackmagic Design|Product page]]
+- Blackmagic Design
 
 ---
 *Created: 2026-09-02*

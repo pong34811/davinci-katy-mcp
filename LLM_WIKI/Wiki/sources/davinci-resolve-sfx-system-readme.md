@@ -14,7 +14,7 @@ Project documentation for an AI-powered SFX automation system for DaVinci Resolv
 - **Purpose:** Automated Sound Effects placement for video editing in DaVinci Resolve
 - **Pipeline:** Subtitle Read (SRT) → Emotion Analysis → Beat Detection → SFX Plan → Auto-Placement
 - **SFX Library:** 70+ files in `SFX/` at project root (mp3/wav), organized by family (pop, ding, sparkle, whoosh, impact, wrong, collect, etc.)
-- **21 families:** Full family catalog in [[Family Mapping]]
+- **21 families:** Full family catalog in [[family-mapping]]
 - **Scripts:** `scripts/sfx_place.py` (timeline placement), `scripts/analyze_subtitles.py` (subtitle reader), `scripts/generate_sfx_plan.py` (plan builder), `scripts/impact_scorer.py` (scoring)
 - **Dependencies:** Python 3.11+, DaVinci Resolve running
 - **Subtitle source:** `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` (primary) — SRT file matching Resolve timeline
@@ -35,5 +35,5 @@ Project documentation for an AI-powered SFX automation system for DaVinci Resolv
 
 ## Related
 
-- [[DaVinci Resolve SFX System]]
-- [[SFX Library]]
+- [[davinci-resolve-sfx-system]]
+- [[sfx-library]]

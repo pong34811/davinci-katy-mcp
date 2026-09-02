@@ -118,4 +118,4 @@ User: "เพิ่ม SFX ให้คลิปนี้"
   → CLI: python scripts/sfx_place.py --plan scripts/plan.json --verify
 ```
 
-See also: [[Wiki/subtitle/beat-detection]], [[Wiki/video-editing/plan-generation]], [[event-taxonomy]]
+See also: [[subtitle/beat-detection]], [[video-editing/plan-generation]], [[event-taxonomy]]

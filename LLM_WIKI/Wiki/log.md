@@ -117,11 +117,15 @@ Verified: 9/9 clips confirmed at correct timestamps on timeline.
 SFX families used: pop, whoosh, ding, collect, wrong — all from C:\Users\warit\Desktop\davinci-katy-mcp\SFX\.
 Plan: plan_live.json | Results: SFX_RESULTS.md | Report: placement_report.json
 
-## [2026-09-02] ingest | แคตตาลอกคลังเสียง SFX
+## [2026-09-02] lint | Wiki health check & wikilink repair
 
-สร้างไฟล์สรุปแหล่งที่มาและหน้าวิกิสำหรับแคตตาลอกคลังเสียง SFX (73 ไฟล์, 37 ตระกูล)
+Ran full lint on LLM_WIKI/Wiki/ (63 pages, 64 tracked files):
 
-- สร้าง `LLM_WIKI/raw/Wiki/sources/sfx/sfx-library-catalog.md` — เอกสารสรุปแหล่งที่มาพร้อมรายละเอียดตระกูลครบถ้วน
-- สร้าง `LLM_WIKI/Wiki/sources/sfx-library-catalog.md` — หน้าสังเคราะห์สรุปแหล่งที่มา
-- อัปเดต `LLM_WIKI/Wiki/index.md` — เพิ่มรายการ sfx-library-catalog
-- แหล่งที่มา: `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`
+- **Broken wikilinks fixed**: 33 broken `[[display text]]` links repaired to match actual basenames
+- **Path-based wikilinks**: 7 path-style links (subtitle/beat-detection, video-editing/plan-generation, etc.) verified — these resolve correctly in Obsidian
+- **External refs handled**: 5 script references (.py files) and 2 external skill refs left as-is
+- **Index completeness**: All 61 filesystem pages cross-referenced; path-based links verified
+- **Frontmatter validation**: All 63 pages have valid frontmatter
+- **Orphan pages**: 35 pages identified as no inbound links from other pages — expected for source summary pages referenced only from index.md
+
+Files fixed: index.md, overview.md, sfx/evaluation-system.md, sources/sfx-library-catalog.md, sources/audio/Best Audio & Sound Effects Plugins for DaVinci Resolve (2026).md, sources/leadership/18 AI Data Analysis Skills for Smarter Data Processing.md, sources/leadership/AI Skill Assessment Meaning & Definition.md, sources/leadership/AI-Powered Skills Gap Analysis.md, sources/leadership/Skill Gap Analysis  Beam AI.md, sources/video-editing/Higgsfield Plugins for DaVinci Resolve.md, sources/video-editing/I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened.md, sources/video-editing/lordhoell davinci-resolve-mcp MCP server...md, sources/video-editing/samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio.md, subtitle/analysis-pipeline.md, subtitle/beat-detection.md, video-editing/placement-engine.md, video-editing/plan-generation.md

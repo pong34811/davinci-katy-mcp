@@ -20,8 +20,8 @@ date_updated: 2026-09-02
 ### subtitle/ — Subtitle Analysis
 ||| Page | Description |
 |||------|-------------|
-||| [[Wiki/subtitle/beat-detection]] | Two regex systems for finding beats in transcript text |
-||| [[Wiki/subtitle/analysis-pipeline]] | Subtitle → emotion → beat type → SFX suggestion pipeline |
+||| [[subtitle/beat-detection]] | Two regex systems for finding beats in transcript text |
+||| [[subtitle/analysis-pipeline]] | Subtitle → emotion → beat type → SFX suggestion pipeline |
 
 ### sfx/ — คลังเสียงและปัญญาประดิษฐ์
 |||| Page | Description |
@@ -35,8 +35,8 @@ date_updated: 2026-09-02
 ### video-editing/ — การตัดต่อ
 |||| Page | Description |
 ||||------|-------------|
-|||| [[Wiki/video-editing/plan-generation]] | Beats → plan JSON พร้อม checks ความหนาแน่น/ช่องว่าง/family |
-|||| [[Wiki/video-editing/placement-engine]] | SFXPlacer: Resolve API bridge, ตัด WAV, วางตามเฟรม |
+|||| [[video-editing/plan-generation]] | Beats → plan JSON พร้อม checks ความหนาแน่น/ช่องว่าง/family |
+|||| [[video-editing/placement-engine]] | SFXPlacer: Resolve API bridge, ตัด WAV, วางตามเฟรม |
 
 ### sources/ — สรุปแหล่งที่มาดิบ
 |||| Page | Source |
@@ -48,11 +48,11 @@ date_updated: 2026-09-02
 |||| [[adding-sfx-skill]] | .opencode/skills/adding-sfx/SKILL.md |
 |||| [[sfx-review-skill]] | .opencode/skills/sfx-review/SKILL.md |
 |||| [[2026-08-15-sfx-skill-v2-plan]] | docs/superpowers/plans/2026-08-15-sfx-skill-v2.md |
-|||| [[samuelgursky davinci-resolve-mcp MCP server]] | GitHub: samuelgursky/davinci-resolve-mcp |
-|||| [[I Gave Claude Direct Access to DaVinci Resolve]] | wildlion.media experiment |
-|||| [[lordhoell davinci-resolve-mcp MCP server]] | GitHub: lordhoell/davinci-resolve-mcp (440+ tools) |
+|||| [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio]] | GitHub: samuelgursky/davinci-resolve-mcp |
+|||| [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]] | wildlion.media experiment |
+|||| [[lordhoell davinci-resolve-mcp MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools) for AI-assisted video editing, color grading, and rendering]] | GitHub: lordhoell/davinci-resolve-mcp (440+ tools) |
 |||| [[Higgsfield Plugins for DaVinci Resolve]] | higgsfield.ai plugins |
-|||| [[DaVinci Resolve MCP (viaSocket)]] | viaSocket MCP server |
+|||| DaVinci Resolve MCP (viaSocket) | viaSocket MCP server |
 |||| [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)]] | xere.my comparison |
 |||| [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound]] | sfxengine.com guide |
 |||| [[How to Add Sound Effects to DaVinci Resolve]] | sonilo.com guide |
@@ -64,14 +64,14 @@ date_updated: 2026-09-02
 ### entities/ — บุคคล, เครื่องมือ, องค์กร
 |||| Page | Type |
 ||||------|------|
-|||| [[DaVinci Resolve SFX System]] | tool |
-|||| [[SFX Library]] | tool |
-|||| [[Emotion Analysis System]] | tool |
+|||| [[davinci-resolve-sfx-system]] | tool |
+|||| [[sfx-library]] | tool |
+|||| [[emotion-analysis-system]] | tool |
 
 ### synthesis/ — คำตอบข้ามโดเมน
 |||| Page | Topic |
 ||||------|-------|
-|||| [[End-to-End SFX Workflow]] | คู่มือ agent ครบวงจรจากคำขอถึงการวางที่ตรวจสอบแล้ว |
+|||| [[end-to-end-sfx-workflow]] | คู่มือ agent ครบวงจรจากคำขอถึงการวางที่ตรวจสอบแล้ว |
 |||| [[live-sfx-placement-20260828]] | การวางแบบสด: เรื่องแปลกของยามะ (9 SFX บน Track 2) |
 
 ## Concepts
@@ -96,12 +96,12 @@ date_updated: 2026-09-02
 2. [[system-config]] — รู้จัก config และ paths
 3. [[event-taxonomy]] — event map ไปยัง SFX อย่างไร
 4. [[family-mapping]] — SFX file มีอะไรบ้าง
-5. [[Wiki/subtitle/beat-detection]] — หา beat อย่างไร
-6. [[Wiki/video-editing/plan-generation]] — plan สร้างขึ้นอย่างไร
-7. [[Wiki/video-editing/placement-engine]] — SFX ลง timeline อย่างไร
+5. [[subtitle/beat-detection]] — หา beat อย่างไร
+6. [[video-editing/plan-generation]] — plan สร้างขึ้นอย่างไร
+7. [[video-editing/placement-engine]] — SFX ลง timeline อย่างไร
 8. [[negative-knowledge]] — สิ่งที่ไม่ควรทำ
 9. [[evaluation-system]] — ตรวจสอบคุณภาพอย่างไร
-10. [[End-to-End SFX Workflow]] — รวมทุกอย่างเข้าด้วยกัน
+10. [[end-to-end-sfx-workflow]] — รวมทุกอย่างเข้าด้วยกัน
 
 ## Stats (สถิติ)
 

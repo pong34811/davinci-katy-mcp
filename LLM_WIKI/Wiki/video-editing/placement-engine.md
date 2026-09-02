@@ -206,6 +206,6 @@ class SFXFile:
 
 ## Related
 
-- [[Wiki/video-editing/plan-generation]] — how the placement plan is generated
-- [[Wiki/subtitle/analysis-pipeline]] — subtitle → beat → plan flow
-- [[Wiki/subtitle/beat-detection]] — how beats are identified from text
+- [[video-editing/plan-generation]] — how the placement plan is generated
+- [[subtitle/analysis-pipeline]] — subtitle → beat → plan flow
+- [[subtitle/beat-detection]] — how beats are identified from text

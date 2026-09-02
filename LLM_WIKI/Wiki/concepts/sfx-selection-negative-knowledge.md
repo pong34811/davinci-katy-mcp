@@ -55,5 +55,5 @@ Knowledge of what NOT to do when placing SFX. Equally important as positive rule
 ## Related
 
 - [[impact-scoring-system]] — when to place vs skip
-- [[Wiki/video-editing/plan-generation]] — density and spacing enforcement
-- [[End-to-End SFX Workflow]] — complete workflow with failure modes
+- [[video-editing/plan-generation]] — density and spacing enforcement
+- [[end-to-end-sfx-workflow]] — complete workflow with failure modes

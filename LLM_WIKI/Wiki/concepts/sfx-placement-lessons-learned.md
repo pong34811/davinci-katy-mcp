@@ -54,5 +54,5 @@ Local SRT files at the project root (e.g., `subtitle_from_track1.srt`) **do not 
 ## Related
 
 - [[impact-scoring-system]] — scoring to guide placement decisions
-- [[Wiki/video-editing/plan-generation]] — density and spacing enforcement
-- [[End-to-End SFX Workflow]] — complete workflow with failure modes
+- [[video-editing/plan-generation]] — density and spacing enforcement
+- [[end-to-end-sfx-workflow]] — complete workflow with failure modes

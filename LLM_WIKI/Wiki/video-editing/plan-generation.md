@@ -103,7 +103,7 @@ Beats JSON from `scripts/analyze_subtitles.py` — list of dicts with `start_sec
 
 ## Related
 
-- [[Wiki/subtitle/beat-detection]] — how beats are identified from subtitle text
-- [[Wiki/subtitle/analysis-pipeline]] — the full subtitle → beat → plan flow
+- [[subtitle/beat-detection]] — how beats are identified from subtitle text
+- [[subtitle/analysis-pipeline]] — the full subtitle → beat → plan flow
 - [[family-mapping]] — 21 families and actual filenames
 - [[negative-knowledge]] — anti-patterns and when to skip SFX

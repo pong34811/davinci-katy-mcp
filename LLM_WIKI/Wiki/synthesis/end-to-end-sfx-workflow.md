@@ -90,6 +90,6 @@ Use the `sfx-review` skill for incremental improvements. Never re-place from scr
 ## Related
 
 - [[three-round-sfx-analysis]] — the 3-round workflow
-- [[Wiki/video-editing/placement-engine]] — how plans execute on timeline
+- [[video-editing/placement-engine]] — how plans execute on timeline
 - [[negative-knowledge]] — failure patterns
 - [[subtitle-analysis]] — primary subtitle source

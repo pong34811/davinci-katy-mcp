@@ -31,10 +31,10 @@ This source summary consolidates 4 near-duplicate clippings into a single author
 
 ## Related
 
-- [[I Gave Claude Direct Access to DaVinci Resolve|Experiment article]]
-- [[lordhoell davinci-resolve-mcp MCP server|Alternative MCP server]]
+- [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]]
+- [[lordhoell davinci-resolve-mcp MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools) for AI-assisted video editing, color grading, and rendering]]
 - [[Higgsfield Plugins for DaVinci Resolve|AI plugins]]
-- [[DaVinci Resolve MCP (viaSocket)|Commercial MCP platform]]
+- DaVinci Resolve MCP (viaSocket)
 - [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound|Audio workflow]]
 - [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)|Audio plugins]]
 

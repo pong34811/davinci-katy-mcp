@@ -26,8 +26,8 @@ Bell (3), Cartoon (4), Click (4), Crowd (2), Digital (1), Explosion (1), Fight (
 
 - [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)|ปลั๊กอินเสียง]]
 - [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound|คู่มือ Fairlight]]
-- [[adding-sfx|ทักษะการวาง SFX]]
-- [[sfx-library-manager|ทักษะการค้นหาคลังเสียง]]
+- [[adding-sfx-skill|ทักษะการวาง SFX]]
+- sfx-library-manager
 - [[sfx-library|หน้าคลังเสียง]]
 
 ---

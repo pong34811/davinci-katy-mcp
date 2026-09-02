@@ -43,5 +43,5 @@ Distinct rules for SFX density, beat sources, and audio mixing per content forma
 ## Related
 
 - [[event-taxonomy]] — keyword patterns per format
-- [[Wiki/subtitle/beat-detection]] — how beats are identified
-- [[Wiki/video-editing/plan-generation]] — density and spacing enforcement
+- [[subtitle/beat-detection]] — how beats are identified
+- [[video-editing/plan-generation]] — density and spacing enforcement

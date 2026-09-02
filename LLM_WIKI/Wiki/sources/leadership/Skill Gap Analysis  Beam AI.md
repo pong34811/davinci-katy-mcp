@@ -17,7 +17,7 @@ Compare role requirements with supplied skills and performance evidence to ident
 ## See also
 
 - [[Skills Analysis|Definition]]
-- [[What Is a Skills Gap?|Overview]]
+- [[What Is a Skills Gap]]
 
 ---
 *Created: 2026-09-02*

@@ -55,4 +55,4 @@ Two independent regex-based systems:
 
 - [[davinci-resolve-sfx-system-readme]]
 - [[subtitle-analysis]]
-- [[Wiki/subtitle/beat-detection]]
+- [[subtitle/beat-detection]]

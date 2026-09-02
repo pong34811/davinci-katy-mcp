@@ -18,5 +18,5 @@ Skill for reviewing existing SFX placements and identifying improvements without
 
 ## Related
 
-- [[DaVinci Resolve SFX System]]
-- [[SFX Beat Detection]]
+- [[davinci-resolve-sfx-system]]
+- [[sfx-beat-detection]]

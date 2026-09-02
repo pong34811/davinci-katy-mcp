@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/nvkllm-wiki LLM-compiled knowledge bases for any AI agent. Parallel multi-agent research, thesis-driven investigation, source ingestion, wiki compilation, querying, and artifact generation.md",
+                "file": "raw/agent-skillsskillsvideo-subtitle-translatorREADME.md at main.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "nvkllm-wiki LLM-compiled knowledge bases for any AI agent. Parallel multi-agent research, thesis-driven investigation, source ingestion, wiki compilation, querying, and artifact generation"
+              "title": "agent-skillsskillsvideo-subtitle-translatorREADME.md at main"
             }
           }
         ]
@@ -190,8 +190,19 @@
   },
   "active": "cf3891a2c8148e61",
   "lastOpenFiles": [
-    "raw/llm-wiki 1.md",
+    "SFX/Glass - Wine Glass Shatter.mp3",
+    "SFX/Game - Wrong Answer.mp3",
+    "SFX/Game - Digital Counter Readout.mp3",
+    "SFX/Game - Correct Collect Answer.mp3",
+    "SFX/Fight - Punches.mp3",
+    "SFX/Fight - Kung Fu Hit 09.wav",
+    "SFX/Fight - Kung Fu Hit 08.wav",
+    "SFX/Fight - Kung Fu Hit 07.wav",
+    "SFX/Explosion - Medium 02.wav",
+    "SFX/Digital - Data Transfer.wav",
+    "SFX/Crowd - Noise and Applause.mp3",
     "raw/nvkllm-wiki LLM-compiled knowledge bases for any AI agent. Parallel multi-agent research, thesis-driven investigation, source ingestion, wiki compilation, querying, and artifact generation.md",
+    "raw/llm-wiki 1.md",
     "raw/universal-subtitle-translator, AI Coding Skill for Claude Code, OpenCode, Gemini CLI, Cline, Roo Code, Codex CLI.md",
     "raw/Skills.md",
     "raw/agent-skillsskillsvideo-subtitle-translatorREADME.md at main.md",
@@ -208,23 +219,12 @@
     "raw/davinci-resolve Hermes AI Agent Skill.md",
     "raw/davinci-resolve Automate DaVinci Resolve projects, timelines, and rendering via Python scripting.md",
     "raw/davinci-re...  TerminalSkillsskills Agent Skill.md",
-    "raw/Clippings",
     "raw/Wiki/sources/leadership/บทความ - Data Analysis Skill คืออะไร ทำความเข้าใจทักษะแห่งยุคใหม่ฉบับเจาะลึก.md",
     "Wiki/sources/sfx-library-catalog.md",
-    "raw/Wiki/sources/sfx",
     "raw/Wiki/sources/video-editing/Automate Your Video Workflow A Deep Dive into the DaVinci Resolve MCP Server.md",
     "Wiki/sources/leadership/AI Skill Gap Analyzer  Identify Your Skill Gaps with TestnHire.md",
     "Wiki/sources/leadership/AI Skills Opportunity Map.md",
     "Wiki/sources/leadership/18 AI Data Analysis Skills for Smarter Data Processing.md",
-    "Wiki/sources/leadership/AI-Powered Skills Gap Analysis.md",
-    "Wiki/sources/leadership/What is an AI skills assessment.md",
-    "Wiki/sources/leadership",
-    "Wiki/sources/audio",
-    "Wiki/sources/video-editing",
-    "raw/Wiki/sources/leadership",
-    "raw/Wiki/sources/audio",
-    "raw/Wiki/sources/video-editing",
-    "raw/Wiki/sources",
-    "raw/Wiki"
+    "Wiki/sources/leadership/AI-Powered Skills Gap Analysis.md"
   ]
 }

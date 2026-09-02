@@ -17,7 +17,7 @@ Identifying SFX placement opportunities by analyzing subtitle text with keyword 
 3. Detect numbers, dates, percentages for emphasis beats
 4. Identify topic transitions and closing segments
 5. Score impact level (0-3) per beat
-6. Map beat type → SFX family from [[SFX Beat Detection]] taxonomy
+6. Map beat type → SFX family from [[sfx-beat-detection]] taxonomy
 
 ## ⚠️ Local SRT Warning
 

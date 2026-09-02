@@ -19,5 +19,5 @@ Dual-signal emotion detection system: face (landmarks) + voice (pitch/volume/spe
 
 ## Related
 
-- [[DaVinci Resolve SFX System]]
-- [[SFX Beat Detection]]
+- [[davinci-resolve-sfx-system]]
+- [[sfx-beat-detection]]

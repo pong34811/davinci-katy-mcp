@@ -22,6 +22,6 @@ Main skill for adding Sound Effects to DaVinci Resolve timelines. Defines the ag
 
 ## Related
 
-- [[DaVinci Resolve SFX System]]
-- [[SFX Beat Detection]]
-- [[Three-Round SFX Analysis]]
+- [[davinci-resolve-sfx-system]]
+- [[sfx-beat-detection]]
+- [[three-round-sfx-analysis]]

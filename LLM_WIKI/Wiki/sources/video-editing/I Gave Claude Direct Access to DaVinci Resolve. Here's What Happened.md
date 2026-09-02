@@ -25,8 +25,8 @@ The main point is not Resolve — it's terminal access. Claude connected to your
 
 ## Related
 
-- [[samuelgursky davinci-resolve-mcp MCP server|Primary MCP server]]
-- [[lordhoell davinci-resolve-mcp MCP server|Alternative MCP server]]
+- [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio|Primary MCP server]]
+- [[lordhoell davinci-resolve-mcp MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools) for AI-assisted video editing, color grading, and rendering]]
 - [[Higgsfield Plugins for DaVinci Resolve|AI plugins]]
 - [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound|Audio workflow]]
 

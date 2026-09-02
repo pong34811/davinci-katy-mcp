@@ -18,7 +18,7 @@ Discover 18 AI data analysis skills professionals need to interpret data, build 
 ## See also
 
 - [[Skills Analysis|Definition]]
-- [[What is an AI skills assessment?|Overview]]
+- [[What is an AI skills assessment]]
 - [[AI-Powered Skills Gap Analysis|Method]]
 
 ---

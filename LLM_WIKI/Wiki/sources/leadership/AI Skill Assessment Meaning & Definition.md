@@ -18,7 +18,7 @@ Learn about AI Skill Assessments and how they help hiring teams evaluate AI lite
 ## See also
 
 - [[Skills Analysis|Definition]]
-- [[What is an AI skills assessment?|Overview]]
+- [[What is an AI skills assessment]]
 
 ---
 *Created: 2026-09-02*

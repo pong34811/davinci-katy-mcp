@@ -19,8 +19,8 @@ Alternative MCP server for DaVinci Resolve, exposing 440+ tools via the `fusions
 
 ## See also
 
-- [[samuelgursky davinci-resolve-mcp MCP server|Primary]] — the main open-source MCP server
-- [[I Gave Claude Direct Access to DaVinci Resolve|Experiment article]]
+- [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio]] — the main open-source MCP server
+- [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]]
 
 ---
 *Created: 2026-09-02*

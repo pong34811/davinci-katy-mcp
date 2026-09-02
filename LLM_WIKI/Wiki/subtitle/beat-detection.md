@@ -82,4 +82,4 @@ Priority scoring: surprise/excitement/success/fail = high (2), emphasis/question
 
 **Primary source:** `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` — SRT file matching the DaVinci Resolve timeline (60fps). Local `subtitle_from_track1.srt` has WRONG timestamps and must NOT be used.
 
-See also: [[Wiki/subtitle/analysis-pipeline]], [[event-taxonomy]], [[negative-knowledge]]
+See also: [[subtitle/analysis-pipeline]], [[event-taxonomy]], [[negative-knowledge]]

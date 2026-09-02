@@ -25,5 +25,5 @@ Local SRT files at the project root (e.g., `subtitle_from_track1.srt`) **do not 
 
 ## Related
 
-- [[DaVinci Resolve SFX System]]
-- [[SFX Beat Detection]]
+- [[davinci-resolve-sfx-system]]
+- [[sfx-beat-detection]]

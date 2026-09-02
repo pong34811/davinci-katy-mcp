@@ -33,7 +33,7 @@ Scoring framework for evaluating SFX placement quality. Used during review and v
 
 ## Post-Placement Verification Checklist
 
-From [[skills/adding-sfx|adding-sfx skill]], run after every placement:
+From adding-sfx skill, run after every placement:
 
 1. All SFX on correct track at correct frame (CLI verify readback)
 2. No SFX drowning bed/dialogue
@@ -47,7 +47,7 @@ From [[skills/adding-sfx|adding-sfx skill]], run after every placement:
 
 ## Evaluation During Review
 
-The [[skills/sfx-review|sfx-review skill]] uses these dimensions when auditing existing placements:
+The sfx-review skill uses these dimensions when auditing existing placements:
 
 - **Critical issues**: overlap, wrong timing (>0.5s), missing high-impact beats
 - **High priority**: poor reasons, family repetition, wrong family for beat

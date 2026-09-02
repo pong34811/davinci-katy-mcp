@@ -52,14 +52,14 @@ DaVinci Resolve SFX automation — AI-powered sound effects placement for video 
 
 ## What Agent Needs to Know
 
-1. **Read [[End-to-End SFX Workflow]] first** — complete step-by-step with MCP calls
+1. **Read [[end-to-end-sfx-workflow]] first** — complete step-by-step with MCP calls
 2. **Detect format before anything else** — [[event-taxonomy]] rules differ dramatically per format
 3. **3 rounds, never 1** — single-pass under-selects (2.5/min vs target 4/min)
 4. **Use [[impact-scoring-system]]** — multi-factor scoring replaces simple keyword matching
 5. **Apply [[story-arc-analysis]]** — find turning points, not just keywords
 6. **Check [[negative-knowledge]]** — failure patterns that override defaults
 7. **Apply [[timing-intelligence]]** — precise pre-hit/on-hit/post-hit timing
-8. **Verify with [[evaluation-framework]]** — 9-dimension scoring after placement
+8. **Verify with [[evaluation-system]]** — 9-dimension scoring after placement
 9. **Delta-only review** — use sfx-review skill for improvements, never re-place from scratch
 10. **Use SRT file, not local SRT** — `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` is the authoritative subtitle source
 
