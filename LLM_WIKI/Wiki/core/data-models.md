@@ -9,7 +9,7 @@ tags:
 
 # SFX Engine Data Models
 
-All data structures for the SFX Engine, defined in `src/sfx_engine/models.py`.
+All data structures for the SFX Engine, defined in `scripts/main.py` and the SFX placement scripts.
 
 ## Enums
 

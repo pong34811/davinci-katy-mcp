@@ -47,6 +47,18 @@ Two special files help the LLM (and you) navigate the wiki as it grows. They ser
 
 **log.md** is chronological. It's an append-only record of what happened and when — ingests, queries, lint passes. A useful tip: if each entry starts with a consistent prefix (e.g. `## [2026-04-02] ingest | Article Title`), the log becomes parseable with simple unix tools — `grep "^## \[" log.md | tail -5` gives you the last 5 entries. The log gives you a timeline of the wiki's evolution and helps the LLM understand what's been done recently.
 
+## Source organization
+
+The `raw/` folder contains source documents organized by topic domain:
+
+- `raw/Wiki/sources/video-editing/` — DaVinci Resolve MCP server articles, AI control experiments, Higgsfield plugins, viaSocket MCP (13 source summaries)
+- `raw/Wiki/sources/audio/` — DaVinci Resolve audio workflow guides, SFX plugins comparison, Fairlight resources (7 source summaries)
+- `raw/Wiki/sources/leadership/` — Skills analysis, leadership assessment, AI skills gap analysis, data analysis skill articles (14 source summaries)
+
+Source summaries in `raw/Wiki/sources/` follow the Karpathy wiki pattern: each file is a concise summary of the original article with frontmatter metadata (title, source, author, tags) and cross-references to related sources. Near-duplicate articles are consolidated into single authoritative summaries.
+
+For the full content of each source, see the corresponding file in `raw/Wiki/sources/`. For the synthesized wiki pages, see `Wiki/`.
+
 ## Optional: CLI tools
 
 At some point you may want to build small tools that help the LLM operate on the wiki more efficiently. A search engine over the wiki pages is the most obvious one — at small scale the index file is enough, but as the wiki grows you want proper search. [qmd](https://github.com/tobi/qmd) is a good option: it's a local search engine for markdown files with hybrid BM25/vector search and LLM re-ranking, all on-device. It has both a CLI (so the LLM can shell out to it) and an MCP server (so the LLM can use it as a native tool). You could also build something simpler yourself — the LLM can help you vibe-code a naive search script as the need arises.
