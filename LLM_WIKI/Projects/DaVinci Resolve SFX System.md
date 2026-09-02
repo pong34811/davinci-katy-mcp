@@ -58,10 +58,10 @@ davinci-katy-mcp/
 
 ```bash
 # วิเคราะห์ subtitle + สร้าง plan
-python scripts/clip_enhancer.py --srt subtitle_from_track1.srt --skip-place
+python scripts/clip_enhancer.py --srt C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt --skip-place
 
 # วางจริง
-python scripts/sfx_place.py --plan plan.json --verify
+davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --verify
 ```
 
 ## บันทึก

@@ -189,7 +189,7 @@ class SFXFile:
 1. Read subtitles from `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 2. Analyze beats: `python scripts/analyze_subtitles.py analyze`
 3. Generate plan: `python scripts/generate_sfx_plan.py` → `scripts/plan.json`
-4. Place SFX: `python scripts/sfx_place.py --plan scripts/plan.json --verify`
+4. Place SFX: `davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan scripts/plan.json --verify`
 5. Verify: frame readback confirms placement on Track 2
 
 ## Full SFX Family Catalog (21 families)

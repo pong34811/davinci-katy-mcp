@@ -36,7 +36,7 @@ created: 2025-08-22
 python scripts/analyze_subtitles.py --action read
 
 # อ่านจากไฟล์ SRT
-python scripts/analyze_subtitles.py --action read --input subtitle_from_track1.srt
+python scripts/analyze_subtitles.py --action read --input C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt
 
 # วิเคราะห์จังหวะ
 python scripts/analyze_subtitles.py --action analyze --input subtitles.json

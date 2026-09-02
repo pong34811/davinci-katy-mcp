@@ -6,117 +6,117 @@ date_updated: 2026-09-02
 
 # Wiki Index
 
-แคตตาลอกเนื้อหาสำหรับวิกิที่ดูแลโดย LLM อ่านที่นี่เป็นอันดับแรกเมื่อตอบคำถามหรือเริ่มการทำงานใดๆ
+> Content catalog. Every wiki page listed under its type with a one-line summary.
+> Read this first to find relevant pages for any query.
+> Last updated: 2026-09-02 | Total pages: 74
 
-## หมวดหมู่
+## Sources (58 summaries)
+<!-- Raw source summaries from LLM_WIKI/raw -->
 
-### core/ — รากฐานระบบ
-|||| Page | Description |
-||||------|-------------|
-|||| [[data-models]] | Enum, dataclass, และข้อมูลการไหลทั้งหมด (SFXFile → SFXPlan) |
-|||| [[system-config]] | การกำหนดค่า: paths, ขีดจำกัดความหนาแน่น, ระดับเสียง, SFX_FAMILIES, BEAT_TO_SFX |
-|||| [[event-taxonomy]] | รูปแบบ keyword, การแมป event→family, ตัวแก้ไขคะแนน format |
+### video-editing/ — DaVinci Resolve MCP, AI control, plugins
+- [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio]] | GitHub: samuelgursky/davinci-resolve-mcp
+- [[lordhoell davinci-resolve-mcp MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools) for AI-assisted video editing, color grading, and rendering]] | GitHub: lordhoell/davinci-resolve-mcp (440+ tools)
+- [[Higgsfield Plugins for DaVinci Resolve]] | higgsfield.ai plugins
+- [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]] | wildlion.media experiment
+- [[Automate Your Video Workflow A Deep Dive into the DaVinci Resolve MCP Server]] | skywork.ai overview
+- [[DaVinci Resolve AI Control  Automate Video Editing]] | AI control experiment
+- [[daVinci Resolve MCP - Claude Code Skill for Video Editing]] | Claude Code skill article
+- [[daVinci Resolve MCP Server - Integrating AI Assistant and Editing Tool Functions via MCP Protocol]] | mcp.aibase.com analysis
+- [[daVinci Resolve MCP Server for Claude Code & Claude Desktop]] | mdskills.ai README clone
+- [[daVinci Resolve MCP Server]] | samuelgursky.com stub
+- [[daVinci Resolve MCP]] | short MCP reference
+- [[davinci-resolve-mcp agent skill]] | agent skill summary
+- [[MCP Server Plugin  MCP Servers]] | lobehub MCP server for Resolve
 
-### subtitle/ — Subtitle Analysis
-||| Page | Description |
-|||------|-------------|
-||| [[subtitle/beat-detection]] | Two regex systems for finding beats in transcript text |
-||| [[subtitle/analysis-pipeline]] | Subtitle → emotion → beat type → SFX suggestion pipeline |
+### audio/ — Fairlight, plugins, SFX tools
+- [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)]] | xere.my comparison
+- [[DaVinci Resolve  Blackmagic Design]] | Blackmagic official docs
+- [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound]] | sfxengine.com guide
+- [[How to Add Sound Effects to DaVinci Resolve]] | sonilo.com guide
+- [[How to Create a Sound Effects Library with DaVinci Resolve]] | macsales guide
+- [[Skill Soundboard - Instant Sound Buttons]] | instant sound buttons tool
+- [[skillssound-effectsSKILL.md at main]] | skill catalog
 
-### sfx/ — คลังเสียงและปัญญาประดิษฐ์
-|||| Page | Description |
-||||------|-------------|
-|||| [[library-scanner]] | การสแกน, การจัดจำแนก taxonomy, การแคช |
-|||| [[search-engine]] | Fuzzy matching, การค้นหา event, การกรอง family |
-|||| [[family-mapping]] | 21 family, ชื่อไฟล์จริง, BEAT_TO_SFX |
-|||| [[negative-knowledge]] | สิ่งที่ไม่ควรทำ — รูปแบบความล้มเหลวที่ได้มาอย่างยาก |
-|||| [[evaluation-system]] | เฟรมเวิร์คการให้คะแนนคุณภาพ 6 มิติ |
+### leadership/ — AI skills, data analysis, leadership
+- [[18 AI Data Analysis Skills for Smarter Data Processing]] | comprehensive skills list
+- [[AI Skill Assessment Meaning & Definition]] | assessment definitions
+- [[AI Skill Gap Analyzer  Identify Your Skill Gaps with TestnHire]] | gap analyzer tool
+- [[AI Skills Opportunity Map]] | opportunity mapping
+- [[AI-Powered Skills Gap Analysis]] | AI-driven gap analysis
+- [[Build software better, together]] | GitHub topic page
+- [[Skill Gap Analysis  Beam AI]] | Beam AI gap analysis
+- [[What Is a Skills Gap]] | definition and overview
+- [[What is an AI skills assessment]] | AI assessment guide
+- [[บทความ - Data Analysis Skill คืออะไร ทำความเข้าใจทักษะแห่งยุคใหม่ฉบับเจาะลึก]] | Thai article: Data Analysis Skills
+- [[Discover How To Become An Intentional Leader]] | skills-analysis.com
+- [[Skill analysis]] | Talently definition
+- [[Skills Analysis]] | trainingindustry.com definition
 
-### video-editing/ — การตัดต่อ
-|||| Page | Description |
-||||------|-------------|
-|||| [[video-editing/plan-generation]] | Beats → plan JSON พร้อม checks ความหนาแน่น/ช่องว่าง/family |
-|||| [[video-editing/placement-engine]] | SFXPlacer: Resolve API bridge, ตัด WAV, วางตามเฟรม |
+### sfx/ — Sound effects library and tools
+- [[sfx-library-catalog]] | SFX library catalog (73 files, 37 families)
 
-### sources/ — สรุปแหล่งที่มาดิบ
-|||| Page | Source |
-||||------|--------|
-|||| [[davinci-resolve-sfx-system-readme]] | Docs/README.md |
-|||| [[sfx-library-catalog]] | แคตตาลอก 73 ไฟล์ SFX (37 family) |
-|||| [[emotion-analysis]] | Notes/Emotion Analysis.md |
-|||| [[subtitle-analysis]] | C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt |
-|||| [[adding-sfx-skill]] | .opencode/skills/adding-sfx/SKILL.md |
-|||| [[sfx-review-skill]] | .opencode/skills/sfx-review/SKILL.md |
-|||| [[2026-08-15-sfx-skill-v2-plan]] | docs/superpowers/plans/2026-08-15-sfx-skill-v2.md |
-|||| [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio]] | GitHub: samuelgursky/davinci-resolve-mcp |
-|||| [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]] | wildlion.media experiment |
-|||| [[lordhoell davinci-resolve-mcp MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools) for AI-assisted video editing, color grading, and rendering]] | GitHub: lordhoell/davinci-resolve-mcp (440+ tools) |
-|||| [[Higgsfield Plugins for DaVinci Resolve]] | higgsfield.ai plugins |
-|||| DaVinci Resolve MCP (viaSocket) | viaSocket MCP server |
-|||| [[Best Audio & Sound Effects Plugins for DaVinci Resolve (2026)]] | xere.my comparison |
-|||| [[DaVinci Resolve Audio Workflow A Practical Guide to Pro Sound]] | sfxengine.com guide |
-|||| [[How to Add Sound Effects to DaVinci Resolve]] | sonilo.com guide |
-|||| [[How to Create a Sound Effects Library with DaVinci Resolve]] | macsales guide |
-|||| [[Skills Analysis]] | trainingindustry.com definition |
-|||| [[Skill analysis]] | Talently definition |
-|||| [[Discover How To Become An Intentional Leader]] | skills-analysis.com |
+### misc/ — General wiki, SFX, Resolve skills
+- [[davinci-resolve Automate DaVinci Resolve projects, timelines, and rendering via Python scripting]] | skills.rest
+- [[davinci-resolve Hermes AI Agent Skill]] | Hermes skill
+- [[Davinci-Resolve]] | general Resolve reference
+- [[Free Skill Sound Effects Download]] | free SFX resource
+- [[llm-wiki - AI Agents on GitHub (1.2k★)]] | GitHub project
+- [[llm-wiki]] | Karpathy LLM Wiki pattern
+- [[nvkllm-wiki LLM-compiled knowledge bases for any AI agent]] | nvk/llm-wiki project
+- [[Post by @karpathy on X]] | Karpathy's post on LLM Wiki
+- [[SamurAIGPTllm-wiki-agent]] | SamurAI GPT wiki agent
+- [[Skills]] | general skills reference
+- [[Sound Effects AI Agent Skill]] | Aident AI skill
+- [[universal-subtitle-translator, AI Coding Skill for Claude Code, OpenCode, Gemini CLI, Cline, Roo Code, Codex CLI]] | subtitle translator skill
+- [[ทำตาม Andrej Karpathy — แค่ 5 นาที AI เก่งขึ้น x10!]] | Thai article
 
-### entities/ — บุคคล, เครื่องมือ, องค์กร
-|||| Page | Type |
-||||------|------|
-|||| [[davinci-resolve-sfx-system]] | tool |
-|||| [[sfx-library]] | tool |
-|||| [[emotion-analysis-system]] | tool |
+### Project & workflow
+- [[2026-08-15-sfx-skill-v2-plan]] | SFX skill v2 plan
+- [[adding-sfx-skill]] | adding-sfx skill
+- [[sfx-review-skill]] | sfx-review skill
+- [[subtitle-analysis]] | Subtitle analysis source
+- [[davinci-resolve-sfx-system-readme]] | DaVinci Resolve SFX system README
+- [[emotion-analysis]] | Emotion analysis source
+- [[sfx-library]] | SFX library source
 
-### synthesis/ — คำตอบข้ามโดเมน
-|||| Page | Topic |
-||||------|-------|
-|||| [[end-to-end-sfx-workflow]] | คู่มือ agent ครบวงจรจากคำขอถึงการวางที่ตรวจสอบแล้ว |
-|||| [[live-sfx-placement-20260828]] | การวางแบบสด: เรื่องแปลกของยามะ (9 SFX บน Track 2) |
+## Entities (3)
+- [[davinci-resolve-sfx-system]] | tool
+- [[sfx-library]] | tool
+- [[emotion-analysis-system]] | tool
 
-## Concepts
+## Concepts (11)
+- [[format-specific-sfx-behavior]] | format-specific SFX rules
+- [[impact-scoring-system]] | 7-dimension impact scoring
+- [[sfx-beat-detection]] | beat types and density rules
+- [[sfx-evaluation-framework]] | 9-dimension quality scoring
+- [[sfx-placement-lessons-learned]] | empirical rules from real sessions
+- [[sfx-selection-negative-knowledge]] | anti-patterns and when to skip SFX
+- [[story-arc-analysis]] | Setup→Build-up→Punchline→Reaction→Resolution
+- [[subtitle-driven-beat-detection]] | beat detection from keyword
+- [[thai-language-analysis]] | Thai language and comedy analysis
+- [[three-round-sfx-analysis]] | 3-pass workflow
+- [[timing-intelligence]] | pre-hit/on-hit/post-hit timing
 
-|||| Page | Description |
-||||------|-------------|
-|||| [[format-specific-sfx-behavior]] | กฎเฉพาะต่อ format |
-|||| [[impact-scoring-system]] | เฟรมเวิร์คการให้คะแนน 7 มิติ |
-|||| [[sfx-beat-detection]] | ประเภท beat และกฎความหนาแน่น |
-|||| [[sfx-evaluation-framework]] | การให้คะแนนคุณภาพ 9 มิติ |
-|||| [[sfx-placement-lessons-learned]] | กฎเชิงประจักษ์จากการทำงานจริง |
-|||| [[sfx-selection-negative-knowledge]] | Anti-patterns และเมื่อใดควรข้าม SFX |
-|||| [[story-arc-analysis]] | Setup→Build-up→Punchline→Reaction→Resolution |
-|||| [[subtitle-driven-beat-detection]] | การระบุ beat จาก keyword |
-|||| [[thai-language-analysis]] | Sarcasm, idioms, cultural references |
-|||| [[three-round-sfx-analysis]] | 3-pass workflow บังคับ |
-|||| [[timing-intelligence]] | Pre-hit/on-hit/post-hit timing presets |
+## Synthesis (2)
+- [[end-to-end-sfx-workflow]] | agent workflow guide
+- [[live-sfx-placement-20260828]] | live placement record
 
-## Reading Order for New Agents (ลำดับการอ่านสำหรับ Agent ใหม่)
+## Reading Order for New Agents
+1. [[data-models]]
+2. [[system-config]]
+3. [[event-taxonomy]]
+4. [[family-mapping]]
+5. [[subtitle/beat-detection]]
+6. [[video-editing/plan-generation]]
+7. [[video-editing/placement-engine]]
+8. [[negative-knowledge]]
+9. [[evaluation-system]]
+10. [[end-to-end-sfx-workflow]]
 
-1. [[data-models]] — เข้าใจชนิดข้อมูล
-2. [[system-config]] — รู้จัก config และ paths
-3. [[event-taxonomy]] — event map ไปยัง SFX อย่างไร
-4. [[family-mapping]] — SFX file มีอะไรบ้าง
-5. [[subtitle/beat-detection]] — หา beat อย่างไร
-6. [[video-editing/plan-generation]] — plan สร้างขึ้นอย่างไร
-7. [[video-editing/placement-engine]] — SFX ลง timeline อย่างไร
-8. [[negative-knowledge]] — สิ่งที่ไม่ควรทำ
-9. [[evaluation-system]] — ตรวจสอบคุณภาพอย่างไร
-10. [[end-to-end-sfx-workflow]] — รวมทุกอย่างเข้าด้วยกัน
-
-## Stats (สถิติ)
-
-- รวมแหล่งที่มา: 35 (14 original + 20 new จากการจัดระเบียบ raw folder + SFX library catalog)
-- รวม entities: 3
-- รวม concepts: 13
-- รวม synthesis: 2
-- Scripts: sfx_place.py, analyze_subtitles.py, generate_sfx_plan.py, impact_scorer.py, story_arc_analyzer.py, timing_intelligence.py, sfx_evaluator.py, sfx_audio_analyzer.py
-
-## Key Updates (การอัปเดตสำคัญ — 2026-09-02)
-
-- **เปลี่ยนแหล่งที่มา Subtitle**: แหล่งที่มาหลักคือ `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` (SRT file ตรงกับ Resolve timeline) `subtitle_from_track1.srt` local มี timestamp ไม่ถูกต้อง ห้ามใช้
-- **โปรเจกต์จัดระเบียบใหม่**: เพิ่ม `.hermes.md`, `AGENTS.md`, `CLAUDE.md` สำหรับ Hermes Agent project structure ไดเรกทอรี `hermes-config/` พร้อม config.yaml, skills-registry.md
-- **ติดตั้งสกิลทั้ง 26 ตัว** ใน Hermes skills system (51 builtin + 25 local)
-- **วาง SFX 6 ตัว** บน Track 2 (SFX 1) สำหรับหนังสั้นเรื่อง "เรื่องแปลกของยามะ" — ตรวจสอบแล้วผ่าน frame readback
-- **จัดระเบียบ raw folder ใหม่**: รวมเอกสารต้นทาง 35 รายการใน `raw/Wiki/sources/` ตามโดเมน (video-editing/, audio/, leadership/, sfx/) รวมบทความ near-duplicate เป็นสรุปเดียว
-- **อัปเดต Wiki index**: เพิ่มหน้าแหล่งที่มาใหม่ 15 หน้าใน Wiki/index.md
-- **เพิ่มสรุปแหล่งที่มาใหม่**: 17 หน้า Wiki/sources/ ครอบคลุม DaVinci Resolve MCP servers, เครื่องมือ audio, ทักษะ leadership, AI plugins
+## Stats
+- Raw sources: 31 (13 video-editing, 7 audio, 10 leadership, 1 sfx)
+- Source summaries: 58
+- Entities: 3
+- Concepts: 11
+- Synthesis: 2
+- Total pages: 74

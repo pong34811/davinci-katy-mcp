@@ -42,4 +42,4 @@ Located in `scripts/sfx_evaluator.py` — use `SFXEvaluator.evaluate()` to rate 
 
 **Primary source:** `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` — SRT file matching the DaVinci Resolve timeline (60fps).
 
-**⚠️ Local SRT files** at the project root (e.g., `subtitle_from_track1.srt`) have WRONG timestamps — they must NOT be used.
+**⚠️ Local SRT files** at the project root (e.g., `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`) have WRONG timestamps — they must NOT be used.

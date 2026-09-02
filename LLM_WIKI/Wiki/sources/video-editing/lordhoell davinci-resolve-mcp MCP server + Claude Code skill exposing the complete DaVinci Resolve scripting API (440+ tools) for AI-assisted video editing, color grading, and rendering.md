@@ -2,25 +2,33 @@
 type: source-summary
 source: raw/Wiki/sources/video-editing/lordhoell davinci-resolve-mcp MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools) for AI-assisted video editing, color grading, and rendering.md
 date_ingested: 2026-09-02
-tags: [wiki, wiki/source, davinci-resolve, mcp-server, video-editing]
+tags: [wiki, wiki/source, video-editing, davinci-resolve, mcp-server, clippings]
 ---
 
-# Source: lordhoell/davinci-resolve-mcp MCP Server (440+ tools)
+# Source: lordhoell/davinci-resolve-mcp: MCP server + Claude Code skill exposing the complete DaVinci Resolve scripting API (440+ tools)
 
-Alternative MCP server for DaVinci Resolve, exposing 440+ tools via the `fusionscript.dll` bridge.
+> > Alternative MCP server for DaVinci Resolve, exposing 440+ tools via the `fusionscript.dll` bridge.
 
-## Key Facts
+## Overview
 
-- **Author:** lordhoell
-- **Source:** [GitHub](https://github.com/lordhoell/davinci-resolve-mcp)
-- **Tools:** 440+ tools covering every aspect of DaVinci Resolve
-- **Categories:** Project Management (25), Timeline Editing (59), Media Pool (27), Clip Operations (80), Color Grading (16), Rendering (15)
-- **Bridge:** Uses `fusionscript.dll` for DirectX-based communication
+# lordhoell/davinci-resolve-mcp: MCP server + Claude Code skill (440+ tools)
 
-## See also
+> Alternative MCP server for DaVinci Resolve, exposing 440+ tools via the `fusionscript.dll` bridge.
 
-- [[samuelgursky davinci-resolve-mcp MCP server integration for DaVinci Resolve Studio]] — the main open-source MCP server
-- [[I Gave Claude Direct Access to DaVinci Resolve. Here's What Happened]]
+## Overview
+
+An [MCP](https://modelcontextprotocol.io/) server and Claude Code skill that expose the **complete** DaVinci Resolve scripting API — letting any MCP-compatible AI assistant control DaVinci Resolve programmatically.
+
+```
+AI Assistant  <-->  MCP Protocol  <-->  This Server  <-->  fusionscript  <-->  DaVinci
+
+...
+
+## Source
+
+- **URL:** https://github.com/lordhoell/davinci-resolve-mcp
+- **Author:** - "[[lordhoell]]
+- **Published:** created: 2026-09-02
 
 ---
-*Created: 2026-09-02*
+*Updated: 2026-09-02*

@@ -73,7 +73,7 @@ This ensures all raw sources are ingested and the wiki stays current.
 
 ### Subtitle Source Rule
 - **อ่านเฉพาะ SRT file:** `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
-- ห้ามใช้ `scripts/subtitle_from_track1.srt` ที่ project root — stale, timestamps ไม่ตรง
+- ห้ามใช้ `scripts/C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` ที่ project root — stale, timestamps ไม่ตรง
 - Timestamps ใน SRT file ตรงกับ timeline เสมอ
 
 ### SFX Specific

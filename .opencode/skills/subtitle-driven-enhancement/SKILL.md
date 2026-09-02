@@ -41,8 +41,8 @@ python scripts/generate_sfx_plan.py --beats beats.json --format talking-head
 
 ### ขั้นตอนที่ 4: วาง SFX
 ```bash
-python scripts/sfx_place.py --plan plan.json --dry-run  # ตรวจสอบก่อน
-python scripts/sfx_place.py --plan plan.json --verify    # วางจริง
+davinci-resolve-mcp/venv/Scripts/python.exe davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --dry-run  # ตรวจสอบก่อน
+davinci-resolve-mcp/venv/Scripts/python.exe davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --verify    # วางจริง
 ```
 
 ## Beat Taxonomy (จาก Subtitle)

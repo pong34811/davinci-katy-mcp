@@ -15,7 +15,7 @@ User: "เพิ่ม SFX ให้คลิปนี้"
   → Agent reads subtitles from SRT file
   → Agent runs 3-round analysis (adding-sfx skill)
   → Agent writes scripts/plan.json
-  → CLI: python scripts/sfx_place.py --plan scripts/plan.json --verify
+  → CLI: davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan scripts/plan.json --verify
   → Verify: frame readback confirms placement on Track 2
 ```
 
@@ -32,7 +32,7 @@ python scripts/analyze_subtitles.py analyze
 
 Output: `scripts/subtitles_beats.json` with 17 subtitle items (60fps timeline).
 
-**⚠️ Do NOT use local SRT files** at project root (e.g., `subtitle_from_track1.srt`) — they have wrong timestamps.
+**⚠️ Do NOT use local SRT files** at project root (e.g., `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`) — they have wrong timestamps.
 
 ### Step 2: Analyze Beats
 
@@ -51,7 +51,7 @@ Output: `scripts/plan.json` with SFX file assignments, timestamps, duration, rea
 ### Step 4: Place SFX
 
 ```bash
-python scripts/sfx_place.py --plan scripts/plan.json --verify
+davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan scripts/plan.json --verify
 ```
 
 This connects to DaVinci Resolve, places SFX on Track 2 (SFX 1), and verifies via frame readback.
@@ -74,7 +74,7 @@ Use the `sfx-review` skill for incremental improvements. Never re-place from scr
 2. No same-family repetition close together
 3. Every placement needs a 1-line reason
 4. SFX goes on Track 2 (SFX 1) only
-5. Use SRT file — not local `subtitle_from_track1.srt`
+5. Use SRT file — not local `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 6. Frame rate is 60fps — timestamps in seconds
 
 ## Failure Modes

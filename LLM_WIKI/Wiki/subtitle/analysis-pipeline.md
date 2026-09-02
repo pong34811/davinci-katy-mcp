@@ -18,7 +18,7 @@ How raw subtitle text flows through emotion detection → beat classification �
 | DaVinci Resolve | `timeline.get_transcript(with_timecodes=True)` | Text with frame timecodes |
 | Manual transcript | Plain text or JSON list | String or dict list |
 
-**⚠️ Local SRT Warning:** Local SRT files at the project root (e.g., `subtitle_from_track1.srt`) **do not have timestamps matching the DaVinci Resolve timeline**. The authoritative subtitle source is `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
+**⚠️ Local SRT Warning:** Local SRT files at the project root (e.g., `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`) **do not have timestamps matching the DaVinci Resolve timeline**. The authoritative subtitle source is `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
 
 ## Pipeline (scripts/analyze_subtitles.py)
 
@@ -115,7 +115,7 @@ User: "เพิ่ม SFX ให้คลิปนี้"
   → Agent reads transcript from SRT file
   → Agent runs 3-round analysis (adding-sfx skill)
   → Agent writes scripts/plan.json
-  → CLI: python scripts/sfx_place.py --plan scripts/plan.json --verify
+  → CLI: davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan scripts/plan.json --verify
 ```
 
 See also: [[subtitle/beat-detection]], [[video-editing/plan-generation]], [[event-taxonomy]]

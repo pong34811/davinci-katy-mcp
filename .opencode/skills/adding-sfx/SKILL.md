@@ -9,7 +9,7 @@ description: ใช้เมื่อเพิ่ม Sound Effects (SFX) ลง�
 
 แบ่งงานเป็นสองฝ่าย — **Agent ตัดสินใจคุณภาพ, CLI วางอัตโนมัติ**:
 - **Agent** (คุณ): ระบุ format, วิเคราะห์จังหวะ, เลือกเสียง, เขียนเหตุผล, สร้าง **plan JSON**
-- **CLI** (`python scripts/sfx_place.py`): สร้าง SFX track, import ลง Media Pool, trim sting, วางทุกตัวในครั้งเดียว, verify readback
+- **CLI** (`davinci-resolve-mcp/venv/Scripts/python.exe davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py`): สร้าง SFX track, import ลง Media Pool, trim sting, วางทุกตัวในครั้งเดียว, verify readback
 
 **ห้ามสลับบทบาท:** อย่าวาง SFX ทีละตัวผ่าน MCP tools อีกต่อไป (ช้าและผิดพลาดง่าย) — เขียน plan แล้วให้ CLI วางทั้งชุด แก้/เพิ่มทีหลังก็ผ่าน plan ใหม่
 
@@ -369,7 +369,7 @@ import DaVinciResolveScript as dvr           # now safe — no segfault
 ```
 
 Two connection modes exist:
-- **Direct (above):** works when the venv has `add_dll_directory` access and Resolve is running. Used by `scripts/sfx_place.py --plan plan.json --dry-run` and direct API calls.
+- **Direct (above):** works when the venv has `add_dll_directory` access and Resolve is running. Used by `davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --dry-run` and direct API calls.
 - **In-app bridge** (`Workspace > Scripts > resolve_bridge`): the server's normal path; connects over loopback. Requires `DAVINCI_RESOLVE_BRIDGE=1` env var and the bridge script running inside Resolve. Use `connect_resolve()` / `BridgeProxy` for this mode.
 
 When the direct import segfaults (Signal 11 / exit 139), the bridge is the fallback — but the bridge requires the in-Resolve script to be started first.

@@ -22,14 +22,14 @@ Hard-won lessons from placing SFX across talking-head, game, meme, podcast, and 
 - **Skip dry-run before placing** — `--dry-run` catches missing files, spacing issues, and overlaps before touching Resolve.
 - **Use processed files when user wants full-length files** — processed files are short stings (0.5s); user may want raw files for Resolve trimming. Check preference.
 - **Assume track index is always 2** — may be 1, 3, or variable depending on existing tracks. CLI creates and names the SFX track automatically.
-- **Assume Z:/SFX path exists** — use local `SFX/` directory. The path varies per machine.
+- **Assume C:/Users/warit/Desktop/davinci-katy-mcp/SFX path exists** — use local `SFX/` directory. The path varies per machine.
 - **Use SFX on every sentence** — density cap exists for a reason. Over-SFX kills natural feel.
 - **Re-place entire track when reviewing** — delta-only via sfx-review skill. Never wipe and redo from scratch.
 - **Use generic reasons** ("เน้นจุดสำคัญ") — must be specific per beat: timestamp + word + why.
 - **Place SFX during dialogue in podcast format** — podcast density is nearly 0; only wordplay, emphasis, or topic transitions get SFX.
 - **Use impact/scream/glass for small jokes** — wrong scale. Small joke → pop/plink; big moment → impact/rise.
 - **Trust AppendToTimeline endFrame parameter** — broken on WAV files. Pre-trim WAV to sting duration instead (CLI handles this automatically).
-- **Use local SRT files** — local `subtitle_from_track1.srt` has wrong timestamps. Always use `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
+- **Use local SRT files** — local `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` has wrong timestamps. Always use `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
 
 ## Common Failure Patterns
 

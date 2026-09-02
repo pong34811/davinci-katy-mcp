@@ -21,7 +21,7 @@ System for reading and analyzing subtitle tracks to detect beats for SFX placeme
 
 ## ⚠️ Local SRT Warning
 
-Local SRT files at the project root (e.g., `subtitle_from_track1.srt`) **do not have timestamps matching the DaVinci Resolve timeline** — they must NOT be used. Always use the SRT file from `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
+Local SRT files at the project root (e.g., `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`) **do not have timestamps matching the DaVinci Resolve timeline** — they must NOT be used. Always use the SRT file from `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
 
 ## Related
 

@@ -89,10 +89,10 @@ sfx(action="scan")
 
 ```bash
 # Dry-run ก่อนเสมอ
-python scripts/sfx_place.py --plan plan.json --dry-run
+davinci-resolve-mcp/venv/Scripts/python.exe davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --dry-run
 
 # วางจริง
-python scripts/sfx_place.py --plan plan.json --verify
+davinci-resolve-mcp/venv/Scripts/python.exe davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --verify
 ```
 
 ### Step 7: Hindsight Pass

@@ -20,7 +20,7 @@
 - **SFX library:** `SFX/` at project root (70+ files, mp3/wav)
 - **SRT subtitle source:** `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 - **No `SFX_processed/` folder** — all scripts use raw SFX from `SFX/` directly
-- **Subtitle files:** `scripts/subtitle_from_track1.srt` (stale, do NOT use)
+- **Subtitle files:** `scripts/C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` (stale, do NOT use)
 - **Context files:** `.hermes.md` (Hermes-specific), `AGENTS.md` (this file, portable), `CLAUDE.md` (Claude-flavored)
 - **Skills:** `.opencode/skills/` (26 project skills), `hermes-config/` (config.yaml, skills-registry.md)
 
@@ -75,7 +75,7 @@ Full mapping: `scripts/generate_sfx_plan.py` → `SFX_FAMILIES` dict.
 
 **Read subtitles ONLY from the SRT file:** `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
 
-This is the PRIMARY subtitle source. Timestamps in this SRT file match the timeline exactly. The local `scripts/subtitle_from_track1.srt` at project root is STALE and does NOT match — do not use it.
+This is the PRIMARY subtitle source. Timestamps in this SRT file match the timeline exactly. The local `scripts/C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` at project root is STALE and does NOT match — do not use it.
 
 ## LLM Wiki (Karpathy Pattern)
 

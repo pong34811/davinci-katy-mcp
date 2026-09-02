@@ -23,7 +23,7 @@ Empirical rules from real sessions. These override or refine the default skill b
 
 ## ⚠️ Local SRT Warning
 
-Local SRT files at the project root (e.g., `subtitle_from_track1.srt`) **do not have timestamps matching the DaVinci Resolve timeline**. The authoritative subtitle source is `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
+Local SRT files at the project root (e.g., `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`) **do not have timestamps matching the DaVinci Resolve timeline**. The authoritative subtitle source is `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`.
 
 ## Game Lessons
 

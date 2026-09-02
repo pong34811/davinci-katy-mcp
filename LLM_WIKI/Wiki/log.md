@@ -52,7 +52,7 @@ Created concept page with empirical rules from real sessions: track index variat
 
 ## [2026-08-27] fix | SFX Engine config path corrected
 
-Fixed sfx_engine/config.py: DEFAULT_SFX_RAW_DIR changed from Z:/SFX to local SFX/ directory. DEFAULT_SFX_PROCESSED_DIR also points to SFX/ (no SFX_processed/ exists on this machine). Both scripts/config.py and sfx_engine/config.py now agree on the correct path.
+Fixed sfx_engine/config.py: DEFAULT_SFX_RAW_DIR changed from C:/Users/warit/Desktop/davinci-katy-mcp/SFX to local SFX/ directory. DEFAULT_SFX_PROCESSED_DIR also points to SFX/ (no SFX_processed/ exists on this machine). Both scripts/config.py and sfx_engine/config.py now agree on the correct path.
 
 ## [2026-08-27] restructure | Wiki directory reorganized for machine-usability
 
@@ -140,3 +140,10 @@ Successfully placed 1/1 SFX on Track 3 via Resolve API bridge.
 SFX families used: comedy — all from C:\Users\warit\Desktop\davinci-katy-mcp\SFX\.
 Plan: scripts/plan.json
 
+## [2026-09-02] ingest | Bulk source summary refresh from raw/
+- Refreshed 21 existing source summaries to match current raw content
+- Created 27 new source summaries for raw files without wiki counterparts
+- Reclassified 17 root-level raw files into sources/misc/
+- Reorganized source summaries by subdomain: video-editing/, audio/, leadership/, sfx/, misc/
+- Repaired 1 broken wikilink in index.md (smartquote mismatch)
+- Refreshed index.md and overview.md with updated counts and structure

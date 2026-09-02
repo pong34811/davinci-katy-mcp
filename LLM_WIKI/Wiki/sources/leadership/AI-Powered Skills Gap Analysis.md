@@ -2,23 +2,30 @@
 type: source-summary
 source: raw/Wiki/sources/leadership/AI-Powered Skills Gap Analysis.md
 date_ingested: 2026-09-02
-tags: [wiki, wiki/source, leadership, ai-skills, skills-gap]
+tags: [wiki, wiki/source, leadership, skills, ai-skills, clippings]
 ---
 
 # Source: AI-Powered Skills Gap Analysis
 
-Uncover role-level skill gaps, benchmark readiness, and drive workforce transformation with AI.
+> In a world where skills evolve faster than roles, most organizations operate on outdated assumptions. Disconnected syste
 
-## Key Facts
+## Overview
 
-- **Source:** [imocha.io/use-case/skill-gap-analysis](https://www.imocha.io/use-case/skill-gap-analysis)
-- **Description:** Explore iMocha's Skills Intelligence
+## You Can’t Close Gaps You Can’t See.
 
-## See also
+In a world where skills evolve faster than roles, most organizations operate on outdated assumptions. Disconnected systems, lack of real-time insights, and unclear benchmarks make it nearly impossible to identify where skills fall short. Without AI-powered visibility into capabilities, leaders risk misaligned teams, ineffective learning paths, and stalled transformation.
 
-- [[Skills Analysis|Definition]]
-- [[What Is a Skills Gap]]
-- [[AI Skill Gap Analyzer  Identify Your Skill Gaps with TestnHire|Tool]]
+## Role-Based Skill Gap Analysis
+
+Bridge the gap between current talent and role expe
+
+...
+
+## Source
+
+- **URL:** https://www.imocha.io/use-case/skill-gap-analysis
+- **Author:** published:
+- **Published:** created: 2026-09-02
 
 ---
-*Created: 2026-09-02*
+*Updated: 2026-09-02*

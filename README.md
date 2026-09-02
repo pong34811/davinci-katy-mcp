@@ -43,7 +43,7 @@ An AI-powered system that reads subtitle files, analyzes emotional beats, and au
 
 ```bash
 # Full pipeline: read SRT → analyze → plan → place SFX
-python scripts/sfx_place.py --plan scripts/plan.json --verify
+davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan scripts/plan.json --verify
 
 # Analyze subtitle from SRT file
 python scripts/analyze_subtitles.py --action read --srt "C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt"

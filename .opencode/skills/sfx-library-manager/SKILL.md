@@ -18,8 +18,8 @@ description: "จัดการ SFX library — ค้นหา, จัดห�
 ## Library Structure
 
 ```
-Z:\SFX\              — ไฟล์ต้นฉบับ (mp3/wav, 71 ไฟล์)
-Z:\SFX_processed\    — ไฟล์ wav ที่ normalize แล้ว (34 ไฟล์)
+C:\Users\warit\Desktop\davinci-katy-mcp\SFX\              — ไฟล์ต้นฉบับ (mp3/wav, 71 ไฟล์)
+C:\Users\warit\Desktop\davinci-katy-mcp\SFX_processed\    — ไฟล์ wav ที่ normalize แล้ว
                       — ชื่อไฟล์: <shortname>-<dB>.wav
                       — เช่น pop-14.wav = Pop ที่ −14 dB
 ```

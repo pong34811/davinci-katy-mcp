@@ -23,7 +23,7 @@ Centralized configuration for the DaVinci Resolve SFX Engine. Supports JSON file
 | `sfx_processed_dir` | `SFX/` (same as raw) | No `SFX_processed/` directory on this machine |
 
 > [!warning] Path mismatch
-> Earlier versions defaulted to `Z:/SFX` (wrong). Both paths now resolve to `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`.
+> Earlier versions defaulted to `C:/Users/warit/Desktop/davinci-katy-mcp/SFX` (wrong). Both paths now resolve to `C:\Users\warit\Desktop\davinci-katy-mcp\SFX\`.
 
 ### Timeline Defaults
 

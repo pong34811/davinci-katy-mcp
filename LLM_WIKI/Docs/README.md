@@ -34,7 +34,7 @@ git clone <repository-url>
 pip install opencv-python mediapipe
 
 # ทดสอบระบบ
-python scripts/analyze_subtitles.py --action read --input subtitle_from_track1.srt
+python scripts/analyze_subtitles.py --action read --input C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt
 ```
 
 ## วิธีใช้งาน
@@ -42,19 +42,19 @@ python scripts/analyze_subtitles.py --action read --input subtitle_from_track1.s
 ### ขั้นตอนที่ 1: อ่าน Subtitle
 
 ```bash
-python scripts/analyze_subtitles.py --action read --input subtitle_from_track1.srt
+python scripts/analyze_subtitles.py --action read --input C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt
 ```
 
 ### ขั้นตอนที่ 2: วิเคราะห์และสร้าง Plan
 
 ```bash
-python scripts/clip_enhancer.py --srt subtitle_from_track1.srt --skip-place
+python scripts/clip_enhancer.py --srt C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt --skip-place
 ```
 
 ### ขั้นตอนที่ 3: วาง SFX
 
 ```bash
-python scripts/sfx_place.py --plan plan.json --verify
+davinci-resolve-mcp/venv/Scripts/python.exe scripts/sfx_place.py --plan plan.json --verify
 ```
 
 ## โครงสร้างโปรเจค

@@ -2,7 +2,7 @@
 type: synthesis
 tags: [wiki, wiki/synthesis]
 date_updated: 2026-09-02
-source_count: 12
+source_count: 31
 ---
 
 # Wiki Overview
@@ -11,13 +11,11 @@ High-level synthesis of everything in the wiki. Updated as sources are ingested 
 
 ## Current State
 
-6 original sources + 6 engine code files ingested. 13 concepts, 3 entities, 1 synthesis + 2 live placements. Knowledge base now covers the full pipeline from subtitle analysis through SFX placement with machine-usable structure. Enhanced with impact scoring, story arc analysis, timing intelligence, evaluation framework, and Thai-language-aware comedy beat detection.
+31 raw sources + 17 misc raw files ingested. 74 wiki pages total: 58 source summaries, 3 entities, 11 concepts, 2 synthesis.
 
-**Project reorganized as Hermes Agent project** (2026-09-02): `.hermes.md`, `AGENTS.md`, `CLAUDE.md` added. `hermes-config/` directory. All 26 project skills installed in Hermes skills system.
+**Sources reorganized into subdomains** (2026-09-02): raw/Wiki/sources/ contains video-editing/, audio/, leadership/, sfx/. 17 additional root-level raw files placed in sources/misc/.
 
-**Subtitle source switched to SRT file** (2026-09-02): Primary source is `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`. Local `subtitle_from_track1.srt` has incorrect timestamps.
-
-**Live SFX placement verified** (2026-09-02): 6 SFX on Track 2 (SFX 1) for "เรื่องแปลกของยามะ" with frame readback confirmation.
+**All source summaries refreshed from raw** (2026-09-02): 21 existing summaries updated to match current raw content. 27 new summaries created from raw files that lacked wiki counterparts. 1 broken wikilink repaired in index.md.
 
 ## Domain
 
@@ -69,7 +67,7 @@ DaVinci Resolve SFX automation — AI-powered sound effects placement for video 
 - **Format determines everything** — talking-head 3–5/min vs game 5–8/min vs meme "no limits"
 - **Negative knowledge is critical** — knowing what NOT to do prevents the most common failures
 - **3-round analysis is mandatory** — single-pass consistently under-selects
-- **Path awareness matters** — SFX files at local SFX/, not Z:/SFX_processed
+- **Path awareness matters** — SFX files at local SFX/, not C:/Users/warit/Desktop/davinci-katy-mcp/SFX_processed
 - **Subtitle source matters** — always use the SRT file from hermes attachments; local SRT files have wrong timestamps
 - **Frame rate is 60fps** — all timestamps are in seconds at 60fps
 
@@ -77,14 +75,21 @@ DaVinci Resolve SFX automation — AI-powered sound effects placement for video 
 
 || Category | Pages | Purpose |
 ||----------|-------|---------|
-|| core/ | 3 | System foundation: models, config, taxonomy |
-|| subtitle/ | 2 | How beats are detected from transcripts |
-|| sfx/ | 5 | Library intelligence, search, families, negatives, evaluation |
-|| video-editing/ | 2 | Plan generation, placement |
-|| sources/ | 7 | Raw source summaries |
+|| sources/ | 58 | Raw source summaries from LLM_WIKI/raw |
 || entities/ | 3 | Tool/entity pages |
-|| synthesis/ | 2 | Cross-cutting workflow guide + live placement |
 || concepts/ | 11 | Detailed concept pages |
+|| synthesis/ | 2 | Cross-cutting workflow guides |
+|| core/ | 3 | System foundation |
+|| subtitle/ | 2 | Subtitle analysis |
+|| sfx/ | 5 | SFX intelligence |
+|| video-editing/ | 3 | Plan generation, placement, audio mixing |
+
+## Raw Source Distribution
+
+- **video-editing:** 13 sources (DaVinci Resolve MCP servers, AI control, Higgsfield plugins)
+- **audio:** 7 sources (Fairlight workflow, plugins, Skill Soundboard)
+- **leadership:** 10 sources (AI skills gap, data analysis, leadership)
+- **sfx:** 1 source (SFX library catalog)
 
 ## Tools & Scripts
 
