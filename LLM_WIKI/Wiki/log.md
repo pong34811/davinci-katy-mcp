@@ -153,3 +153,8 @@ Added LLM agent reading guide and frontmatter metadata to key wiki pages.
 - Created [[llm-agent-guide]] as a compact agent entrypoint with ordered reading list.
 - Updated frontmatter on: [[overview]], [[subtitle/beat-detection]], [[concepts/three-round-sfx-analysis]], [[concepts/timing-intelligence]], [[concepts/sfx-selection-negative-knowledge]].
 - Refined reading order in [[index]] and added `audience: agent` + `summary` fields to speed one-shot comprehension.
+
+## [2026-09-05] improvement | LLM-ready guide + quick reference
+- Rewrote `llm-agent-guide.md` as compact oneshot guide with reading order, quick reference table, decision flow, task-based page map, failure modes, and search tags.
+- Added Quick Reference block to `index.md` for instant orientation.
+- Reduced onboarding path to top 12 pages only.

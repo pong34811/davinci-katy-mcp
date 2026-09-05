@@ -115,6 +115,13 @@ date_updated: 2026-09-02
 11. [[evaluation-system]]
 12. [[end-to-end-sfx-workflow]]
 
+## Quick Reference
+- Agent entrypoint: [[llm-agent-guide]]
+- Decision flow: read → detect format → 3 rounds → plan → place → verify
+- SRT: `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
+- SFX root: `C:\Users\warit\Desktop\davinci-katy-mcp\SFX`
+- Track: SFX on Track 2
+
 ## Stats
 - Raw sources: 31 (13 video-editing, 7 audio, 10 leadership, 1 sfx)
 - Source summaries: 58

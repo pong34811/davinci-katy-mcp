@@ -1,6 +1,6 @@
 ---
 type: guide
-tags: [wiki, wiki/llm-guide]
+tags: [wiki, wiki/llm-guide, quickref]
 audience: agent
 date_updated: 2026-09-05
 dependencies:
@@ -14,54 +14,78 @@ dependencies:
   - video-editing/placement-engine.md
   - concepts/three-round-sfx-analysis.md
   - concepts/timing-intelligence.md
-  - concepts/negative-knowledge.md
+  - concepts/sfx-selection-negative-knowledge.md
+summary: >
+  Oneshot reading order + compact reference for SFX placement agents.
+  Read top-down when time is limited.
 ---
 
-# LLM Agent Guide
+# LLM Guide
 
-> จ Oneshot reading order สำหรับ LLM agent ที่เข้ามาแก้ไข/วาง SFX
-> อ่านตามลิสต์ด้านล่างจากบนลงล่าง เวลาไม่พอมาก comprehension จะดีที่สุด
+> Oneshot reading order + compact reference for SFX placement agents.
+> Read top-down when time is limited.
 
-## Step 1 — ระ ambiente
-- [[overview]] : domain, tools, paths สำคัญ
-- [[core/system-config]] : density, paths, frame rate
+## Reading Order
 
-## Step 2 — เข้าใจ metadata และ events
-- [[core/data-models]] : Cue, Beat, ImpactScore, Plan
-- [[core/event-taxonomy]] : keyword → event → family mapping
-- [[subtitle/beat-detection]] : regex + emotion rules
-- [[concepts/thai-language-analysis]] : sarcasm, idioms, ภาษาไทยคำ vysokey
+1. [[overview]]
+2. [[core/system-config]]
+3. [[core/event-taxonomy]]
+4. [[subtitle/beat-detection]]
+5. [[sfx/family-mapping]]
+6. [[concepts/three-round-sfx-analysis]]
+7. [[concepts/timing-intelligence]]
+8. [[concepts/sfx-selection-negative-knowledge]]
+9. [[video-editing/plan-generation]]
+10. [[video-editing/placement-engine]]
+11. [[sfx/evaluation-system]]
+12. [[end-to-end-sfx-workflow]]
 
-## Step 3 — เลือก SFX
-- [[sfx/family-mapping]] : 37 families → กา recommendations
-- [[sfx/search-engine]] : fuzzy matching
-- [[sfx/negative-knowledge]] : ห้ามวางตอนไหน
-- [[concepts/impact-scoring-system]] : 7 dimensions
-- [[concepts/story-arc-analysis]] : Setup→Build-up→Punchline→Reaction→Resolution
+## Quick Reference
 
-## Step 4 — จังหวะเวลา
-- [[concepts/timing-intelligence]] : pre-hit / on-hit / post-hit
-- [[concepts/three-round-sfx-analysis]] : pass 1→2→3
-- [[concepts/format-specific-sfx-behavior]] : talking-head / game / meme
+| Item | Value |
+|------|-------|
+| SRT | `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt` |
+| SFX root | `C:\Users\warit\Desktop\davinci-katy-mcp\SFX` |
+| Timeline | Track 2 = SFX 1 |
+| FPS | 60 |
+| Default density | 10–15/min |
+| Min gap | 1s between SFX |
+| Overlap rule | fail→reaction ติดกัน OK |
+| CLI | `davinci-resolve-mcp\venv\Scripts\python.exe scripts\sfx_place.py` |
 
-## Step 5 — วางและตรวจ
-- [[video-editing/plan-generation]] : beat → plan.json
-- [[video-editing/placement-engine]] : Resolve API bridge
-- [[video-editing/audio-mixing]] : ducking, EQ, stereo
-- [[sfx/evaluation-system]] : 9-dimension post-check
+## Decision Flow
 
-## Must-know facts
-- SRT สำคัญ: `C:\Users\warit\AppData\Local\hermes\attachments\Subtitle 1.srt`
-- SFX root: `C:\Users\warit\Desktop\davinci-katy-mcp\SFX`
-- Timeline: Track 2 = SFX 1
-- Density default: ~10–15/min; ใช้ override ได้
-- ซ้อน <1s = fail; fail→reaction ติดกัน OK
+```
+read SRT
+ → detect format
+ → Round 1: section map
+ → Round 2: harvest beats
+ → Round 3: filter/rank
+ → generate plan.json
+ → place on Track 2
+ → verify
+```
 
-## Failure modes
-อ่าน [[concepts/sfx-selection-negative-knowledge]] ก่อนเลือกไฟล์เสมอ
+## Must-Read Pages by Task
 
-## Quick actions
-- วิเคราะห์ subtitle → [[subtitle/analysis-pipeline]]
-- สร้าง plan → [[video-editing/plan-generation]]
-- วาง SFX → `davinci-resolve-mcp\venv\Scripts\python.exe scripts\sfx_place.py`
-- รีวิวผล → [[sfx/evaluation-system]]
+| Task | Page |
+|------|------|
+| อ่าน subtitle | [[subtitle/analysis-pipeline]] |
+| เลือก SFX | [[sfx/family-mapping]], [[sfx/search-engine]] |
+| วาง SFX | [[video-editing/placement-engine]] |
+| จังหวะเวลา | [[concepts/timing-intelligence]] |
+| วิเคราะห์อารมณ์ | [[concepts/thai-language-analysis]] |
+| ตรวจคุณภาพ | [[sfx/evaluation-system]] |
+| ดูว่าวางผิด où | [[concepts/sfx-selection-negative-knowledge]] |
+
+## Failure Modes
+
+- ซ้อน <1s → fail
+- same family ซ้ำใกล้กัน → swap/cut
+- local SRT → wrong timestamps, ห้ามใช้
+- processed ≠ raw → check path
+- single-pass → under-select อยู่ดี
+
+## Tags to Search
+
+- `sfx`, `timing`, `subtitle`, `negative-knowledge`, `thai`, `comedy`
