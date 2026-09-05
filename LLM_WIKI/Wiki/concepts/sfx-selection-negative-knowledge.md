@@ -1,8 +1,12 @@
 ---
 type: concept
 confidence: high
-source_count: 0
-tags: [wiki, wiki/concept]
+source_count: 1
+tags: [wiki, wiki/concept, sfx, negative-knowledge]
+audience: agent
+summary: >
+  Anti-patterns and hard skip rules for SFX selection.
+  Use this page to override default matching whenever a known failure pattern appears.
 date_updated: 2026-09-02
 ---
 

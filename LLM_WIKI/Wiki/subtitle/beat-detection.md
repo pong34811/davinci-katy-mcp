@@ -1,8 +1,12 @@
 ---
 type: concept
 confidence: high
-source_count: 2
-tags: [wiki, wiki/concept]
+source_count: 1
+tags: [wiki, wiki/concept, subtitle]
+audience: agent
+summary: >
+  Beat detection pipeline from SRT timestamps to candidate events.
+  Covers regex patterns, emotion coupling, and density rules.
 date_updated: 2026-09-02
 ---
 

@@ -1,8 +1,14 @@
 ---
 type: synthesis
-tags: [wiki, wiki/synthesis]
-date_updated: 2026-09-02
-source_count: 31
+tags: [wiki, wiki/synthesis, llm-onboarding]
+audience: agent
+date_updated: 2026-09-05
+summary: >
+  High-level synthesis and navigation hub for the DaVinci Resolve SFX wiki.
+  Read first to understand domain, paths, and critical workflow rules.
+dependencies:
+  - llm-agent-guide.md
+  - index.md
 ---
 
 # Wiki Overview

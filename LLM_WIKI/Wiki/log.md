@@ -147,3 +147,9 @@ Plan: scripts/plan.json
 - Reorganized source summaries by subdomain: video-editing/, audio/, leadership/, sfx/, misc/
 - Repaired 1 broken wikilink in index.md (smartquote mismatch)
 - Refreshed index.md and overview.md with updated counts and structure
+
+## [2026-09-05] improvement | LLM comprehension upgrade
+Added LLM agent reading guide and frontmatter metadata to key wiki pages.
+- Created [[llm-agent-guide]] as a compact agent entrypoint with ordered reading list.
+- Updated frontmatter on: [[overview]], [[subtitle/beat-detection]], [[concepts/three-round-sfx-analysis]], [[concepts/timing-intelligence]], [[concepts/sfx-selection-negative-knowledge]].
+- Refined reading order in [[index]] and added `audience: agent` + `summary` fields to speed one-shot comprehension.

@@ -2,7 +2,11 @@
 type: concept
 confidence: high
 source_count: 1
-tags: [wiki, wiki/concept]
+tags: [wiki, wiki/concept, timing]
+audience: agent
+summary: >
+  Preset timing decisions for SFX placement by event type.
+  Use `pre-hit`, `on-hit`, or `post-hit` offsets plus duration/fade rules.
 date_updated: 2026-09-02
 ---
 

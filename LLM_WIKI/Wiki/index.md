@@ -8,7 +8,7 @@ date_updated: 2026-09-02
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-09-02 | Total pages: 74
+> Last updated: 2026-09-02 | Total pages: 75
 
 ## Sources (58 summaries)
 <!-- Raw source summaries from LLM_WIKI/raw -->
@@ -102,16 +102,18 @@ date_updated: 2026-09-02
 - [[live-sfx-placement-20260828]] | live placement record
 
 ## Reading Order for New Agents
-1. [[data-models]]
-2. [[system-config]]
-3. [[event-taxonomy]]
-4. [[family-mapping]]
-5. [[subtitle/beat-detection]]
-6. [[video-editing/plan-generation]]
-7. [[video-editing/placement-engine]]
-8. [[negative-knowledge]]
-9. [[evaluation-system]]
-10. [[end-to-end-sfx-workflow]]
+1. [[llm-agent-guide]]
+2. [[overview]]
+3. [[data-models]]
+4. [[system-config]]
+5. [[event-taxonomy]]
+6. [[family-mapping]]
+7. [[subtitle/beat-detection]]
+8. [[video-editing/plan-generation]]
+9. [[video-editing/placement-engine]]
+10. [[concepts/sfx-selection-negative-knowledge]]
+11. [[evaluation-system]]
+12. [[end-to-end-sfx-workflow]]
 
 ## Stats
 - Raw sources: 31 (13 video-editing, 7 audio, 10 leadership, 1 sfx)

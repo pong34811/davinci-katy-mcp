@@ -2,7 +2,11 @@
 type: concept
 confidence: high
 source_count: 1
-tags: [wiki, wiki/concept]
+tags: [wiki, wiki/concept, sfx]
+audience: agent
+summary: >
+  Mandatory 3-pass workflow for subtitle-driven SFX selection.
+  Round 1 scans structure; Round 2 harvests all candidate beats; Round 3 applies filters.
 date_updated: 2026-09-02
 ---
 
